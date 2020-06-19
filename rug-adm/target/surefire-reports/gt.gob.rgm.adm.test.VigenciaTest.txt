@@ -1,7 +1,0 @@
--------------------------------------------------------------------------------
-Test set: gt.gob.rgm.adm.test.VigenciaTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.951 sec <<< FAILURE! - in gt.gob.rgm.adm.test.VigenciaTest
-testVigencia(gt.gob.rgm.adm.test.VigenciaTest)  Time elapsed: 0 sec  <<< ERROR!
-java.lang.IllegalArgumentException: ArquillianServletRunner not found. Could not determine ContextRoot from ProtocolMetadata, please contact DeployableContainer developer.
-
