@@ -8,8 +8,10 @@ import mx.gob.se.rug.util.MyLogger;
 
 public class ValidaConexion {
 	public String existeConexion() {
+                
 		MyLogger.Logger.log(Level.INFO, "RUG:INTENTO LOGIN >>>>:" + ++Constants.PETICIONES_lOGIN);
-		String regresa = new LoginDaoJdbcImpl().regresaFecha()+"";		
+		String regresa = new LoginDaoJdbcImpl().regresaFecha()+"";
+                //MyLogger.Logger.log(Level.INFO,"Error = " + regresa);
 		return  regresa;
 	}
 }

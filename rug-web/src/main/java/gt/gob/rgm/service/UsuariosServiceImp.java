@@ -262,7 +262,7 @@ public class UsuariosServiceImp implements UsuariosService {
 	@Override
 	public Usuario getUsuarioExterno(String cveUsuario) {
 		RugSecuUsuariosExternos secuUsuario = secuUsuarioExtDao.findByCveUsuario(cveUsuario);
-
+                
 		Usuario usuario = new Usuario();
 		if(secuUsuario!=null) {
 			usuario.setIdPersona(secuUsuario.getIdUsuario());
@@ -270,7 +270,7 @@ public class UsuariosServiceImp implements UsuariosService {
 			usuario.setPassword(secuUsuario.getPassword());
 			usuario.setSitUsuario(secuUsuario.getSitUsuario());
 			usuario.setCvePerfil(secuUsuario.getCvePerfil());
-			
+			//System.out.println("usuari" + usuario + "id:" + secuUsuario.getIdUsuario() + "usuari2:" + secuUsuario.getCveUsuario()+ "id:" + secuUsuario.getCvePerfil());
 			return usuario;
 		}
 		

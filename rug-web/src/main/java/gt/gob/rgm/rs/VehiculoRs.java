@@ -22,6 +22,8 @@ import gt.gob.rgm.util.HashUtils;
 import mx.gob.se.rug.busqueda.dao.BusquedaDAO;
 import mx.gob.se.rug.busqueda.to.BusquedaTO;
 import sun.misc.BASE64Decoder;
+import mx.gob.se.rug.util.MyLogger;
+import java.util.logging.Level;
 
 @Component
 @Path("/vehiculos")
@@ -45,15 +47,11 @@ public class VehiculoRs {
 		bitacora.setFecha(Timestamp.valueOf(LocalDateTime.now()));				
 		
 		Usuario user = isUserAuthenticated(authString, bitacora);
-		
-		if(user==null) {
-			resultado = "{\"estado\": \"401\",\"descripcion\":\"USUARIO NO AUTORIZADO\"}";
-			bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
-			usuariosService.addBitacora(bitacora);
-			return resultado;
-		}
-		
-		try {
+                
+		/**
+                 * verificación de parametros enviados
+                 */
+                try {
 			if(vin!=null && !vin.equalsIgnoreCase("")) parametro = vin;
 			else if(!uso.equalsIgnoreCase("") && !placa.equalsIgnoreCase("")) parametro = uso + "-" + placa;
 			else {
@@ -63,12 +61,60 @@ public class VehiculoRs {
 				return resultado;
 			}
 		} catch(Exception ex) {
-			ex.printStackTrace();
+			//ex.printStackTrace();
 			resultado = "{\"estado\": \"422\",\"descripcion\":\"LA SOLICITUD NO ESTA BIEN FORMADA FALTAN PARAMETROS, FAVOR REVISE\"}";
 			bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
 			usuariosService.addBitacora(bitacora);
 			return resultado;
 		}
+                
+//                if(vin == null){
+//                    if(uso != null && placa != null){
+//                        if(!uso.equalsIgnoreCase("") && !placa.equalsIgnoreCase("")){
+//                            parametro = uso + "-" + placa;
+//                            System.out.println("parametro placa  = " + parametro );
+//                        }else{
+//                            parametro = "0";
+//                            System.out.println("error 2 = ");
+//                        }
+//                    }else{
+//                        parametro = "0";
+//                        System.out.println("error 1");
+//                    }
+//                    //if(!uso.equalsIgnoreCase("") && !placa.equalsIgnoreCase("")) parametro = uso + "-" + placa;
+//                    
+//                }else{
+//                    parametro = vin;
+//                    System.out.println("parametro vin = " + parametro );
+//                }
+                
+                
+		if(user==null) {
+                        //MyLogger.Logger.log(Level.INFO, user);
+                        
+			resultado = "{\"estado\": \"401\",\"descripcion\":\"USUARIO NO AUTORIZADO\"}";
+                        //resultado = "no";
+			bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+			usuariosService.addBitacora(bitacora);
+			return resultado;
+		}
+		
+//		try {
+//			if(vin!=null && !vin.equalsIgnoreCase("")) parametro = vin;
+//			else if(!uso.equalsIgnoreCase("") && !placa.equalsIgnoreCase("")) parametro = uso + "-" + placa;
+//			else {
+//				resultado = "{\"estado\": \"422\",\"descripcion\":\"LA SOLICITUD NO ESTA BIEN FORMADA FALTAN PARAMETROS, FAVOR REVISE\"}";
+//				bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+//				usuariosService.addBitacora(bitacora);
+//				return resultado;
+//			}
+//		} catch(Exception ex) {
+//			ex.printStackTrace();
+//			resultado = "{\"estado\": \"422\",\"descripcion\":\"LA SOLICITUD NO ESTA BIEN FORMADA FALTAN PARAMETROS, FAVOR REVISE\"}";
+//			bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+//			usuariosService.addBitacora(bitacora);
+//			return resultado;
+//		}
 		
 		BusquedaDAO busquedaDAO =new BusquedaDAO();
 		try {
@@ -132,7 +178,9 @@ public class VehiculoRs {
         bitacora.setDetalle(bitacora.getDetalle() + "|" + values[0]);
         
         Usuario user = usuariosService.getUsuarioExterno(values[0]);
+        //System.out.println("user: " + user.getCveUsuario() + " password:" + user.getPassword() + "pwd ingresado" + HashUtils.hash(values[1], "SHA-1"));
         if(user!=null && user.getPassword().equalsIgnoreCase(HashUtils.hash(values[1], "SHA-1"))) {
+        //if(user!=null) {
         	return user;
         } 
         
