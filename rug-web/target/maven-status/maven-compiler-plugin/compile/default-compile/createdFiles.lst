@@ -533,6 +533,7 @@ mx\gob\se\rug\inscripcion\to\BienPendienteTO.class
 mx\gob\se\rug\to\BienTO.class
 mx\gob\se\rug\modificacion\servicie\ModificacionService.class
 mx\gob\se\rug\util\pdf\PageXofY.class
+gt\gob\rgm\rs\VehiculosTest.class
 mx\gob\se\rug\masiva\service\ReduccionProrrogaService.class
 mx\gob\se\rug\certificacion\servlet\CertificacinoServlet.class
 mx\gob\se\rug\seguridad\serviceimpl\PrivilegiosServiceImpl.class

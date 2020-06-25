@@ -26,7 +26,7 @@ import mx.gob.se.rug.util.MyLogger;
 import java.util.logging.Level;
 
 @Component
-@Path("/vehiculos")
+@Path("/vehiculos_old")
 public class VehiculoRs {
 
 	private UsuariosService usuariosService;
@@ -49,7 +49,7 @@ public class VehiculoRs {
 		Usuario user = isUserAuthenticated(authString, bitacora);
                 
 		/**
-                 * verificación de parametros enviados
+                 * verificaciï¿½n de parametros enviados
                  */
                 try {
 			if(vin!=null && !vin.equalsIgnoreCase("")) parametro = vin;
