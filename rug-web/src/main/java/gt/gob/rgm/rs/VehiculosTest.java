@@ -108,7 +108,7 @@ public class VehiculosTest {
         if (user != null) {
             BusquedaDAO busquedaDAO = new BusquedaDAO();
 
-            // try {
+            try {
                 // System.out.println(busquedaGeneral.get(0).getIdGarantia());
                 
                 if(check == true){
@@ -169,12 +169,12 @@ public class VehiculosTest {
                 }
 
 
-            // } catch (Exception e) {
-            //    resultado = "{\"estado\": \"503\",\"descripcion\":\"NO SE PUEDE REALIZAR LA CONSULTA, VERIFIQUE EL SERVICIO\"}";
-            //    bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
-            //    usuariosService.addBitacora(bitacora);
-            //    return resultado;
-            // }
+            } catch (Exception e) {
+               resultado = "{\"estado\": \"503\",\"descripcion\":\"NO SE PUEDE REALIZAR LA CONSULTA, VERIFIQUE EL SERVICIO\"}";
+               bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+               usuariosService.addBitacora(bitacora);
+               return resultado;
+            }
 
         }else{
             resultado = "{\"estado\": \"401\",\"descripcion\":\"USUARIO NO AUTORIZADO\"}";
