@@ -73,7 +73,7 @@ public class VehiculosTest {
                 }
             }else if(vin == null && uso != null && placa == null ){
                 resultado = "{\"estado\": \"422\",\"descripcion\":\"LA SOLICITUD NO ESTA BIEN FORMADA FALTAN PARAMETROS, FAVOR REVISE\"}";
-                bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+                bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado );			
                 usuariosService.addBitacora(bitacora);
                 return resultado;
             }else if(vin == null && uso == null && placa != null){
@@ -93,7 +93,7 @@ public class VehiculosTest {
                 }
                 else{
                     resultado = "{\"estado\": \"422\",\"descripcion\":\"LA SOLICITUD NO ESTA BIEN FORMADA FALTAN PARAMETROS, FAVOR REVISE\"}";
-                    bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+                    bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado );			
                     usuariosService.addBitacora(bitacora);
                     return resultado;
                 }
@@ -136,13 +136,13 @@ public class VehiculosTest {
                     if(returnVin == false && returnPlaca == false){
                         System.out.println("vin String: " + returnVin + " placa String: " + returnPlaca);
                         resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEHICULO NO ESTA ASOCIADO A UNA GARANTIA\"}";
-                        bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+                        bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: Vin " + vinString + " Placa " + placaString);			
                         usuariosService.addBitacora(bitacora);
                         return resultado;
                     }else{
                         System.out.println("vin String: " + returnVin + " placa String: " + returnPlaca);
                         resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEH\u00CDCULO EST\u00C1 ASOCIADO A UNA GARANT\u00CDA MOBILIARIA.\\r\\n PARA M\u00C1S INFORMACI\u00D3N PUEDE VISITAR https://www.rgm.gob.gt/noticias/rgm/sat\"}";
-                        bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+                        bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: Vin " + vinString + " Placa " + placaString);			
                         usuariosService.addBitacora(bitacora);
                         return resultado;
                     }
@@ -151,18 +151,18 @@ public class VehiculosTest {
                     if(busquedaGeneral !=  null && !busquedaGeneral.isEmpty()){
                         if(busquedaGeneral.get(0).getIdGarantia() ==  null || busquedaGeneral.get(0).getIdGarantia().equalsIgnoreCase("")){
                            resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEHICULO NO ESTA ASOCIADO A UNA GARANTIA\"}";
-                           bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+                           bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: " + parametro);			
                            usuariosService.addBitacora(bitacora);
                            return resultado;
                        }else{
                            resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEH\u00CDCULO EST\u00C1 ASOCIADO A UNA GARANT\u00CDA MOBILIARIA.\\r\\n PARA M\u00C1S INFORMACI\u00D3N PUEDE VISITAR https://www.rgm.gob.gt/noticias/rgm/sat\"}";
-                           bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+                           bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: " + parametro);			
                            usuariosService.addBitacora(bitacora);
                            return resultado;
                        }
                    }else{
                        resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEHICULO NO ESTA ASOCIADO A UNA GARANTIA\"}";
-                       bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+                       bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: " + parametro);			
                        usuariosService.addBitacora(bitacora);
                        return resultado;
                     }
@@ -171,7 +171,7 @@ public class VehiculosTest {
 
             } catch (Exception e) {
                resultado = "{\"estado\": \"503\",\"descripcion\":\"NO SE PUEDE REALIZAR LA CONSULTA, VERIFIQUE EL SERVICIO\"}";
-               bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado);			
+               bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: " + parametro) ;			
                usuariosService.addBitacora(bitacora);
                return resultado;
             }
