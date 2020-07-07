@@ -113,7 +113,7 @@ public class MenuDAO {
 			try {
 				connection = bd.getConnection();
 				ps = connection.prepareStatement(sql);
-				MyLogger.Logger.log(Level.INFO, "idpersona"
+				MyLogger.Logger.log(Level.INFO, "idpersona otro"
 						+ usuarioTO.getPersona().getIdPersona());
 
 				ps.setInt(1, idAcreedor);

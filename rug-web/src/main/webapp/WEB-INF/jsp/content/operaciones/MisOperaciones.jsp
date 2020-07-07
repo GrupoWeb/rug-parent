@@ -20,6 +20,7 @@
 							    <li class="tab col s3"><a class="blue-text text-darken-2" id = "tabs3" href ="#" onclick = "iniciaPaginacionPenAsMultiples('<s:property value="idPersona"/>')">Pendientes de Confirmaci&oacute;n Registros Multiples</a></li>							    							    
 							    <li class="tab col s3"><a class="blue-text text-darken-2" id = "tabs4" href ="#" onclick = "iniciaPaginacionPendientes('<s:property value="idPersona"/>','3')">Terminados</a>  </li>
 								<div class="indicator blue" style="z-index:1"></div>
+								
 							</ul>
 						</div>
 					</div>
