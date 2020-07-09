@@ -679,23 +679,23 @@ public class ModificacionAction extends RugBaseAction  {
 				MyLogger.Logger.log(Level.INFO, "tramite incompleto 3"+ inscripcionTO.getIdInscripcion());
 				Integer idTramiteNuevo = detserv.altapartesTramiteInc(new Integer(usuario.getPersona().getIdPersona()),new Integer("7"),idgarantia);
 				MyLogger.Logger.log(Level.INFO, "Integer Usuario: " + new Integer(usuario.getPersona().getIdPersona()) + " integer numero " + new Integer("7") + " id Garantia jj " + idgarantia + " idTRamite: " + idTramiteNuevo);
-				// setIdTramite(idTramiteNuevo.toString());
-				// detserv.altapartesBienesInc(idUltimoTramite, idTramiteNuevo);
-				// setBienesEspTOs(detservd.getListaBienes(idTramiteNuevo, 1));
-				// if (getBienesEspTOs().size()>0){
-				// 	setHayBienes(true);
-				// }else{
-				// 	setHayBienes(false);
-				// }
-				// sessionMap.put(Constants.ID_TRAMITE_NUEVO,idTramiteNuevo);	
-				regresa = "success";
-				// MyLogger.Logger.log(Level.INFO, "idTramiteNuevo: " + idTramiteNuevo);
-				// if (idTramiteNuevo.intValue() != 0){
-				// 	regresa = "success";
-				// }
+				setIdTramite(idTramiteNuevo.toString());
+				detserv.altapartesBienesInc(idUltimoTramite, idTramiteNuevo);
+				setBienesEspTOs(detservd.getListaBienes(idTramiteNuevo, 1));
+				if (getBienesEspTOs().size()>0){
+					setHayBienes(true);
+				}else{
+					setHayBienes(false);
+				}
+				sessionMap.put(Constants.ID_TRAMITE_NUEVO,idTramiteNuevo);	
+				// regresa = "success";
+				MyLogger.Logger.log(Level.INFO, "idTramiteNuevo: " + idTramiteNuevo);
+				if (idTramiteNuevo.intValue() != 0){
+					regresa = "success";
+				}
 				
 			}catch(Exception e){
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 		

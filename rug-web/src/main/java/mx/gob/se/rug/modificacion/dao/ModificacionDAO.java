@@ -333,12 +333,12 @@ public class ModificacionDAO {
 			cs.setInt(3, idGarantia);
 			cs.registerOutParameter(4, Types.INTEGER);
 			cs.registerOutParameter(5, Types.INTEGER);
-			cs.registerOutParameter(6, Types.VARCHAR,2000);	
+			cs.registerOutParameter(6, Types.VARCHAR);	
 			// cs.registerOutParameter(6, Types.VARCHAR);	
 			
 			cs.executeQuery();
-			// MyLogger.Logger.log(Level.INFO, "4 "+ cs.getInt(4));
-			// MyLogger.Logger.log(Level.INFO, "5 "+ cs.getInt(5));
+			// MyLogger.Logger.log(Level.INFO, "4 "+ cs.getInt(4)); 82547
+			// MyLogger.Logger.log(Level.INFO, "5 "+ cs.getInt(5)); 
 			// MyLogger.Logger.log(Level.INFO, "6 "+ cs.getString(6));
 			int idGenerado = cs.getInt(5);
 			MyLogger.Logger.log(Level.INFO, "Parametros de los Querys para alterar tramite: " + cs);
@@ -352,7 +352,7 @@ public class ModificacionDAO {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 		}finally{
 			bd.close(connection,null,cs);
 		}
