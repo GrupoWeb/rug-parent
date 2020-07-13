@@ -414,7 +414,7 @@ function validar(){
 		 		 <s:if test="habilitaobligacion">         
 		    		 
 		           		<br>
-		           		<div class="tituloHeader1" style="padding-left: 12px; height = "21px"><b>Acto o Contrato que crea la Obligaci&oacute;n Garantizada</b></div>
+		           		<div class="tituloHeader1" style="padding-left: 12px; height:21px"><b>Acto o Contrato que crea la Obligaci&oacute;n Garantizada</b></div>
 	              		 <br>
 	              		 <div class="textoGeneralRojo" style="padding-left: 19px">Acto o Contrato que crea la Obligacion Garantizada:</div>
 	              		 <br></br>

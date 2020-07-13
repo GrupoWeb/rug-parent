@@ -42,6 +42,7 @@ public class VehiculosTest {
         String parametro = "";
         String vinString = "";
         String placaString = "";
+        
         boolean check = false;
         boolean returnVin = false;
         boolean returnPlaca = false;
@@ -70,6 +71,7 @@ public class VehiculosTest {
             if(vin != null && uso == null && placa == null){
                 if (vin != null && !vin.equalsIgnoreCase("")) {
                     parametro = vin;
+                    
                 }
             }else if(vin == null && uso != null && placa == null ){
                 resultado = "{\"estado\": \"422\",\"descripcion\":\"LA SOLICITUD NO ESTA BIEN FORMADA FALTAN PARAMETROS, FAVOR REVISE\"}";
@@ -133,35 +135,42 @@ public class VehiculosTest {
                         returnPlaca = false;
                     }
 
+                    System.out.println("Vin = " + vinString);
+                    System.out.println("Placa = " + placaString);
                     if(returnVin == false && returnPlaca == false){
                         System.out.println("vin String: " + returnVin + " placa String: " + returnPlaca);
-                        resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEHICULO NO ESTA ASOCIADO A UNA GARANTIA\"}";
+                        resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEHICULO CON VIN NO. " + vinString + " Y PLACA NO. " + placaString +"  NO ESTA ASOCIADO A UNA GARANTIA\"}";
                         bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: Vin " + vinString + " Placa " + placaString);			
                         usuariosService.addBitacora(bitacora);
                         return resultado;
                     }else{
                         System.out.println("vin String: " + returnVin + " placa String: " + returnPlaca);
-                        resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEH\u00CDCULO EST\u00C1 ASOCIADO A UNA GARANT\u00CDA MOBILIARIA.\\r\\n PARA M\u00C1S INFORMACI\u00D3N PUEDE VISITAR https://www.rgm.gob.gt/noticias/rgm/sat\"}";
+                        resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEH\u00CDCULO CON VIN NO. " + vinString + " Y PLACA NO. " + placaString +" EST\u00C1 ASOCIADO A UNA GARANT\u00CDA MOBILIARIA.\\r\\n PARA M\u00C1S INFORMACI\u00D3N PUEDE VISITAR https://www.rgm.gob.gt/noticias/rgm/sat\"}";
                         bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: Vin " + vinString + " Placa " + placaString);			
                         usuariosService.addBitacora(bitacora);
                         return resultado;
                     }
                 }else{
+                    
+                   
+                    
                     List<BusquedaTO> busquedaGeneral = busquedaDAO.busquedaVehiculo(parametro);
+                    
+                    System.out.println("busquedaGeneral = " + busquedaGeneral);
                     if(busquedaGeneral !=  null && !busquedaGeneral.isEmpty()){
                         if(busquedaGeneral.get(0).getIdGarantia() ==  null || busquedaGeneral.get(0).getIdGarantia().equalsIgnoreCase("")){
-                           resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEHICULO NO ESTA ASOCIADO A UNA GARANTIA\"}";
+                           resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEHICULO CON REGISTRO NO. " + parametro + " NO ESTA ASOCIADO A UNA GARANTIA\"}";
                            bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: " + parametro);			
                            usuariosService.addBitacora(bitacora);
                            return resultado;
                        }else{
-                           resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEH\u00CDCULO EST\u00C1 ASOCIADO A UNA GARANT\u00CDA MOBILIARIA.\\r\\n PARA M\u00C1S INFORMACI\u00D3N PUEDE VISITAR https://www.rgm.gob.gt/noticias/rgm/sat\"}";
+                           resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEH\u00CDCULO CON REGISTRO NO. " + parametro + " EST\u00C1 ASOCIADO A UNA GARANT\u00CDA MOBILIARIA.\\r\\n PARA M\u00C1S INFORMACI\u00D3N PUEDE VISITAR https://www.rgm.gob.gt/noticias/rgm/sat\"}";
                            bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: " + parametro);			
                            usuariosService.addBitacora(bitacora);
                            return resultado;
                        }
                    }else{
-                       resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEHICULO NO ESTA ASOCIADO A UNA GARANTIA\"}";
+                       resultado = "{\"estado\": \"200\",\"descripcion\":\"EL VEHICULO CON REGISTRO NO. " + parametro + " NO ESTA ASOCIADO A UNA GARANTIA\"}";
                        bitacora.setDetalle(bitacora.getDetalle()+ "|" + resultado + " Parametros: " + parametro);			
                        usuariosService.addBitacora(bitacora);
                        return resultado;

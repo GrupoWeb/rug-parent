@@ -17,9 +17,10 @@ public class BusquedaDAO {
 		List<BusquedaTO> busquedaTOs= new ArrayList<BusquedaTO>();
 		ConexionBD bd = new ConexionBD();
 		
-		// String sql = "select gar.ID_GARANTIA from RUG.RUG_GARANTIAS gar where gar.ID_ULTIMO_TRAMITE in ( select id_tramite from RUG_GARANTIAS_BIENES bien where (bien.IDENTIFICADOR like '%"+pNoSerie+"%')) and garantia_status <> 'CA'";
-		String sql = "select gar.ID_GARANTIA from RUG.RUG_GARANTIAS gar where gar.ID_ULTIMO_TRAMITE in ( select id_tramite from RUG_GARANTIAS_BIENES bien where (bien.IDENTIFICADOR = '%"+pNoSerie+"%')) and garantia_status <> 'CA'";
-		Connection connection = bd.getConnection();
+		//String sql = "select gar.ID_GARANTIA from RUG.RUG_GARANTIAS gar where gar.ID_ULTIMO_TRAMITE in ( select id_tramite from RUG_GARANTIAS_BIENES bien where (bien.IDENTIFICADOR like '%"+pNoSerie+"%')) and garantia_status <> 'CA'";
+		String sql = "select gar.ID_GARANTIA from RUG.RUG_GARANTIAS gar where gar.ID_ULTIMO_TRAMITE in ( select id_tramite from RUG_GARANTIAS_BIENES bien where (bien.IDENTIFICADOR = '"+pNoSerie+"')) and garantia_status <> 'CA'";
+		          System.out.println("sql = " + sql);
+                Connection connection = bd.getConnection();
 		ResultSet rs = null;
 		PreparedStatement cs = null;
 		try {
