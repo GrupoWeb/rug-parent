@@ -11,7 +11,6 @@ import java.util.List;
  * The persistent class for the RUG_SECU_USUARIOS database table.
  * 
  */
-
 @Entity
 @Table(name="RUG_SECU_USUARIOS")
 @NamedQueries({

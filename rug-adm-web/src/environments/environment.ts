@@ -5,7 +5,13 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:8080/rug-adm/rs',
-  base_url: 'http://localhost:8080/rug-adm',
-  pentaho_url: 'http://localhost:28080/pentaho'
+  api_url: 'http://128.5.9.19/rug-adm/rs',
+  base_url: 'http://128.5.9.19/rug-adm',
+  pentaho_url: 'http://128.5.9.5:28080/pentaho'
 };
+// export const environment = {
+//   production: false,
+//   api_url: 'http://localhost:8080/rug-adm/rs',
+//   base_url: 'http://localhost:8080/rug-adm',
+//   pentaho_url: 'http://localhost:28080/pentaho'
+// };
