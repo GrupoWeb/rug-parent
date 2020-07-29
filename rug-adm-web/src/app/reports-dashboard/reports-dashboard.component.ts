@@ -31,6 +31,7 @@ export class ReportsDashboardComponent implements OnInit {
         if (this.id) {
           const panel = this.panels.filter(panel => panel.link === this.id)[0];
           if (panel) {
+            console.log(environment.pentaho_url + panel.url);
             this.url = environment.pentaho_url + panel.url;
           }
           this.securedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
@@ -41,7 +42,7 @@ export class ReportsDashboardComponent implements OnInit {
     );
   }
 
-  initPanels() {
+  initPanels() { 
     this.panels = [
       {
         img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',

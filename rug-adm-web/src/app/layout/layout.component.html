@@ -4,7 +4,7 @@
       <a href="/" class="brand-logo">
         <img class="responsive-img" src="/rug-adm/assets/img/logo2v1.jpg">
       </a>
-      <ul class="right menu">
+      <ul class="menu">
         <li>
           <a materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions" data-activates="sidenav" class="btn-floating btn-flat waves-effect waves-light transparent">
             <i class="material-icons">menu</i>
@@ -14,7 +14,7 @@
             Registro de Garant&iacute;as Mobiliarias
          </li>
       </ul>
-      <!-- <ul class="right">
+      <ul class="right">
         <li class="hide-on-med-and-down">
           <span class="white-text name">{{ user.nombre }}</span>
         </li>
@@ -26,7 +26,7 @@
             <i class="material-icons">exit_to_app</i>
           </a>
         </li>
-      </ul> -->
+      </ul>
     </div>
   </nav>
 </div>
@@ -73,9 +73,21 @@
         <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/external-users-stats']">Usuarios del RUG</a></li>
         <li *ngIf="user.rol === 'R' || user.rol === 'C'"><a routerLinkActive="submenu-active" [routerLink]="['/guarantees-stats']">Operaciones</a></li>
         <li *ngIf="user.rol === 'R' || user.rol === 'C'"><a routerLinkActive="submenu-active" [routerLink]="['/deposits-stats']">Depósitos</a></li>
-        <li *ngIf="user.rol === 'R' || user.rol === 'C'"><a routerLinkActive="submenu-active" [routerLink]="['/reports-dashboard']">Dashboard</a></li>
-        <li *ngIf="user.rol === 'R' || user.rol === 'C'"><a routerLinkActive="submenu-active" [routerLink]="['/reports-dashboard']">Dashboard</a></li>
         <li *ngIf="user.rol === 'R' || user.rol === 'C'"><a routerLinkActive="submenu-active" [routerLink]="['/survey-stats']">Encuesta</a></li>
+        <li *ngIf="user.rol === 'R' || user.rol === 'C'"><a routerLinkActive="submenu-active" [routerLink]="['/#']">Chatbot</a></li>
+      </ul>
+    </div> 
+  </li>
+  <li class="bold">
+    <a  class="collapsible-header waves-effect waves-indigo">Dashboard <i class="material-icons right">arrow_drop_down</i></a>
+    <div class="collapsible-body">
+      <ul *ngFor="let panel of panels">
+        
+          <li *ngIf="user.rol === 'R' || user.rol === 'C'">
+            <a routerLinkActive="submenu-active" [routerLink]="['/reports-dashboard/',panel.link]">
+              {{ panel.title }}
+            </a>
+          </li> 
       </ul>
     </div>
   </li>
@@ -88,7 +100,7 @@
         <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/modificar-migrado']">Modificar datos migrado</a></li>
         <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/modificar-correo']">Modificar correo</a></li>
         <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/external-users-search']">Buscar persona</a></li>
-	<li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/asset-search']">Buscar por bien</a></li>
+	      <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/asset-search']">Buscar por bien</a></li>
         <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/correcciones']">Corregir garantía</a></li>
         <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/inscripcion']">Ingresar garantía</a></li>
       </ul>
