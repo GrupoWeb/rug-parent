@@ -38,22 +38,36 @@ export class ApprovalComponent implements OnInit {
     private loadingService: LoadingService) { }
 
   ngOnInit() {
+
+    
+
     this.filtro = new ExternalUser;
     this.externalUsersService.users = [];
     this.loading = true;
     this.loadingService.changeLoading(this.loading);
     this.httpSubscription = this.externalUsersService.fetchData("PA", this.currentPage, this.pageSize, this.filtro).subscribe(
+      
       res => {
         this.users = res.data;
         this.total = res.total;
         this.externalUsersService.addUsers(this.users);
+
+        // console.log(res.data.map( respuesta => {
+        //   return respuesta
+        // }));
+
+        console.log(res.data[0]['docId']);
+        
       },
       err => console.error(err),
       () => {
         this.loading = false;
-        this.loadingService.changeLoading(this.loading);
+        this.loadingService.changeLoading(this.loading);  
       }
     );
+
+    
+  
 
     this.localSubscription = this.externalUsersService.usersChanged.subscribe(
       (users: ExternalUser[]) => {

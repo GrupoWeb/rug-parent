@@ -7,7 +7,10 @@ export const environment = {
   production: false,
   api_url: 'http://128.5.9.19/rug-adm/rs',
   base_url: 'http://128.5.9.19/rug-adm',
-  pentaho_url: 'http://localhost:8080/pentaho'
+  pentaho_url: 'http://localhost:8080/pentaho/api/repos',
+  user_dev:'USER_DEV',
+  password_dev:'USER_DEV',
+  carpeta:'USER_DEV'
 };
 // export const environment = {
 //   production: false,

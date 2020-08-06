@@ -10,6 +10,8 @@ export class BancoPipe implements PipeTransform {
         return 'Banrural';
       case '2':
         return 'CHN';
+      default:
+        return 'Sin Nombre'
     }
   }
 }

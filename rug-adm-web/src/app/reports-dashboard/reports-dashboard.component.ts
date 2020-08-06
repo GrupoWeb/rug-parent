@@ -31,7 +31,7 @@ export class ReportsDashboardComponent implements OnInit {
         if (this.id) {
           const panel = this.panels.filter(panel => panel.link === this.id)[0];
           if (panel) {
-            console.log(environment.pentaho_url + panel.url);
+            console.log("variable: ",environment.pentaho_url + panel.url);
             this.url = environment.pentaho_url + panel.url;
           }
           this.securedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
@@ -42,50 +42,103 @@ export class ReportsDashboardComponent implements OnInit {
     );
   }
 
-  initPanels() { 
+  initPanels(){
     this.panels = [
       {
         img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
         title: 'Tramites',
         link: 'tra',
-        url: '/api/repos/%3Ahome%3A20190710-tramites.wcdf/generatedContent?userid=Admin&password=password'
+        url: '/%3Ahome%3A'+ environment.carpeta +'%3ATramite.wcdf/generatedContent?userid='+ environment.user_dev +'&password='+ environment.password_dev 
       },
       {
         img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
         title: 'Personas',
         link: 'per',
-        url: '/api/repos/%3Ahome%3A20190710-personas.wcdf/generatedContent?userid=Admin&password=password'
+        url: '/%3Ahome%3A'+ environment.carpeta +'%3APersonas.wcdf/generatedContent?userid='+ environment.user_dev +'&password='+ environment.password_dev 
+        // url: '/api/repos/%3Ahome%3APersonas.wcdf/generatedContent?userid=jjolon&password=jjolon'
       },
       {
         img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
         title: 'Pagos',
         link: 'pag',
-        url: '/api/repos/%3Ahome%3A20190710-pagos.wcdf/generatedContent?userid=Admin&password=password'
+        url: '/%3Ahome%3A'+ environment.carpeta +'%3Apagos.wcdf/generatedContent?userid='+ environment.user_dev +'&password='+ environment.password_dev 
+        // url: '/api/repos/%3Ahome%3Apagos.wcdf/generatedContent?userid=jjolon&password=jjolon'
       },
       {
         img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
         title: 'Tipo bien especial',
         link: 'tb',
-        url: '/api/repos/%3Ahome%3A20190710-tipo-bien.wcdf/generatedContent?userid=Admin&password=password'
+        url: '/%3Ahome%3A'+ environment.carpeta +'%3ATipoBien.wcdf/generatedContent?userid='+ environment.user_dev +'&password='+ environment.password_dev 
+        // url: '/api/repos/%3Ahome%3ATipoBien.wcdf/generatedContent?userid=jjolon&password=jjolon'
       },
       {
         img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
         title: 'Tipo persona',
         link: 'tp',
-        url: '/api/repos/%3Ahome%3A20190710-tipo-persona.wcdf/generatedContent?userid=Admin&password=password'
+        url: '/%3Ahome%3A'+ environment.carpeta +'%3ATipoPersonas.wcdf/generatedContent?userid='+ environment.user_dev +'&password='+ environment.password_dev 
+        // url: '/api/repos/%3Ahome%3ATipoPersonas.wcdf/generatedContent?userid=jjolon&password=jjolon'
       },
       {
         img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
         title: 'Monto garantizado',
         link: 'mg',
-        url: '/api/repos/%3Ahome%3A20190808-monto-garantizado.wcdf/generatedContent?userid=Admin&password=password'
+        url: '/%3Ahome%3A'+ environment.carpeta +'%3AMontoGarantizado.wcdf/generatedContent?userid='+ environment.user_dev +'&password='+ environment.password_dev 
+        // url: '/api/repos/%3Ahome%3AMontoGarantizado.wcdf/generatedContent?userid=jjolon&password=jjolon'
       },
       {
         img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
         title: 'Bienes en garantia',
         link: 'bg',
-        url: '/api/repos/%3Ahome%3A20190710-bienes-garantia.wcdf/generatedContent?userid=Admin&password=password'
+        url: '/%3Ahome%3A'+ environment.carpeta +'%3AGarantiaBienesUltimo.wcdf/generatedContent?userid='+ environment.user_dev +'&password='+ environment.password_dev 
+        // url: '/api/repos/%3Ahome%3AGarantiaBienesUltimo.wcdf/generatedContent?userid=jjolon&password=jjolon'
       }
     ];
   }
+
+  // initPanels() { 
+  //   this.panels = [
+  //     {
+  //       img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
+  //       title: 'Tramites',
+  //       link: 'tra',
+  //       url: '/api/repos/%3Ahome%3A20190710-tramites.wcdf/generatedContent?userid=Admin&password=password'
+  //     },
+  //     {
+  //       img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
+  //       title: 'Personas',
+  //       link: 'per',
+  //       url: '/api/repos/%3Ahome%3A20190710-personas.wcdf/generatedContent?userid=Admin&password=password'
+  //     },
+  //     {
+  //       img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
+  //       title: 'Pagos',
+  //       link: 'pag',
+  //       url: '/api/repos/%3Ahome%3A20190710-pagos.wcdf/generatedContent?userid=Admin&password=password'
+  //     },
+  //     {
+  //       img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
+  //       title: 'Tipo bien especial',
+  //       link: 'tb',
+  //       url: '/api/repos/%3Ahome%3A20190710-tipo-bien.wcdf/generatedContent?userid=Admin&password=password'
+  //     },
+  //     {
+  //       img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
+  //       title: 'Tipo persona',
+  //       link: 'tp',
+  //       url: '/api/repos/%3Ahome%3A20190710-tipo-persona.wcdf/generatedContent?userid=Admin&password=password'
+  //     },
+  //     {
+  //       img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
+  //       title: 'Monto garantizado',
+  //       link: 'mg',
+  //       url: '/api/repos/%3Ahome%3A20190808-monto-garantizado.wcdf/generatedContent?userid=Admin&password=password'
+  //     },
+  //     {
+  //       img: '/rug-adm/assets/img/analytics-blur-chart-590020.jpg',
+  //       title: 'Bienes en garantia',
+  //       link: 'bg',
+  //       url: '/api/repos/%3Ahome%3A20190710-bienes-garantia.wcdf/generatedContent?userid=Admin&password=password'
+  //     }
+  //   ];
+  // }
 }
