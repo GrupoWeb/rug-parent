@@ -226,7 +226,8 @@ public class BoletaServiceImpl {
 	public PdfTO getModificacionInfo(DetalleTO detalleTO)
 			throws NoDataFoundException, InfrastructureException {
 		MyLogger.Logger.log(Level.INFO, "getBoletaModificacion::idTramite::"
-				+ detalleTO.getIdTramite());
+				+ detalleTO.getIdTramite()
+                                + "data " + detalleTO.getTipoTramite());
 		PdfTO pdfTO = getInfoGrantia(detalleTO,2);
 		return pdfTO;
 	}
@@ -252,7 +253,8 @@ public class BoletaServiceImpl {
 	public PdfTO getCancelacionInfo(DetalleTO detalleTO)
 			throws NoDataFoundException, InfrastructureException {
 		MyLogger.Logger.log(Level.INFO, "getCancelacion::idTramite::"
-				+ detalleTO.getIdTramite());
+				+ detalleTO.getIdTramite()
+                                + detalleTO.getTipoTramite());
 		PdfTO pdfTO = getInfoGrantia(detalleTO,3);
 		return pdfTO;
 
@@ -409,6 +411,7 @@ public class BoletaServiceImpl {
 		
 		if(detalleTO.getIdTipoTramite()==1) {// solo aplica a inscripciones
 			pdfTO.setHtml("[*operacion*]", "[*cert*]Inscripci\u00f3n " + (getTextosFormulario().get(9)==null?"":getTextosFormulario().get(9)));
+                        pdfTO.setTypeValue("Inscripci\u00f3n " + (getTextosFormulario().get(9)==null?"":getTextosFormulario().get(9)));
 		}
 		//pdfTO.setHtml("[*2*]",getParteTramite(idBoleta, detalleTO.getIdTramite(), detalleTO.getGarantiaTO().getIdTipoGarantia(), 2));
 	

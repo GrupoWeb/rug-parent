@@ -30,46 +30,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetUsuarioRGMRequest }
-     * 
-     */
-    public GetUsuarioRGMRequest createGetUsuarioRGMRequest() {
-        return new GetUsuarioRGMRequest();
-    }
-
-    /**
-     * Create an instance of {@link ConfirmBoletaRGMRequest }
-     * 
-     */
-    public ConfirmBoletaRGMRequest createConfirmBoletaRGMRequest() {
-        return new ConfirmBoletaRGMRequest();
-    }
-
-    /**
-     * Create an instance of {@link Transacciones }
-     * 
-     */
-    public Transacciones createTransacciones() {
-        return new Transacciones();
-    }
-
-    /**
-     * Create an instance of {@link Transaccion }
-     * 
-     */
-    public Transaccion createTransaccion() {
-        return new Transaccion();
-    }
-
-    /**
-     * Create an instance of {@link RevertBoletaRGMRequest }
-     * 
-     */
-    public RevertBoletaRGMRequest createRevertBoletaRGMRequest() {
-        return new RevertBoletaRGMRequest();
-    }
-
-    /**
      * Create an instance of {@link Persona }
      * 
      */
@@ -86,19 +46,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConfirmBoletaRGMResponse }
-     * 
-     */
-    public ConfirmBoletaRGMResponse createConfirmBoletaRGMResponse() {
-        return new ConfirmBoletaRGMResponse();
-    }
-
-    /**
      * Create an instance of {@link RevertBoletaRGMResponse }
      * 
      */
     public RevertBoletaRGMResponse createRevertBoletaRGMResponse() {
         return new RevertBoletaRGMResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetUsuarioRGMRequest }
+     * 
+     */
+    public GetUsuarioRGMRequest createGetUsuarioRGMRequest() {
+        return new GetUsuarioRGMRequest();
+    }
+
+    /**
+     * Create an instance of {@link RevertBoletaRGMRequest }
+     * 
+     */
+    public RevertBoletaRGMRequest createRevertBoletaRGMRequest() {
+        return new RevertBoletaRGMRequest();
     }
 
     /**
@@ -110,11 +78,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Transaccion }
+     * 
+     */
+    public Transaccion createTransaccion() {
+        return new Transaccion();
+    }
+
+    /**
+     * Create an instance of {@link ConfirmBoletaRGMResponse }
+     * 
+     */
+    public ConfirmBoletaRGMResponse createConfirmBoletaRGMResponse() {
+        return new ConfirmBoletaRGMResponse();
+    }
+
+    /**
      * Create an instance of {@link SetBoletaRGMRequest }
      * 
      */
     public SetBoletaRGMRequest createSetBoletaRGMRequest() {
         return new SetBoletaRGMRequest();
+    }
+
+    /**
+     * Create an instance of {@link ConfirmBoletaRGMRequest }
+     * 
+     */
+    public ConfirmBoletaRGMRequest createConfirmBoletaRGMRequest() {
+        return new ConfirmBoletaRGMRequest();
+    }
+
+    /**
+     * Create an instance of {@link Transacciones }
+     * 
+     */
+    public Transacciones createTransacciones() {
+        return new Transacciones();
     }
 
 }

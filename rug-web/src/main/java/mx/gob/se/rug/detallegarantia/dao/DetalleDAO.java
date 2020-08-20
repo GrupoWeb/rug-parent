@@ -712,6 +712,7 @@ public class DetalleDAO{
 		ConexionBD bd = new ConexionBD();
 		Connection connection = bd.getConnection();
 		String sql = "";
+                System.out.println("Tramite Query = " + idTramite);
 		
 		if(pQuery == 1) {
 			sql = "SELECT ID_GARAN_BIEN_PEND,ID_TRAMITE_TEMP,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN " +

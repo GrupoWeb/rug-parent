@@ -224,7 +224,7 @@ public class MenuDAO {
 
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				MyLogger.Logger.log(Level.INFO, "id_acreedor:::::"
+				MyLogger.Logger.log(Level.INFO, "id_acreedor::::: Certificaciones "
 						+ rs.getString("id_acreedor"));
 				flag = new Boolean(true);
 			}

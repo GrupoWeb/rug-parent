@@ -22,7 +22,7 @@ public static String getParamValue(String cve_constante){
 	}catch(Exception e){
 		//MyLogger.Logger.log(Level.WARNING, "No se encontro el parametro con la clave "+cve_constante);
 		System.out.println("No se encontro el parametro con la clave "+cve_constante);
-		e.printStackTrace();
+		//e.printStackTrace();
 	}
 	
 	return regresa;
@@ -52,7 +52,7 @@ public static Integer getIdDataType(String tipoDatoString) throws Infrastructure
 		idTipoDato = new Integer(tipoDatos.get(tipoDatoString));
 	}catch(Exception e){
 		MyLogger.Logger.log(Level.WARNING, "No se encontro el tipo de dato con la clave "+tipoDatoString);
-		e.printStackTrace();
+		//e.printStackTrace();
 		throw new InfrastructureException("No se encontro el tipo de Dato a Procesar");
 	}
 	
@@ -212,18 +212,32 @@ public static final String FORMATO_FECHA= "formatoFecha";
 public static final String FS_BASEPATH = "fsBasePath";
 
 // firma digital de PDF
-public static final String SIGN_TEXT = "SIGN_TEXT";
-public static final String SIGN_IMAGE = "SIGN_IMAGE";
-public static final String SIGN_FILE = "SIGN_FILE";
-public static final String SIGN_PASSWORD = "SIGN_PASSWORD";
-public static final String SIGN_LOCATION = "SIGN_LOCATION";
-public static final String SIGN_LLX = "SIGN_LLX";
-public static final String SIGN_LLY = "SIGN_LLY";
-public static final String SIGN_URX = "SIGN_URX";
-public static final String SIGN_URY = "SIGN_URY";
-public static final String SIGN_PAGE = "SIGN_PAGE";
-public static final String SIGN_FIELDNAME = "SIGN_FIELDNAME";
-public static final String SIGN_ENABLED = "SIGN_ENABLED";
+ public static final String SIGN_TEXT = "SIGN_TEXT";
+ public static final String SIGN_IMAGE = "SIGN_IMAGE";
+ public static final String SIGN_FILE = "SIGN_FILE";
+ public static final String SIGN_PASSWORD = "SIGN_PASSWORD";
+ public static final String SIGN_LOCATION = "SIGN_LOCATION";
+ public static final String SIGN_LLX = "SIGN_LLX";
+ public static final String SIGN_LLY = "SIGN_LLY";
+ public static final String SIGN_URX = "SIGN_URX";
+ public static final String SIGN_URY = "SIGN_URY";
+ public static final String SIGN_PAGE = "SIGN_PAGE";
+ public static final String SIGN_FIELDNAME = "SIGN_FIELDNAME";
+ public static final String SIGN_ENABLED = "SIGN_ENABLED";
+
+// firma digital de PDF
+//public static final String SIGN_TEXT = "Texto de Pruebas";
+//public static final String SIGN_IMAGE = "SIGN_IMAGE";
+//public static final String SIGN_FILE = "C:/certificado_RGM/rgm.p12";
+//public static final String SIGN_PASSWORD = "eu47gm18tp5";
+//public static final String SIGN_LOCATION = "SIGN_LOCATION";
+//public static final String SIGN_LLX = "SIGN_LLX";
+//public static final String SIGN_LLY = "SIGN_LLY";
+//public static final String SIGN_URX = "SIGN_URX";
+//public static final String SIGN_URY = "SIGN_URY";
+//public static final String SIGN_PAGE = "SIGN_PAGE";
+//public static final String SIGN_FIELDNAME = "SIGN_FIELDNAME";
+//public static final String SIGN_ENABLED = "1";
 
 //Privielgios VS tipoTramite
 public static Map<Integer, Integer> mapTipoTramite;
@@ -250,7 +264,7 @@ public static Integer getIdTipoTramite(Integer idPrivilegio){
 		idTipoTramite = new Integer(mapTipoTramite.get(idPrivilegio));
 	}catch(Exception e){
 		MyLogger.Logger.log(Level.WARNING, "No se encontro el tipo de dato con la clave "+idPrivilegio);
-		e.printStackTrace();
+		//e.printStackTrace();
 	}
 	
 	return idTipoTramite;

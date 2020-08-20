@@ -487,7 +487,7 @@ public class BoletaDAO extends BaseRugDao{
 	}
 	
 	public void insertBoletaPdf(PdfTO pdfTO,UsuarioTO usuarioTO){
-		MyLogger.Logger.log(Level.INFO, "boleta PDF SAVE " + pdfTO.getIdTramite());
+                        MyLogger.Logger.log(Level.INFO, "boleta PDF SAVE " + pdfTO.getIdTramite());
 			ConexionBD bd = new ConexionBD();
 			Connection connection = bd.getConnection();
 			CallableStatement cs = null;		
@@ -504,7 +504,7 @@ public class BoletaDAO extends BaseRugDao{
 				cs.execute();
 				
 			}catch(Exception e){
-				e.printStackTrace();
+				//e.printStackTrace();
 			}finally{
 				bd.close(connection,null,cs);
 			}

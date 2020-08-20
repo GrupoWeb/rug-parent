@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@page import="mx.gob.se.rug.to.UsuarioTO"%>
-<%@page import="mx.gob.se.rug.seguridad.serviceimpl.MenusServiceImpl"%>
-<%@include file="/WEB-INF/jsp/Layout/menu/privilegios.jsp"%>
+<%@ page import="mx.gob.se.rug.to.UsuarioTO"%>
+<%@ page import="mx.gob.se.rug.seguridad.serviceimpl.MenusServiceImpl"%>
+<%@ include file="/WEB-INF/jsp/Layout/menu/privilegios.jsp"%>
 <div class="section"></div>
 <main>
 	<%

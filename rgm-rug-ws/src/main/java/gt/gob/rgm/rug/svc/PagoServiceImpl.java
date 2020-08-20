@@ -59,10 +59,11 @@ public class PagoServiceImpl implements PagoServicePortType{
 		
 		rugPersona = personaRepository.findByCodigoRegistro(getUsuarioRGMRequest.getPCodigoPersona());
 		
+                
 		if(rugPersona == null) {		
 			response.setPersona(persona);
 			response.setEstado(2);
-			response.setDescripcion("NO SE ENCONTRO UNA PERSONA CON ESTE CODIGO.");
+			response.setDescripcion("NO SE ENCONTRO UNA PERSONA CON ESTE CODIGO 1.");
 		} else {
 			RugPersonasFisicas rugPersonaF = new RugPersonasFisicas();
 			rugPersonaF = personaRepository.findById(rugPersona.getIdPersona());
@@ -70,7 +71,7 @@ public class PagoServiceImpl implements PagoServicePortType{
 			if(rugPersonaF == null) {
 				response.setPersona(persona);
 				response.setEstado(2);
-				response.setDescripcion("NO SE ENCONTRO UNA PERSONA CON ESTE CODIGO.");
+				response.setDescripcion("NO SE ENCONTRO UNA PERSONA CON ESTE CODIGO 2.");
 			} else {
 				persona.setNit(rugPersona.getRfc());
 				persona.setNombre(stripAccents(rugPersonaF.getNombrePersona()));
@@ -114,7 +115,7 @@ public class PagoServiceImpl implements PagoServicePortType{
 		
 		if(rugPersona == null) {			
 			response.setEstado(2);
-			response.setDescripcion("NO SE ENCONTRO UNA PERSONA CON ESTE CODIGO.");
+			response.setDescripcion("NO SE ENCONTRO UNA PERSONA CON ESTE CODIGO 3.");
 		} else {		
 			Boleta boleta = new Boleta();			
 			boleta = boletaRepository.findByIdActivas(setBoletaRGMRequest.getPNumero(),0);

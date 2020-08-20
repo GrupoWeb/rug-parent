@@ -3,124 +3,134 @@ package gt.gob.rgm.security.domain;
 import java.io.File;
 
 public class SignatureInfo {
-	String signText;
-	String graphicSignature;
-	String keyFile;
-	String keyPassword;
-	String reason;
-	String location;
-	Integer llx;
-	Integer lly;
-	Integer urx;
-	Integer ury;
-	Integer signPage;
-	String fieldName;
-	byte[] document;
-	
-	public SignatureInfo() {
-	}
 
-	public String getSignText() {
-		return signText;
-	}
+    String signText;
+    String graphicSignature;
+    String keyFile;
+    String keyPassword;
+    String reason;
+    String location;
+    Integer llx;
+    Integer lly;
+    Integer urx;
+    Integer ury;
+    Integer signPage;
+    String fieldName;
+    String typeDocument;
 
-	public void setSignText(String signText) {
-		this.signText = signText;
-	}
+    public String getTypeDocument() {
+        return typeDocument;
+    }
 
-	public String getGraphicSignature() {
-		return graphicSignature;
-	}
+    public void setTypeDocument(String typeDocument) {
+        this.typeDocument = typeDocument;
+    }
+    byte[] document;
 
-	public void setGraphicSignature(String graphicSignature) {
-		this.graphicSignature = graphicSignature;
-	}
+    public SignatureInfo() {
+    }
 
-	public String getKeyFile() {
-		return keyFile;
-	}
+    public String getSignText() {
+        return signText;
+    }
 
-	public void setKeyFile(String keyFile) {
-		this.keyFile = keyFile;
-	}
+    public void setSignText(String signText) {
+        this.signText = signText;
+    }
 
-	public String getKeyPassword() {
-		return keyPassword;
-	}
+    public String getGraphicSignature() {
+        return graphicSignature;
+    }
 
-	public void setKeyPassword(String keyPassword) {
-		this.keyPassword = keyPassword;
-	}
+    public void setGraphicSignature(String graphicSignature) {
+        this.graphicSignature = graphicSignature;
+    }
 
-	public String getReason() {
-		return reason;
-	}
+    public String getKeyFile() {
+        return keyFile;
+    }
 
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
+    public void setKeyFile(String keyFile) {
+        this.keyFile = keyFile;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public String getKeyPassword() {
+        return keyPassword;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public void setKeyPassword(String keyPassword) {
+        this.keyPassword = keyPassword;
+    }
 
-	public Integer getLlx() {
-		return llx;
-	}
+    public String getReason() {
+        return reason;
+    }
 
-	public void setLlx(Integer llx) {
-		this.llx = llx;
-	}
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 
-	public Integer getLly() {
-		return lly;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public void setLly(Integer lly) {
-		this.lly = lly;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public Integer getUrx() {
-		return urx;
-	}
+    public Integer getLlx() {
+        return llx;
+    }
 
-	public void setUrx(Integer urx) {
-		this.urx = urx;
-	}
+    public void setLlx(Integer llx) {
+        this.llx = llx;
+    }
 
-	public Integer getUry() {
-		return ury;
-	}
+    public Integer getLly() {
+        return lly;
+    }
 
-	public void setUry(Integer ury) {
-		this.ury = ury;
-	}
+    public void setLly(Integer lly) {
+        this.lly = lly;
+    }
 
-	public Integer getSignPage() {
-		return signPage;
-	}
+    public Integer getUrx() {
+        return urx;
+    }
 
-	public void setSignPage(Integer signPage) {
-		this.signPage = signPage;
-	}
+    public void setUrx(Integer urx) {
+        this.urx = urx;
+    }
 
-	public String getFieldName() {
-		return fieldName;
-	}
+    public Integer getUry() {
+        return ury;
+    }
 
-	public void setFieldName(String fieldName) {
-		this.fieldName = fieldName;
-	}
+    public void setUry(Integer ury) {
+        this.ury = ury;
+    }
 
-	public byte[] getDocument() {
-		return document;
-	}
+    public Integer getSignPage() {
+        return signPage;
+    }
 
-	public void setDocument(byte[] document) {
-		this.document = document;
-	}
+    public void setSignPage(Integer signPage) {
+        this.signPage = signPage;
+    }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    public byte[] getDocument() {
+        return document;
+    }
+
+    public void setDocument(byte[] document) {
+        this.document = document;
+    }
 }

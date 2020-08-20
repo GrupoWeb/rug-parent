@@ -18,7 +18,9 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="RUG_ADM_PERSISTENCE" />
+        </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
@@ -36,6 +38,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Hibernate Validator-5.0.1" level="project" />
+    <orderEntry type="library" name="rug-adm" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-api:8.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sun.mail:javax.mail:1.6.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.activation:activation:1.1" level="project" />
@@ -87,6 +91,15 @@
     <orderEntry type="library" name="Maven: org.glassfish.jersey.ext:jersey-entity-filtering:2.28" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.9.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.main.extras:glassfish-embedded-all:5.0" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.sun:tools-jar:1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../Program Files/Java/jdk1.8.0_251/lib/tools.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.container:arquillian-glassfish-embedded-3.1:1.0.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.container:arquillian-container-spi:1.3.0.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.core:arquillian-core-spi:1.3.0.Final" level="project" />
@@ -115,7 +128,14 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" name="Maven: com.oracle:ojdbc7:12.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.oracle.database.jdbc:ojdbc8:19.3.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.oracle.database.jdbc:ucp:19.3.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.oracle.database.security:oraclepki:19.3.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.oracle.database.security:osdt_cert:19.3.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.oracle.database.security:osdt_core:19.3.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.oracle.database.ha:simplefan:19.3.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.oracle.database.ha:ons:19.3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.2.7" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:5.0" level="project" />
   </component>
 </module>

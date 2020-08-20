@@ -197,6 +197,7 @@ mx\gob\se\rug\administracion\dto\Perfil.class
 mx\gob\se\rug\administracion\service\impl\PerfilServicePojoImpl.class
 mx\gob\se\rug\boleta\dao\SeccionDAO.class
 mx\gob\se\rug\masiva\to\AvisoPreventivo.class
+mx\gob\se\rug\util\pdf\CreateSignature.class
 mx\gob\se\rug\garantia\to\ActoContratoTO.class
 mx\gob\se\rug\masiva\to\string\DatosModificacion.class
 gt\gob\rgm\model\Archivo.class
@@ -317,6 +318,7 @@ mx\gob\se\rug\masiva\to\ObligacionGarantizaModificacion.class
 gt\gob\rgm\service\JmsSolrMessageSenderService.class
 mx\gob\se\rug\util\NumberToLetterConverter.class
 mx\gob\se\rug\operaciones\dwr\action\OperacionesDwrAction.class
+mx\gob\se\rug\util\pdf\CreateSignature$MyExternalSignatureContainer.class
 mx\gob\se\rug\action\MisBoletasAction.class
 mx\gob\se\rug\action\ValidaAction.class
 gt\gob\rgm\dao\RugSecuUsuariosExternosRepository.class
