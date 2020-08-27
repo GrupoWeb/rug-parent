@@ -224,6 +224,7 @@ mx\gob\se\rug\bitacora\exception\UsuarioNoBitacoradoException.class
 mx\gob\se\rug\busquedaOp\dwr\action\BusquedaOpDwrAction.class
 mx\gob\se\rug\dto\Producto.class
 mx\gob\se\rug\masiva\to\string\AcreedorAutoridad.class
+mx\gob\se\rug\util\pdf\FileOutputstream.class
 mx\gob\se\rug\masiva\util\FileHandlerImpl.class
 mx\gob\se\rug\operaciones\action\OperacionesAction.class
 mx\gob\se\rug\inscripcion\to\NacionalidadTO.class

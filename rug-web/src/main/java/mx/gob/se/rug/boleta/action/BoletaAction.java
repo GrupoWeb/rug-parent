@@ -59,6 +59,7 @@ public class BoletaAction extends RugBaseAction {
     private Integer idTipoTramiteMasiva;
     private String typeData;
 
+    private ArrayList<String> htmlLista = new ArrayList<String>();
     private HomeService homeService;
 
     public String getTypeData() {
@@ -198,6 +199,7 @@ public class BoletaAction extends RugBaseAction {
 
             BoletaServiceImpl boletaServiceImpl = new BoletaServiceImpl();
             pdfTO = new PdfTO();
+            pdfTO.setMassive("False");
             pdfTO.setSave("0");
 
             System.out.println("idTipotramite:::::::::::::::::1 " + idTipoTramite);
@@ -249,7 +251,7 @@ public class BoletaAction extends RugBaseAction {
                         pdfTO = boletaServiceImpl
                                 .getBoletaAnotacion(detalleAnotaTO);
                         pdfTO.setIdTramite(detalleAnotaTO.getIdTramite());
-                        pdfTO.setValue("[*tipoTramite*]", "Anotación");
+                        pdfTO.setValue("[*tipoTramite*]", "Anotaciï¿½n");
                         pdfTO.setHtml("[*fechaCert*]", "");
 
                         break;
@@ -370,7 +372,7 @@ public class BoletaAction extends RugBaseAction {
 
                         //pdfTO = boletaServiceImpl.getBoletaInscripcion(detalleCert);
                         //pdfTO.setIdTramite(detalleCert.getIdTramite());
-                        //pdfTO.setValue("[*tipoTramite*]", "Inscripción");
+                        //pdfTO.setValue("[*tipoTramite*]", "Inscripciï¿½n");
                         //pdfTO.setHtml(boletaServices.getCertificacionHtml());
 
                         /*pdfTO.setHtml("[*boletaHtml*]", html);
@@ -409,7 +411,7 @@ public class BoletaAction extends RugBaseAction {
                         pdfTO = boletaServiceImpl
                                 .getBoletaRectificacion(detalleRectificaTO);
                         pdfTO.setIdTramite(detalleRectificaTO.getIdTramite());
-                        pdfTO.setValue("[*tipoTramite*]", "Rectificación por Error");
+                        pdfTO.setValue("[*tipoTramite*]", "Rectificaciï¿½n por Error");
                         break;
                     case 7:// Modification
                         MyLogger.Logger.log(Level.INFO, "Modificacion ");
@@ -464,7 +466,7 @@ public class BoletaAction extends RugBaseAction {
                         pdfTO = boletaServiceImpl
                                 .getBoletaTransmision(detalleTransmisionTO);
                         pdfTO.setIdTramite(detalleTransmisionTO.getIdTramite());
-                        pdfTO.setValue("[*tipoTramite*]", "Transmisión");
+                        pdfTO.setValue("[*tipoTramite*]", "Transmisiï¿½n");
                         break;
                     case 9:// Renovacion o reduccion de vigencia
                         mx.gob.se.rug.boleta.to.DetalleTO detalleRenovacionTO = new mx.gob.se.rug.boleta.to.DetalleTO();
@@ -504,7 +506,7 @@ public class BoletaAction extends RugBaseAction {
                         pdfTO = boletaServiceImpl
                                 .getBoletaTransmision(detalleTransmisionTOs);
                         pdfTO.setIdTramite(detalleTransmisionTOs.getIdTramite());
-                        pdfTO.setValue("[*tipoTramite*]", "Transmisión");
+                        pdfTO.setValue("[*tipoTramite*]", "Transmisiï¿½n");
                         break;
 
                     case 10:// Anotacion sin garantia
@@ -517,7 +519,7 @@ public class BoletaAction extends RugBaseAction {
                         pdfTO.setHtml(boletaServices.getBoletaHtml());
                         pdfTO.setHtml("[*boletaHtml*]", pdfTOInfo.getHtml());
                         pdfTO.setIdTramite(idTramiteFinal);
-                        pdfTO.setValue("[*tipoTramite*]", "Anotación");
+                        pdfTO.setValue("[*tipoTramite*]", "Anotaciï¿½n");
 
                         break;
                     case 28:// Anotacion sin garantia Modificacion
@@ -528,7 +530,7 @@ public class BoletaAction extends RugBaseAction {
                         pdfTO.setHtml(boletaServices.getBoletaHtml());
                         pdfTO.setHtml("[*boletaHtml*]", pdfTOInfo.getHtml());
                         pdfTO.setIdTramite(idTramiteFinal1);
-                        pdfTO.setValue("[*tipoTramite*]", "Anotación Modificación");
+                        pdfTO.setValue("[*tipoTramite*]", "Anotaciï¿½n Modificaciï¿½n");
 
                         break;
                     case 27:// Anotacion sin garantia CAncelacion 
@@ -539,7 +541,7 @@ public class BoletaAction extends RugBaseAction {
                         pdfTO.setHtml(boletaServices.getBoletaHtml());
                         pdfTO.setHtml("[*boletaHtml*]", pdfTOInfo.getHtml());
                         pdfTO.setIdTramite(idTramiteFinal2);
-                        pdfTO.setValue("[*tipoTramite*]", "Anotación Cancelación");
+                        pdfTO.setValue("[*tipoTramite*]", "Anotaciï¿½n Cancelaciï¿½n");
 
                         break;
                     case 29:// Anotacion sin garantia 
@@ -550,7 +552,7 @@ public class BoletaAction extends RugBaseAction {
                         pdfTO.setHtml(boletaServices.getBoletaHtml());
                         pdfTO.setHtml("[*boletaHtml*]", pdfTOInfo.getHtml());
                         pdfTO.setIdTramite(idTramiteFinal3);
-                        pdfTO.setValue("[*tipoTramite*]", "Anotación Rectificación");
+                        pdfTO.setValue("[*tipoTramite*]", "Anotaciï¿½n Rectificaciï¿½n");
 
                         break;
                     case 26:// Anotacion sin garantia Renovacion
@@ -561,14 +563,13 @@ public class BoletaAction extends RugBaseAction {
                         pdfTO.setHtml(boletaServices.getBoletaHtml());
                         pdfTO.setHtml("[*boletaHtml*]", pdfTOInfo.getHtml());
                         pdfTO.setIdTramite(idTramiteFinal4);
-                        pdfTO.setValue("[*tipoTramite*]", "Anotación Renovación o Reducción de Vigencia");
+                        pdfTO.setValue("[*tipoTramite*]", "Anotaciï¿½n Renovaciï¿½n o Reducciï¿½n de Vigencia");
 
                         break;
                     case 18:// Firma masiva
 
                         InscripcionService inscripcionService = new InscripcionServiceImpl();
-                        int idEstatus = new FirmaMasivaDAO()
-                                .getEstatusByTramiteTemporal(idTramiteVar);
+                        int idEstatus = new FirmaMasivaDAO().getEstatusByTramiteTemporal(idTramiteVar);
 
                         MasivaDAO masivaDAO = new MasivaDAO();
                         setIdTipoTramiteMasiva(masivaDAO.getIdTipoTramiteMasiva(idTramiteVar));
@@ -584,6 +585,7 @@ public class BoletaAction extends RugBaseAction {
                                 List<Integer> tramitesMasivos = new ArrayList<Integer>();
                                 tramitesMasivos = masivaDAO.getIdTramitesMasivos(idTramiteVar);
 
+                                int iteracion = 0;
                                 for (Iterator<Integer> it = tramitesMasivos.iterator(); it.hasNext();) {
                                     Integer tramMas = it.next();
                                     mx.gob.se.rug.boleta.to.DetalleTO detalleMasTO = new mx.gob.se.rug.boleta.to.DetalleTO();
@@ -592,6 +594,7 @@ public class BoletaAction extends RugBaseAction {
                                     MyLogger.Logger.log(Level.INFO, "Masiva::idTramite --" + detalleMasTO.getIdTramite() + "--");
                                     detalleMasTO.setIdTipoTramite(boletaDAO.getTipoTramitebyIdTramiteTemporal(tramMas));
                                     MyLogger.Logger.log(Level.INFO, "Masiva::idTipoTramite --" + detalleMasTO.getIdTipoTramite() + "--");
+                                    iteracion++;
                                     if (detalleMasTO.getIdTipoTramite() == 1 || detalleMasTO.getIdTipoTramite() == 31) {
                                         pdfMas = boletaServiceImpl.getBoletaInscripcion(detalleMasTO);
                                         pdfMas.setValue("[*operacion*]", "Inscripci\u00f3n");
@@ -621,19 +624,34 @@ public class BoletaAction extends RugBaseAction {
                                         pdfMas.setHtml("[*fechaCert*]", "");
                                     }
 
+                                    
                                     StringBuilder stringBuilder = new StringBuilder();
 
                                     this.setTypeData(pdfMas.getTypeValue());
-                                    System.out.println("typeData = " + this.getTypeData());
+                                    
                                     if (pdfTO.getHtml() != null) {
-
+                                        
+                                        
                                         stringBuilder.append(pdfTO.getHtml());
                                         stringBuilder.append("<br /><h1 style=\"page-break-before: always\">&nbsp;</h1><br />");
+                                        
+                                        
                                     }
-
+                                    
                                     stringBuilder.append(pdfMas.getHtml());
+                                    htmlLista.add(pdfMas.getHtml());
                                     pdfTO.setHtml(stringBuilder.toString());
+                                    //htmlLista.add(stringBuilder.toString());
+                                    pdfTO.setHtmlList(htmlLista);
+                                    pdfTO.setMassive("True");
+                                    /* agregra la lista del html */
+                                    //pdfTO.setHtmlList(pdfMas.getHtml());
                                 }
+
+                                //System.out.println("Html normal  = " + htmlLista.size());
+                                //System.out.println("Html Lista = " + pdfTO.getHtmlList().size());
+
+                                //System.out.println("iteracion = " + pdfTO.getHtmlList());
                                 pdfTO.setTypeValue(this.getTypeData());
                                 pdfTO.setIdTramite(idTramiteFirma);
                                 //pdfTO.setValue("[*nInscripciones*]", bs.getSizeAsientos(idTramiteVar).toString());

@@ -1,5 +1,7 @@
 package mx.gob.se.rug.util.pdf.to;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import mx.gob.se.rug.constants.Constants;
@@ -16,7 +18,26 @@ public class PdfTO {
     private String save;
     private Integer idTipoGarantia;
     private String TypeValue;
+    private List<String> htmlList;
+    private String massive = "False";
 
+    public String getMassive() {
+        return massive;
+    }
+
+    public void setMassive(String massive) {
+        this.massive = massive;
+    }
+
+    public List<String> getHtmlList() {
+        return htmlList;
+    }
+
+    public void setHtmlList(List<String> htmlList) {
+        this.htmlList = htmlList;
+    }
+
+    
     public String getHtml() {
         return html;
     }
@@ -78,6 +99,10 @@ public class PdfTO {
             value = "N/A";
         }
         if (this.html != null) {
+//            List<String> Lista = new ArrayList<String>();
+//            Lista.add(this.html.replace(key, value));
+//            this.setHtmlList(Lista);
+//            System.out.println("Lista: " + Lista);
             this.html = this.html.replace(key, value);
         } else {
             MyLogger.Logger.log(Level.WARNING, "parametro de BD no esta:::" + key);

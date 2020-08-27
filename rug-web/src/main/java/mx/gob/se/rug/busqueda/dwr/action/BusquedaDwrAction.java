@@ -428,7 +428,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
         
 		this.getSession().setAttribute("pdfTO", pdfTO);
 		//MyLogger.Logger.log(Level.INFO,"PDF_TO ---" + pdfTO.getPathRoot());
-                this.getSession().setAttribute("Consulta", 1);
+                this.getSession().setAttribute("Consulta", 2);
 		return html.toString();
 	}
 	

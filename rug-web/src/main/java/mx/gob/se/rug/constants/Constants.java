@@ -224,6 +224,11 @@ public static final String FS_BASEPATH = "fsBasePath";
  public static final String SIGN_PAGE = "SIGN_PAGE";
  public static final String SIGN_FIELDNAME = "SIGN_FIELDNAME";
  public static final String SIGN_ENABLED = "SIGN_ENABLED";
+ public static final String SIGN_IMAGE_LOCAL = "SIGN_IMAGE_LOCAL";
+ public static final String SIGN_FILE_LOCAL = "SIGN_FILE_LOCAL";
+ public static final String SIGN_LOCAL = "SIGN_LOCAL";
+ public static final String SIGN_ZIP_URL = "SIGN_ZIP_URL";
+ public static final String SIGN_PDF_URL = "SIGN_PDF_URL";
 
 // firma digital de PDF
 //public static final String SIGN_TEXT = "Texto de Pruebas";

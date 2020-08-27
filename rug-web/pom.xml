@@ -190,7 +190,8 @@
                 <version>7.1.12</version>
                 <type>pom</type>
             </dependency>
-	
+
+
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
@@ -291,6 +292,8 @@
 		    <artifactId>rgm-firma</artifactId>
 		    <version>1.0.0</version>
 		</dependency>
+                
+
 	</dependencies>
 	<build>
 		<resources>

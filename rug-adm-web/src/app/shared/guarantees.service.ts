@@ -135,6 +135,7 @@ export class GuaranteesService {
   }
 
   fetchTransactionsData(idGarantia: number) {
+    console.log("URL ",environment.api_url , " id garantia" , idGarantia);
     return this.http.get<ResponseRs>(environment.api_url + '/garantias/' + idGarantia + '/tramites');
   }
 
