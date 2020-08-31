@@ -53,6 +53,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.*;
 import java.util.Iterator;
@@ -171,15 +173,27 @@ public class PdfServlet extends HttpServlet {
                             }
 
                         }
-                        String filePathToBeServed = Constants.getParamValue(Constants.SIGN_PDF_URL);
+                        String filePathToBeServed = Constants.getParamValue(Constants.SIGN_ZIP_URL);
+                        Date date = new Date();
+                        DateFormat datePDF = new SimpleDateFormat("dd-MM-yyyy");
+                        DateFormat timePDF = new SimpleDateFormat("HH_mm_ss");
+                        
+                        String PDFIndex = datePDF.format(date);
+                        String PDFtime = timePDF.format(date);
                         File directory = new File(filePathToBeServed);
-//                        File test = new File("C:\\certificado_RGM\\pdf");
+//                        File test = new File("C:\\certificado_RGM\\pdf"+PDFIndex);
 //                        test.mkdir();
 //                        
+                        
                         directory.mkdir();
                         
-                        //recursiveDelete(new File("C:\\certificado_RGM\\pdf"));
-                        recursiveDelete(new File("\\opt\\firma\\pdf"));
+                        System.out.println("Valore de carpeta " + filePathToBeServed);
+                        recursiveDelete(new File(filePathToBeServed));
+                        recursiveDelete(new File(filePathToBeServed +"/boleta_zip/"));
+                        
+                        //recursiveDelete(new File(filePathToBeServed+"\\"+PDFIndex+PDFtime));
+//                        recursiveDelete(new File("C:\\certificado_RGM\\pdf"+PDFIndex));
+//                        recursiveDelete(new File("/opt/firma/pdf"));
                         for (int iteracionB = 0; iteracionB < pdfTO.getHtmlList().size(); iteracionB++) {
                             byte filepdf[] = null;
                             ByteArrayOutputStream ospdf = new ByteArrayOutputStream();
@@ -224,12 +238,13 @@ public class PdfServlet extends HttpServlet {
 
                             try {
                                 /* CREATE PDF AND SAVE */
-                                String fileName = "Boleta" + iteracionB + ".pdf";
+                                String fileName = "Boleta_" + iteracionB + "_" + PDFtime + ".pdf";
                                 //String filePathToBeServed = "C:\\certificado_RGM\\pdf\\";
                                 
                                 
                                 
-                                String path = filePathToBeServed + fileName;
+                                String path = filePathToBeServed+"/" + fileName;
+                                System.out.println("path = " + path);
                                 FileOutputStream FOS = new FileOutputStream(path);
                                 FOS.write(filepdf);
                                 FOS.close();
@@ -267,17 +282,19 @@ public class PdfServlet extends HttpServlet {
                         }
 
                         //String filePathToBeServedURL = Constants.getParamValue(Constants.SIGN_PDF_URL);
-                        String pathOutputZip = Constants.getParamValue(Constants.SIGN_ZIP_URL);
+                        String pathOutputZip = Constants.getParamValue(Constants.SIGN_PDF_URL);
+                        System.out.println("pathOutputZip = " + pathOutputZip);
+                        System.out.println("filePathToBeServed = " + filePathToBeServed);
                         /* CREATE ZIP AND DOWNLOAD */
                         try {
-                            zipFolder(filePathToBeServed, pathOutputZip);
+                            zipFolder(filePathToBeServed, pathOutputZip+"/boleta_zip/"+PDFIndex+"_"+PDFtime+".zip");
                         } catch (Exception ex) {
                             System.out.println("Error = " + ex);
                         }
                         
-                        File zipFile = new File(pathOutputZip);
+                        File zipFile = new File(pathOutputZip+"/boleta_zip/"+PDFIndex+"_"+PDFtime+".zip");
                         resp.setContentType("application/zip");
-                        resp.addHeader("Content-Disposition", "attachment; filename=" + pathOutputZip);
+                        resp.addHeader("Content-Disposition", "attachment; filename=" + ("pdf_"+PDFIndex+"_"+PDFtime+".zip"));
                         resp.setContentLength((int) zipFile.length());
                         try {
 
@@ -292,7 +309,12 @@ public class PdfServlet extends HttpServlet {
                             System.out.println("err = " + e);
                         }
                         
-                        zipFile.delete();
+                        
+                        
+                        
+                        //recursiveDelete(new File("C:\\certificado_RGM\\pdf.zip"));
+                        
+                        //zipFile.delete();
                         
                         
                                 
@@ -535,10 +557,10 @@ public class PdfServlet extends HttpServlet {
               for (int i=0; i<myFiles.length; i++) {
                   File myFile = new File(file, myFiles[i]); 
                   myFile.delete();
-                  System.out.println("Deleted" + myFile);
+                  System.out.println("Deleted " + myFile);
               }
            }
-          System.out.println("Deleted" + file);
+          //System.out.println("Deleted " + file);
 //        System.out.println("entre delete ");
 //        //to end the recursive loop
 //        if (!file.exists())
