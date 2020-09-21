@@ -591,6 +591,7 @@ public class GarantiasRs {
 		List<Transaction> transactions = new ArrayList<>();
 		for(RugRelTramGaran tramGaran : tramGarans) {
 			transactions.add(transactionsService.fromTramite(tramGaran.getTramite()));
+                        
 		}
 		response.setData(transactions);
 		return response;

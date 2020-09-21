@@ -41,9 +41,18 @@ import gt.gob.rgm.adm.model.RugRelTramGaranPK;
 import gt.gob.rgm.adm.model.Tramites;
 import gt.gob.rgm.adm.model.TramitesRugIncomp;
 import gt.gob.rgm.adm.util.Constants;
+import gt.gob.rgm.adm.dao.BaseRugDao;
+import gt.gob.rgm.adm.dao.conectiondB;
+import java.sql.CallableStatement;
+//import gt.gob.rgm.mail.dao.ConexionDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Types;
+import oracle.sql.CLOB;
 
 @Stateless
-public class GarantiasServiceImp {
+public class GarantiasServiceImp  {
 	private final static Logger logger = LoggerFactory.getLogger(GarantiasServiceImp.class);
 
 	@Inject
@@ -57,6 +66,7 @@ public class GarantiasServiceImp {
 	
 	@Inject
 	TramitesRepository tramitesDao;
+        
 	
 	@Inject
 	RugBitacTramitesRepository bitacTramitesDao;
@@ -328,10 +338,21 @@ public class GarantiasServiceImp {
 		//  contrato de garantia
 		//  otros terminos
 		Tramites tramite = tramitesDao.findById(transaction.getIdTramite());
+                /* modificar contrato*/
+                
+                RugContrato contrato = contratoDao.findByIdTemp(tramite.getIdTramiteTemp());
+//                System.out.println("contrato = " + contrato.getOtrosTerminosContrato());
+                System.out.println("numero de contrato " + transaction.getGuarantee().getIdContrato());
+                System.out.println("valor enviado: " + transaction.getGuarantee().getOtrosTerminos());
+                System.out.println("metodo = " + transaction.getControlCambios());
+                /******************* idTramiteTemp */
+                
 		RugGarantias garantia = garantiasDao.findById(transaction.getGuarantee().getIdGarantia());
 		RugGarantiasH garantiaH = garantiasHDao.findByTramite(transaction.getIdTramite());
 		boolean ultimoTramite = transaction.getIdTramite().longValue() == garantia.getIdUltimoTramite().longValue();
+                
 		for(String cambio : transaction.getControlCambios()) {
+                    
 			switch(cambio) {
 			case "fechaInscripcion":
 				Date fechaTramite;
@@ -376,6 +397,33 @@ public class GarantiasServiceImp {
 					garantia.setDescGarantia(transaction.getGuarantee().getDescGarantia());
 				}
 				break;
+                        case "desContrato":
+                                contrato.setObservaciones(transaction.getGuarantee().getTipoContrato());
+
+                            break;
+                        case "otrosTerminos":
+                                contrato.setOtrosTerminosContrato(transaction.getGuarantee().getOtrosTerminos());
+//                            PreparedStatement ps = null;
+//                            conectiondB db = new conectiondB();
+//                            Connection connection =  db.getConnection();
+//                            CallableStatement cs = null;
+//                            
+//                            String sql = "{ call update_contrato( ?,? ) }";
+//                            
+//                            try{
+//                                
+//                                cs = connection.prepareCall(sql);
+//                                cs.setString(1, transaction.getGuarantee().getOtrosTerminos());
+//                                cs.setLong(2, transaction.getGuarantee().getIdContrato());
+//                                cs.execute();
+//                        
+//                                             
+//                            }catch(SQLException e){
+//                                System.out.println("e = " + e);
+//                            }finally{
+//                                db.close(connection, null, ps);
+//                            }
+                            break;
 			case "instrumentoPublico":
 				// rug_garantias_h.instrumento_publico
 				garantiaH.setInstrumentoPublico(transaction.getGuarantee().getInstrumentoPublico());

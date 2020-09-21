@@ -57,6 +57,7 @@ export class GuaranteesService {
     this.updateData(transaction).subscribe(
       (response) => {
         this.transactionSaved.next(RESULTADO_EXITOSO);
+       
       }
     );
   }

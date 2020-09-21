@@ -90,7 +90,7 @@ public class PersonasCollection {
 			// eliminar archivo temporal
 			//generated.delete();
         }  catch (JAXBException e) { 
-            e.printStackTrace(); 
+            //e.printStackTrace(); 
         }
 
 	}

@@ -24,7 +24,13 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
-		<dependency>
+	 <dependency>
+	  <groupId>com.oracle</groupId>
+	  <artifactId>ojdbc7</artifactId>
+	  <version>12.1.0</version>
+	  <type>jar</type>
+	 </dependency>
+	 <dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<version>${java.version}</version>

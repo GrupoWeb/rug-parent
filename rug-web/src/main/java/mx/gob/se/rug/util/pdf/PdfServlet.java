@@ -187,7 +187,7 @@ public class PdfServlet extends HttpServlet {
                         
                         directory.mkdir();
                         
-                        System.out.println("Valore de carpeta " + filePathToBeServed);
+                        //System.out.println("Valore de carpeta " + filePathToBeServed);
                         recursiveDelete(new File(filePathToBeServed));
                         recursiveDelete(new File(filePathToBeServed +"/boleta_zip/"));
                         
@@ -206,7 +206,7 @@ public class PdfServlet extends HttpServlet {
                             pdf.addEventHandler(PdfDocumentEvent.START_PAGE, footerHandler);
                             Document doc = HtmlConverter.convertToDocument(pdfTO.getHtmlList().get(iteracionB), pdf, converterProperties);
                             doc.close();
-                            System.out.println("doc = " + doc);
+                            //System.out.println("doc = " + doc);
 
                             filepdf = ospdf.toByteArray();
                             info.setSignText(signText);

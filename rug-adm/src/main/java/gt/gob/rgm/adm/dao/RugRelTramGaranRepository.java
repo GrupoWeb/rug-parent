@@ -31,6 +31,7 @@ public class RugRelTramGaranRepository {
         Root<RugRelTramGaran> garantias = criteria.from(RugRelTramGaran.class);
         criteria.select(garantias)
         	.where(cb.equal(garantias.get("id").get("idGarantia"), idGarantia));
+        
         return em.createQuery(criteria).getResultList();
     }
     

@@ -4,133 +4,143 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Transaction implements Serializable {
-	private Long idTramite;
-	private Integer bCargaMasiva;
-	private String fechaCreacion;
-	private Integer idStatusTramite;
-	private Long idTramiteTemp;
-	private String statusReg;
-	private Integer idTipoTramite;
-	private String descripcion;
-	private Double precio;
-	private ExternalUser solicitante;
-	private Guarantee guarantee;
-	private List<ExternalUser> deudores;
-	private List<ExternalUser> acreedores;
-	private List<String> controlCambios;
-	
-	public Transaction() {
-	}
 
-	public Long getIdTramite() {
-		return idTramite;
-	}
+    private Long idTramite;
+    private Integer bCargaMasiva;
+    private String fechaCreacion;
+    private Integer idStatusTramite;
+    private Long idTramiteTemp;
+    private String statusReg;
+    private Integer idTipoTramite;
+    private String descripcion;
+//    private String contrato;
+    private Double precio;
+    private ExternalUser solicitante;
+    private Guarantee guarantee;
+    private List<ExternalUser> deudores;
+    private List<ExternalUser> acreedores;
+    private List<String> controlCambios;
 
-	public void setIdTramite(Long idTramite) {
-		this.idTramite = idTramite;
-	}
+    public Transaction() {
+    }
 
-	public Integer getbCargaMasiva() {
-		return bCargaMasiva;
-	}
+//    public String getContrato() {
+//        return contrato;
+//    }
+//
+//    public void setContrato(String contrato) {
+//        this.contrato = contrato;
+//    }
 
-	public void setbCargaMasiva(Integer bCargaMasiva) {
-		this.bCargaMasiva = bCargaMasiva;
-	}
+    public Long getIdTramite() {
+        return idTramite;
+    }
 
-	public String getFechaCreacion() {
-		return fechaCreacion;
-	}
+    public void setIdTramite(Long idTramite) {
+        this.idTramite = idTramite;
+    }
 
-	public void setFechaCreacion(String fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
+    public Integer getbCargaMasiva() {
+        return bCargaMasiva;
+    }
 
-	public Integer getIdStatusTramite() {
-		return idStatusTramite;
-	}
+    public void setbCargaMasiva(Integer bCargaMasiva) {
+        this.bCargaMasiva = bCargaMasiva;
+    }
 
-	public void setIdStatusTramite(Integer idStatusTramite) {
-		this.idStatusTramite = idStatusTramite;
-	}
+    public String getFechaCreacion() {
+        return fechaCreacion;
+    }
 
-	public Long getIdTramiteTemp() {
-		return idTramiteTemp;
-	}
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
 
-	public void setIdTramiteTemp(Long idTramiteTemp) {
-		this.idTramiteTemp = idTramiteTemp;
-	}
+    public Integer getIdStatusTramite() {
+        return idStatusTramite;
+    }
 
-	public String getStatusReg() {
-		return statusReg;
-	}
+    public void setIdStatusTramite(Integer idStatusTramite) {
+        this.idStatusTramite = idStatusTramite;
+    }
 
-	public void setStatusReg(String statusReg) {
-		this.statusReg = statusReg;
-	}
+    public Long getIdTramiteTemp() {
+        return idTramiteTemp;
+    }
 
-	public Integer getIdTipoTramite() {
-		return idTipoTramite;
-	}
+    public void setIdTramiteTemp(Long idTramiteTemp) {
+        this.idTramiteTemp = idTramiteTemp;
+    }
 
-	public void setIdTipoTramite(Integer idTipoTramite) {
-		this.idTipoTramite = idTipoTramite;
-	}
+    public String getStatusReg() {
+        return statusReg;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public void setStatusReg(String statusReg) {
+        this.statusReg = statusReg;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public Integer getIdTipoTramite() {
+        return idTipoTramite;
+    }
 
-	public Double getPrecio() {
-		return precio;
-	}
+    public void setIdTipoTramite(Integer idTipoTramite) {
+        this.idTipoTramite = idTipoTramite;
+    }
 
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public ExternalUser getSolicitante() {
-		return solicitante;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public void setSolicitante(ExternalUser solicitante) {
-		this.solicitante = solicitante;
-	}
+    public Double getPrecio() {
+        return precio;
+    }
 
-	public Guarantee getGuarantee() {
-		return guarantee;
-	}
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
 
-	public void setGuarantee(Guarantee guarantee) {
-		this.guarantee = guarantee;
-	}
+    public ExternalUser getSolicitante() {
+        return solicitante;
+    }
 
-	public List<ExternalUser> getDeudores() {
-		return deudores;
-	}
+    public void setSolicitante(ExternalUser solicitante) {
+        this.solicitante = solicitante;
+    }
 
-	public void setDeudores(List<ExternalUser> deudores) {
-		this.deudores = deudores;
-	}
+    public Guarantee getGuarantee() {
+        return guarantee;
+    }
 
-	public List<ExternalUser> getAcreedores() {
-		return acreedores;
-	}
+    public void setGuarantee(Guarantee guarantee) {
+        this.guarantee = guarantee;
+    }
 
-	public void setAcreedores(List<ExternalUser> acreedores) {
-		this.acreedores = acreedores;
-	}
+    public List<ExternalUser> getDeudores() {
+        return deudores;
+    }
 
-	public List<String> getControlCambios() {
-		return controlCambios;
-	}
+    public void setDeudores(List<ExternalUser> deudores) {
+        this.deudores = deudores;
+    }
 
-	public void setControlCambios(List<String> controlCambios) {
-		this.controlCambios = controlCambios;
-	}
+    public List<ExternalUser> getAcreedores() {
+        return acreedores;
+    }
+
+    public void setAcreedores(List<ExternalUser> acreedores) {
+        this.acreedores = acreedores;
+    }
+
+    public List<String> getControlCambios() {
+        return controlCambios;
+    }
+
+    public void setControlCambios(List<String> controlCambios) {
+        this.controlCambios = controlCambios;
+    }
 }
