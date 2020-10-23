@@ -35,7 +35,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 		busquedaInTO.setIdPersona(idPersona);
 		busquedaInTO.setNoSerial(noSerial);
 		busquedaInTO.setIdTipoTramite(idTipoTramite);
-		
+		          
 		MyLogger.Logger.log(Level.INFO,"Id Tramite "+ busquedaInTO.getIdTramite());
 		MyLogger.Logger.log(Level.INFO,"Entro al resBusqueda DWR");
 		StringBuffer sb = new StringBuffer();
@@ -52,7 +52,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 				int pagActiva = Integer.valueOf(1);
 				int regPagina = Integer.valueOf(20);
 				int registroTotales = busquedaInTO.getNumReg();
-				System.out.println("NUMERO DE REGISTROS:::: " + registroTotales);
+				System.out.println("NUMERO DE REGISTROS :::: " + registroTotales);
 				int numeroPaginas = registroTotales/regPagina;
 				if ( registroTotales %regPagina > 0){
 					numeroPaginas++;
@@ -122,6 +122,11 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 				sb.append("<td>");
 				sb.append(detalle.getFechaModificacion());
 				sb.append("</td>");
+//                                sb.append("<td><a href=\"#\" onclick=\"download("
+//						+ detalle.getIdgarantia() + "," + detalle.getIdTramite()
+//						+ ");\">");
+//				sb.append(detalle.getIdgarantia());
+//                                sb.append("</a></td>");
 				sb.append("</tr>");
 			}
 			

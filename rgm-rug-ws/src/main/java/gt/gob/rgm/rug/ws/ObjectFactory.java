@@ -30,11 +30,51 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetUsuarioRGMResponse }
+     * 
+     */
+    public GetUsuarioRGMResponse createGetUsuarioRGMResponse() {
+        return new GetUsuarioRGMResponse();
+    }
+
+    /**
+     * Create an instance of {@link RevertBoletaRGMRequest }
+     * 
+     */
+    public RevertBoletaRGMRequest createRevertBoletaRGMRequest() {
+        return new RevertBoletaRGMRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetUsuarioRGMRequest }
+     * 
+     */
+    public GetUsuarioRGMRequest createGetUsuarioRGMRequest() {
+        return new GetUsuarioRGMRequest();
+    }
+
+    /**
      * Create an instance of {@link Persona }
      * 
      */
     public Persona createPersona() {
         return new Persona();
+    }
+
+    /**
+     * Create an instance of {@link SetBoletaRGMRequest }
+     * 
+     */
+    public SetBoletaRGMRequest createSetBoletaRGMRequest() {
+        return new SetBoletaRGMRequest();
+    }
+
+    /**
+     * Create an instance of {@link ConfirmBoletaRGMResponse }
+     * 
+     */
+    public ConfirmBoletaRGMResponse createConfirmBoletaRGMResponse() {
+        return new ConfirmBoletaRGMResponse();
     }
 
     /**
@@ -54,54 +94,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetUsuarioRGMRequest }
-     * 
-     */
-    public GetUsuarioRGMRequest createGetUsuarioRGMRequest() {
-        return new GetUsuarioRGMRequest();
-    }
-
-    /**
-     * Create an instance of {@link RevertBoletaRGMRequest }
-     * 
-     */
-    public RevertBoletaRGMRequest createRevertBoletaRGMRequest() {
-        return new RevertBoletaRGMRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetUsuarioRGMResponse }
-     * 
-     */
-    public GetUsuarioRGMResponse createGetUsuarioRGMResponse() {
-        return new GetUsuarioRGMResponse();
-    }
-
-    /**
-     * Create an instance of {@link Transaccion }
-     * 
-     */
-    public Transaccion createTransaccion() {
-        return new Transaccion();
-    }
-
-    /**
-     * Create an instance of {@link ConfirmBoletaRGMResponse }
-     * 
-     */
-    public ConfirmBoletaRGMResponse createConfirmBoletaRGMResponse() {
-        return new ConfirmBoletaRGMResponse();
-    }
-
-    /**
-     * Create an instance of {@link SetBoletaRGMRequest }
-     * 
-     */
-    public SetBoletaRGMRequest createSetBoletaRGMRequest() {
-        return new SetBoletaRGMRequest();
-    }
-
-    /**
      * Create an instance of {@link ConfirmBoletaRGMRequest }
      * 
      */
@@ -115,6 +107,14 @@ public class ObjectFactory {
      */
     public Transacciones createTransacciones() {
         return new Transacciones();
+    }
+
+    /**
+     * Create an instance of {@link Transaccion }
+     * 
+     */
+    public Transaccion createTransaccion() {
+        return new Transaccion();
     }
 
 }

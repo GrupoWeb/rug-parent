@@ -167,6 +167,11 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+		    <groupId>gt.gob.rgm</groupId>
+		    <artifactId>rgm-firma</artifactId>
+		    <version>1.0.0</version>
+		</dependency>
 		<!--<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc7</artifactId>

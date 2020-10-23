@@ -142,6 +142,7 @@ public class PagoServiceImpl implements PagoServicePortType{
 				
 				try {
 					chequespropios = new Float(setBoletaRGMRequest.getPChequespropios());
+                                        System.out.println("chequespropios = " + chequespropios);
 				} catch(Exception e) {
 					noCheques = "SI";
 				}
@@ -162,6 +163,7 @@ public class PagoServiceImpl implements PagoServicePortType{
 						boleta.setCodigoTramite(3); //cheques otros bancos	
 					} else if(chequespropios > 0) {
 						boleta.setCodigoTramite(2); //Cheques propios
+						
 					} else if(efectivo > 0) {
 						boleta.setCodigoTramite(1); //Efectivo					
 					} else {
@@ -170,8 +172,18 @@ public class PagoServiceImpl implements PagoServicePortType{
 												
 				} else {
 					boleta.setCodigoTramite(setBoletaRGMRequest.getTipoPago().intValue());
+                                        if(chequespropios > 0 && efectivo > 0){
+                                            montoFinal = chequespropios + efectivo;
+                                        }else if(chequespropios > 0 && efectivo == 0){
+                                            montoFinal = chequespropios;
+                                        }else if (chequespropios == 0 && efectivo > 0){
+                                            montoFinal = efectivo;
+                                        }else{
+                                            montoFinal = 0.0f;
+                                        }
 				}
-												
+					
+                                System.out.println("montoFinal = " + montoFinal);
 				boleta.setMonto(new BigDecimal(montoFinal));
 				boleta.setMontoOtrosBancos(new BigDecimal(chequesotros));
 				boleta.setResolucion(setBoletaRGMRequest.getPReciboContraloria());

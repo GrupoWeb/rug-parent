@@ -98,6 +98,7 @@ public class BusquedaDAO {
 
 	public List<BusquedaTO> busqueda(BusquedaTO busquedaInTO, Integer inicio, Integer fin){
 		List<BusquedaTO> busquedaTOs= new ArrayList<BusquedaTO>();
+                System.out.println("busquedaTOs = " + busquedaInTO.getNoSerial());
 		ConexionBD bd = new ConexionBD();
 		String sql = "{ call RUG.SP_CONSULTA_GARANTIAS_REG("+"?,?,?,?,?,"+"?,?,?,?,?,?,"+"?,?)}";
 		Connection connection = bd.getConnection();
