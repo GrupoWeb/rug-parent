@@ -411,6 +411,7 @@ public class ModificacionAction extends RugBaseAction  {
 		String regresa = "failed";
 		cargarBienesEspeciales();
 		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT_DDMMYY);
+		System.out.println("modificacion jj" + esModificacion);
 		if (esModificacion!=null){
 			//modificar a garantias pendientes
 			try{							
@@ -436,7 +437,7 @@ public class ModificacionAction extends RugBaseAction  {
 				if(idUltimoTramite != tramite ){
 					tramite = idUltimoTramite;
 				}
-				MyLogger.Logger.log(Level.INFO, "tramite final para echale galleta: " + tramite);
+				MyLogger.Logger.log(Level.INFO, "tramite final para echale galleta otra: " + tramite);
 				
 				setNomAcreedor(detservd.showAcreedorR(idgarantia));			
 				setAcreedorTOs(detserv.getAcreedor(idgarantia,tramite));
@@ -540,7 +541,8 @@ public class ModificacionAction extends RugBaseAction  {
 				}else{setaRegistro(false);}
 				
 				inscripcionTO.setIdInscripcion(detserv.insertatramiteinc(Integer.valueOf(usuario.getPersona().getIdPersona()),7));
-				MyLogger.Logger.log(Level.INFO, "tramite incompleto "+ inscripcionTO.getIdInscripcion());
+				System.out.println("detalle error buscado");
+				MyLogger.Logger.log(Level.INFO, "tramite incompleto 2"+ inscripcionTO.getIdInscripcion());
 				Integer idTramiteNuevo = detserv.altapartesTramiteInc(new Integer(usuario.getPersona().getIdPersona()),new Integer("7"),idgarantia);
 				setIdTramite(idTramiteNuevo.toString());
 				detserv.altapartesBienesInc(idUltimoTramite, idTramiteNuevo);
@@ -568,9 +570,11 @@ public class ModificacionAction extends RugBaseAction  {
 				setIdpersona(idPersona.toString());			
 				inscripcionTO = new InscripcionTO();
 				
+				MyLogger.Logger.log(Level.INFO, "inicio del error, INGRESO DE LOS PARAMETROS");
+				MyLogger.Logger.log(Level.INFO, "Garantia: " + idgarantia + " Tramite: " + tramite + " usuario:" + usuario.getPersona().getIdPersona());
+				// regresa = "success";
 				
-				MyLogger.Logger.log(Level.INFO, "idgarantia: " + idgarantia);
-				//MyLogger.Logger.log(Level.INFO,"tramite: " + tramite);
+				// MyLogger.Logger.log(Level.INFO,"tramite: " + tramite);
 				
 				DetalleServiceImpl detservd = new DetalleServiceImpl();
 				ModificacionServiceImp detserv = new ModificacionServiceImp();
@@ -583,7 +587,7 @@ public class ModificacionAction extends RugBaseAction  {
 				if(idUltimoTramite != tramite ){
 					tramite = idUltimoTramite;
 				}
-				MyLogger.Logger.log(Level.INFO, "tramite final para echale galleta: " + tramite);
+				MyLogger.Logger.log(Level.INFO, "tramite final para echale galleta: otro error " + tramite);
 				
 				setNomAcreedor(detservd.showAcreedorR(idgarantia));			
 				setAcreedorTOs(detserv.getAcreedor(idgarantia,tramite));
@@ -672,8 +676,9 @@ public class ModificacionAction extends RugBaseAction  {
 				}else{setaRegistro(false);}
 				
 				inscripcionTO.setIdInscripcion(detserv.insertatramiteinc(Integer.valueOf(usuario.getPersona().getIdPersona()),7));
-				MyLogger.Logger.log(Level.INFO, "tramite incompleto "+ inscripcionTO.getIdInscripcion());
+				MyLogger.Logger.log(Level.INFO, "tramite incompleto 3"+ inscripcionTO.getIdInscripcion());
 				Integer idTramiteNuevo = detserv.altapartesTramiteInc(new Integer(usuario.getPersona().getIdPersona()),new Integer("7"),idgarantia);
+				MyLogger.Logger.log(Level.INFO, "Integer Usuario: " + new Integer(usuario.getPersona().getIdPersona()) + " integer numero " + new Integer("7") + " id Garantia jj " + idgarantia + " idTRamite: " + idTramiteNuevo);
 				setIdTramite(idTramiteNuevo.toString());
 				detserv.altapartesBienesInc(idUltimoTramite, idTramiteNuevo);
 				setBienesEspTOs(detservd.getListaBienes(idTramiteNuevo, 1));
@@ -683,6 +688,8 @@ public class ModificacionAction extends RugBaseAction  {
 					setHayBienes(false);
 				}
 				sessionMap.put(Constants.ID_TRAMITE_NUEVO,idTramiteNuevo);	
+				// regresa = "success";
+				MyLogger.Logger.log(Level.INFO, "idTramiteNuevo: " + idTramiteNuevo);
 				if (idTramiteNuevo.intValue() != 0){
 					regresa = "success";
 				}

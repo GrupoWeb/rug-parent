@@ -99,7 +99,7 @@ public class BusquedaAction extends RugBaseAction {
 	}
 	
 	public String muestraCertifica(){
-		MyLogger.Logger.log(Level.INFO, "Entro al muestraCertifica");
+		MyLogger.Logger.log(Level.INFO, "Entro al muestra Certifica");
 		
 		UsuarioTO usuario = (UsuarioTO) sessionMap.get("usuario");
 		setIdPersona(new Integer(usuario.getPersona().getIdPersona()).toString());

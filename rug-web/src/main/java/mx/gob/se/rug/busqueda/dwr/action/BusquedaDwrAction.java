@@ -35,8 +35,8 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 		busquedaInTO.setIdPersona(idPersona);
 		busquedaInTO.setNoSerial(noSerial);
 		busquedaInTO.setIdTipoTramite(idTipoTramite);
-		
-		MyLogger.Logger.log(Level.INFO, busquedaInTO.getNombre());
+		          
+		MyLogger.Logger.log(Level.INFO,"Id Tramite "+ busquedaInTO.getIdTramite());
 		MyLogger.Logger.log(Level.INFO,"Entro al resBusqueda DWR");
 		StringBuffer sb = new StringBuffer();
 		BusquedaDAO busquedaDAO =new BusquedaDAO();
@@ -52,7 +52,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 				int pagActiva = Integer.valueOf(1);
 				int regPagina = Integer.valueOf(20);
 				int registroTotales = busquedaInTO.getNumReg();
-				System.out.println("NUMERO DE REGISTROS:::: " + registroTotales);
+				System.out.println("NUMERO DE REGISTROS :::: " + registroTotales);
 				int numeroPaginas = registroTotales/regPagina;
 				if ( registroTotales %regPagina > 0){
 					numeroPaginas++;
@@ -67,8 +67,8 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 				sb.append(tableSearch(busquedaInTO,busquedaGeneral,registroTotales,ruta));
 				sb.append(writeSeccionPaginado(numeroPaginas, 1, 20, registroTotales,"pagBusquedaDwr",""));
 				sb.append("<div class=\"row\">"); 
-				sb.append("<p><span>Para descargar la boleta dar click en el siguiente bot&oacute;n:</span></p>"); 
-				sb.append("<input type=\"button\"class=\"btn btn-large waves-effect indigo\" value=\"Descargar PDF \" onclick=\"showBoleta();\"  />"); 
+				sb.append("<p><span>Para descargar la boleta dar click en el siguiente bot&oacute;n :</span></p>"); 
+				sb.append("<input type=\"button\"class=\"btn btn-large waves-effect indigo\" value=\"Descargar PDF \" onclick=\"showBoleta();\"  />");  
 				sb.append("</div>");
 			} else {
 				sb.append("<div class=\"row\">"); 
@@ -100,7 +100,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 					"							<tr>\r\n" + 
 					"								<th>N&uacute;mero de Garant&iacute;a</th>\r\n" + 
 					"								<th>N&uacute;mero de operaci&oacute;n</th>\r\n" + 
-					"								<th>Tipo de operaci&oacute;n</th>\r\n" + 
+					"								<th>Tipos de operaci&oacute;n</th>\r\n" + 
 					"								<th>Fecha de creaci&oacute;n</th>\r\n" + 
 					"							</tr>\r\n" + 
 					"						</thead>\r\n" + 
@@ -122,6 +122,11 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 				sb.append("<td>");
 				sb.append(detalle.getFechaModificacion());
 				sb.append("</td>");
+//                                sb.append("<td><a href=\"#\" onclick=\"download("
+//						+ detalle.getIdgarantia() + "," + detalle.getIdTramite()
+//						+ ");\">");
+//				sb.append(detalle.getIdgarantia());
+//                                sb.append("</a></td>");
 				sb.append("</tr>");
 			}
 			
@@ -190,7 +195,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
         StringBuffer html= new StringBuffer();
         
         StringBuffer plantilla = new StringBuffer();
-        plantilla.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n" + 
+        plantilla.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n" +  
         		"<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n" + 
         		"<head>\r\n" + 
         		"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\"/>\r\n" + 
@@ -205,7 +210,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
         		"		<div class=\"col s12\">\r\n" + 
         		"      <br />\r\n" + 
         		"      <br />\r\n" + 
-        		"      <span class=\"card-title center-align\">CONSULTA DE  GARANT&Iacute;AS MOBILIARIA</span>  \r\n" + 
+        		"      <span class=\"card-title center-align\">CONSULTA DE  GARANT&Iacute;AS MOBILIARIA </span>  \r\n" + 
         		"      <br />\r\n" + 
         		"      <br />\r\n" + 
         		"       <div class=\"row\">\r\n" + 
@@ -426,8 +431,9 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 		}
         pdfTO.setHtml("[*resultadoTable*]", outTable.toString());
         
-        this.getSession().setAttribute("pdfTO", pdfTO);
-        this.getSession().setAttribute("Consulta", 1);
+		this.getSession().setAttribute("pdfTO", pdfTO);
+		//MyLogger.Logger.log(Level.INFO,"PDF_TO ---" + pdfTO.getPathRoot());
+                this.getSession().setAttribute("Consulta", 2);
 		return html.toString();
 	}
 	

@@ -18,7 +18,7 @@ import { environment } from '../../environments/environment';
 import { SwalComponent } from '@toverux/ngx-sweetalert2';
 import { Router } from '@angular/router';
 
-declare var Materialize:any;
+declare var Materialize: any;
 
 @Component({
   selector: 'app-correcciones',
@@ -31,7 +31,7 @@ export class CorreccionesComponent implements OnInit {
   searchGuaranteeForm: FormGroup;
   tramites: Transaction[];
   garantia: Guarantee;
-  modalActions = new EventEmitter<string|MaterializeAction>();
+  modalActions = new EventEmitter<string | MaterializeAction>();
   modalTransaction: TransactionPreview;
   transaction: Transaction;
   guarantee: Guarantee;
@@ -46,6 +46,8 @@ export class CorreccionesComponent implements OnInit {
   guaranteeForm: FormGroup;
   fechaInscripcionEdit: boolean;
   descGarantiaEdit: boolean;
+  ContratoEdit: boolean;
+  representanteInfo: boolean;
   instrumentoPublicoEdit: boolean;
   otrosTerminosGarantiaEdit: boolean;
   controlCambios: string[];
@@ -102,6 +104,8 @@ export class CorreccionesComponent implements OnInit {
       'numTramite': new FormControl(transaction ? transaction.idTramite : null, Validators.required),
       'fechaCreacion': new FormControl(transaction ? transaction.fechaCreacion : null, Validators.required),
       'descGarantia': new FormControl(transaction ? transaction.guarantee.descGarantia : null, Validators.required),
+      'desContrato': new FormControl(transaction ? transaction.guarantee.tipoContrato : null, Validators.required),
+      'otrosTerminosR': new FormControl(transaction ? transaction.guarantee.otrosTerminos : null, Validators.required),
       'instrumentoPublico': new FormControl(transaction ? transaction.guarantee.instrumentoPublico : null, Validators.required),
       'otrosTerminos': new FormControl(transaction ? transaction.guarantee.otrosTerminosGarantia : null, Validators.required)
     });
@@ -115,6 +119,7 @@ export class CorreccionesComponent implements OnInit {
       this.garantiaHttpSubscription = this.guaranteesService.fetchTransactionsData(garantia).subscribe(
         data => {
           this.tramites = data.data;
+          console.log("data tramite", this.tramites);
           this.controlCambios = [];
           this.modalTransaction = null;
         },
@@ -137,12 +142,17 @@ export class CorreccionesComponent implements OnInit {
     this.initGuaranteeForm(this.tramites[index]);
 
     this.descGarantiaEdit = false;
+    this.ContratoEdit = false;
+    this.representanteInfo = false;
     this.loading = true;
     this.loadingService.changeLoading(this.loading);
     this.modalTransaction = new TransactionPreview;
     this.modalTransaction.idGarantia = this.garantia.idGarantia;
     this.modalTransaction.fechaInscripcion = moment(this.tramites[index].fechaCreacion, moment.defaultFormatUtc).format('DD/MM/YYYY');
     this.modalTransaction.descbienes = this.garantia.descGarantia;
+    this.modalTransaction.contrato = this.garantia.tipoContrato;
+    this.modalTransaction.otrosTerminosR = this.garantia.otrosTerminos;
+
     this.modalTransaction.instrumento = this.garantia.instrumentoPublico;
     this.modalTransaction.otrosgarantia = this.garantia.otrosTerminosGarantia;
     this.modalTransaction.vigencia = this.garantia.mesesGarantia / 12;
@@ -155,14 +165,14 @@ export class CorreccionesComponent implements OnInit {
     this.personFormTitle = "Deudor";
     this.personFormType = PERSONA_DEUDOR;
     this.personFormEdit = false;
-    this.modalActions.emit({action:"modal", params:["open"]});
+    this.modalActions.emit({ action: "modal", params: ["open"] });
   }
 
   onAddAcreedorClicked() {
     this.personFormTitle = "Acreedor";
     this.personFormType = PERSONA_ACREEDOR;
     this.personFormEdit = false;
-    this.modalActions.emit({action:"modal", params:["open"]});
+    this.modalActions.emit({ action: "modal", params: ["open"] });
   }
 
   onEditDeudorClicked(deudor: ExternalUser, index: number) {
@@ -172,7 +182,7 @@ export class CorreccionesComponent implements OnInit {
     this.personFormType = PERSONA_DEUDOR;
     this.personFormEdit = true;
     this.personFormIndex = index;
-    this.modalActions.emit({action:"modal", params:["open"]});
+    this.modalActions.emit({ action: "modal", params: ["open"] });
   }
 
   onRemoveDeudorClicked(index: number) {
@@ -186,7 +196,7 @@ export class CorreccionesComponent implements OnInit {
     this.personFormType = PERSONA_ACREEDOR;
     this.personFormEdit = true;
     this.personFormIndex = index;
-    this.modalActions.emit({action:"modal", params:["open"]});
+    this.modalActions.emit({ action: "modal", params: ["open"] });
   }
 
   onRemoveAcreedorClicked(index: number) {
@@ -206,7 +216,7 @@ export class CorreccionesComponent implements OnInit {
     persona.legalInscription = this.personForm.value.legalInscription;
     persona.representativeInfo = this.personForm.value.representativeInfo;
 
-    switch(this.personFormType) {
+    switch (this.personFormType) {
       case PERSONA_DEUDOR:
         this.deudores.push(persona);
         break;
@@ -218,12 +228,12 @@ export class CorreccionesComponent implements OnInit {
   }
 
   onCancelClicked() {
-    this.modalActions.emit({action:"modal",params:['close']});
+    this.modalActions.emit({ action: "modal", params: ['close'] });
     this.personForm.reset();
   }
 
   closeModal() {
-    this.modalActions.emit({action:"modal",params:['close']});
+    this.modalActions.emit({ action: "modal", params: ['close'] });
   }
 
   disabledPerson() {
@@ -254,16 +264,51 @@ export class CorreccionesComponent implements OnInit {
     this.descGarantiaEdit = true;
   }
 
+  onEditContratoClicked() {
+    this.ContratoEdit = true;
+  }
+
+  onEditRepresentanteClicked() {
+    this.representanteInfo = true;
+  }
+
   onSaveDescGarantiaClicked() {
     this.descGarantiaEdit = false;
+    // this.ContratoEdit= false;
     this.modalTransaction.descbienes = this.guaranteeForm.value.descGarantia;
     if (this.controlCambios.indexOf("descGarantia") < 0) {
       this.controlCambios.push("descGarantia");
     }
   }
 
+  onSaveContratoClicked() {
+    // this.descGarantiaEdit = false;
+    this.ContratoEdit = false;
+    this.modalTransaction.contrato = this.guaranteeForm.value.desContrato;
+    if (this.controlCambios.indexOf("desContrato") < 0) {
+      this.controlCambios.push("desContrato");
+    }
+  }
+
+  onSaveRepresentanteClicked() {
+    // this.descGarantiaEdit = false;
+    this.representanteInfo = false;
+    this.modalTransaction.otrosTerminosR = this.guaranteeForm.value.otrosTerminosR;
+    if (this.controlCambios.indexOf("otrosTerminos") < 0) {
+      this.controlCambios.push("otrosTerminos");
+    }
+  }
+
   onCancelDescGarantiaClicked() {
     this.descGarantiaEdit = false;
+  }
+
+  onCancelContratoClicked() {
+    this.ContratoEdit = false;
+  }
+
+  onCancelRepresentanteClicked() {
+    this.representanteInfo = false;
   }
 
   onEditInstrumentoPublicoClicked() {
@@ -302,6 +347,8 @@ export class CorreccionesComponent implements OnInit {
     if (this.controlCambios.length > 0) {
       this.garantia.fechaInscr = this.guaranteeForm.value.fechaCreacion;
       this.garantia.descGarantia = this.guaranteeForm.value.descGarantia;
+      this.garantia.tipoContrato = this.guaranteeForm.value.desContrato;
+      this.garantia.otrosTerminos = this.guaranteeForm.value.otrosTerminosR;
       this.garantia.otrosTerminosGarantia = this.guaranteeForm.value.otrosTerminos;
       this.garantia.instrumentoPublico = this.guaranteeForm.value.instrumentoPublico;
       this.transaction.deudores = this.deudores;
@@ -311,6 +358,7 @@ export class CorreccionesComponent implements OnInit {
       this.transaction.fechaCreacion = this.garantia.fechaInscr;
       this.transaction.controlCambios = this.controlCambios;
       this.guaranteesService.update(this.transaction);
+      console.log(this.transaction);
     } else {
       // mostrar que no hay cambios
       this.swalNoChanges.show();
@@ -335,6 +383,7 @@ export class CorreccionesComponent implements OnInit {
   onGeneratePDFClicked(index: number) {
     const transaction = this.tramites[index];
     const pdfUrl = this.baseUrl + '/rugboletap?tramite=' + transaction.idTramiteTemp + '&garantia=' + transaction.guarantee.idGarantia + '&generar=true';
+    console.log(pdfUrl);
     window.open(pdfUrl, "_blank");
   }
 }

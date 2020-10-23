@@ -74,4 +74,23 @@ public class Constants {
 	public static final Integer RESULTADO_EXITOSO = 2000;
 	public static final Integer ERROR_GARANTIA_EXISTENTE = 5001;
 	public static final Integer ERROR_TRAMITE_EXISTENTE = 5002;
+        
+        // firma digital de PDF
+        public static final String SIGN_TEXT = "SIGN_TEXT";
+        public static final String SIGN_IMAGE = "SIGN_IMAGE";
+        public static final String SIGN_FILE = "SIGN_FILE";
+        public static final String SIGN_PASSWORD = "SIGN_PASSWORD";
+        public static final String SIGN_LOCATION = "SIGN_LOCATION";
+        public static final String SIGN_LLX = "SIGN_LLX";
+        public static final String SIGN_LLY = "SIGN_LLY";
+        public static final String SIGN_URX = "SIGN_URX";
+        public static final String SIGN_URY = "SIGN_URY";
+        public static final String SIGN_PAGE = "SIGN_PAGE";
+        public static final String SIGN_FIELDNAME = "SIGN_FIELDNAME";
+        public static final String SIGN_ENABLED = "SIGN_ENABLED";
+        public static final String SIGN_IMAGE_LOCAL = "SIGN_IMAGE_LOCAL";
+        public static final String SIGN_FILE_LOCAL = "SIGN_FILE_LOCAL";
+        public static final String SIGN_LOCAL = "SIGN_LOCAL";
+        public static final String SIGN_ZIP_URL = "SIGN_ZIP_URL";
+        public static final String SIGN_PDF_URL = "SIGN_PDF_URL";
 }

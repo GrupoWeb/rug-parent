@@ -197,6 +197,7 @@ mx\gob\se\rug\administracion\dto\Perfil.class
 mx\gob\se\rug\administracion\service\impl\PerfilServicePojoImpl.class
 mx\gob\se\rug\boleta\dao\SeccionDAO.class
 mx\gob\se\rug\masiva\to\AvisoPreventivo.class
+mx\gob\se\rug\util\pdf\CreateSignature.class
 mx\gob\se\rug\garantia\to\ActoContratoTO.class
 mx\gob\se\rug\masiva\to\string\DatosModificacion.class
 gt\gob\rgm\model\Archivo.class
@@ -223,6 +224,7 @@ mx\gob\se\rug\bitacora\exception\UsuarioNoBitacoradoException.class
 mx\gob\se\rug\busquedaOp\dwr\action\BusquedaOpDwrAction.class
 mx\gob\se\rug\dto\Producto.class
 mx\gob\se\rug\masiva\to\string\AcreedorAutoridad.class
+mx\gob\se\rug\util\pdf\FileOutputstream.class
 mx\gob\se\rug\masiva\util\FileHandlerImpl.class
 mx\gob\se\rug\operaciones\action\OperacionesAction.class
 mx\gob\se\rug\inscripcion\to\NacionalidadTO.class
@@ -317,6 +319,7 @@ mx\gob\se\rug\masiva\to\ObligacionGarantizaModificacion.class
 gt\gob\rgm\service\JmsSolrMessageSenderService.class
 mx\gob\se\rug\util\NumberToLetterConverter.class
 mx\gob\se\rug\operaciones\dwr\action\OperacionesDwrAction.class
+mx\gob\se\rug\util\pdf\CreateSignature$MyExternalSignatureContainer.class
 mx\gob\se\rug\action\MisBoletasAction.class
 mx\gob\se\rug\action\ValidaAction.class
 gt\gob\rgm\dao\RugSecuUsuariosExternosRepository.class
@@ -533,6 +536,7 @@ mx\gob\se\rug\inscripcion\to\BienPendienteTO.class
 mx\gob\se\rug\to\BienTO.class
 mx\gob\se\rug\modificacion\servicie\ModificacionService.class
 mx\gob\se\rug\util\pdf\PageXofY.class
+gt\gob\rgm\rs\VehiculosTest.class
 mx\gob\se\rug\masiva\service\ReduccionProrrogaService.class
 mx\gob\se\rug\certificacion\servlet\CertificacinoServlet.class
 mx\gob\se\rug\seguridad\serviceimpl\PrivilegiosServiceImpl.class

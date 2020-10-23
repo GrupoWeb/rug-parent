@@ -225,6 +225,7 @@ public class CargaMasivaAction extends RugBaseAction implements
 			for (AcreedorTO acre : inscripcionService.getAcreedoresByID(usuario
 					.getPersona().getIdPersona())) {
 				getListaAcreedores().add(acre);
+                                System.out.println("Acreedor masiva: " + acre);
 			}
 			regresa = "success";
 		} catch (Exception e) {

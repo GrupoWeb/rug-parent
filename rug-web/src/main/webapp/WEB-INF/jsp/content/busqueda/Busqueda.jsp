@@ -18,14 +18,14 @@
 							 	<div class="row">
 							    	<div class="input-field col s12">
 							        	<s:textfield name="curpOtorgante" id="curpOtorgante" size="15" maxlength="15" onkeypress="return aceptaalfa(event);" 
-							        				cssClass="validate tooltipped" data-position="right" data-delay="50" data-tooltip="Ingrese su número sin espacios en blanco"/>
+							        				cssClass="validate tooltipped" data-position="right" data-delay="50" data-tooltip="Ingrese su nï¿½mero sin espacios en blanco"/>
 							        	<label for="curpOtorgante">N&uacute;mero de Identificaci&oacute;n del Deudor Garante (DPI o Pasaporte)</label>
 							   		</div>
 							 	</div>
 							 	<div class="row">
 							    	<div class="input-field col s12">
 							        	<s:textfield name="rfcOtorgante" id="rfcOtorgante" size="15" maxlength="15" onkeypress="return aceptaalfa(event);"  
-							        		cssClass="validate tooltipped" data-position="right" data-delay="50" data-tooltip="Ingrese su número sin espacios en blanco ni guión"/>
+							        		cssClass="validate tooltipped" data-position="right" data-delay="50" data-tooltip="Ingrese su nï¿½mero sin espacios en blanco ni guiï¿½n"/>
 							        	<label for="rfcOtorgante">NIT del Deudor Garante</label>
 							   		</div>
 							 	</div>
@@ -79,7 +79,7 @@
 				<div class="card">
 					<div class="card-content">
 						<span class="card-title">Resultado de la Consulta</span>
-						<div id="resultadoDIV"></div> 
+						<div id="resultadoDIV"></div>  
 					</div>
 				</div>
 			</div>

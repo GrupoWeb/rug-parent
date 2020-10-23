@@ -63,7 +63,8 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 	
 	@Override
 	public byte[] getBoletaPdf(Long pIdTramite, Long pIdGarantia) {
-	
+                
+            
 		PdfTO pdfTO = new PdfTO();
 		
 		Tramites tram = new Tramites();
@@ -167,6 +168,7 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 		pdfTO.setValue("[*noOperacion*]", detalleTO.getIdTramite().toString());
 		pdfTO.setValue("[*razonOperacion*]", getNotNullValue(detalleTO.getObservaciones()));
 		
+                
 		//Se arma el pdf
 		pdfTO.setKey(""+tram.getTramiteIncomp().getIdTramiteTemp()+Random.generateRandom(100000));
 		
@@ -176,8 +178,8 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 			PdfWriter writer = new PdfWriter(os);
 			ConverterProperties converterProperties = new ConverterProperties();
 			PdfDocument pdf = new PdfDocument(writer);
-		    PageXofY footerHandler = new PageXofY(pdfTO.getKey(), server);
-		    pdf.addEventHandler(PdfDocumentEvent.START_PAGE, footerHandler);
+                        PageXofY footerHandler = new PageXofY(pdfTO.getKey(), server);
+                        pdf.addEventHandler(PdfDocumentEvent.START_PAGE, footerHandler);
 			Document doc = HtmlConverter.convertToDocument(pdfTO.getHtml(), pdf, converterProperties);
 			//doc.setMargins(100, 50, 50, 100);
 			doc.close();
@@ -200,12 +202,13 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 			e.printStackTrace();
 			pdfTO.setFile(null);
 		}
-		
+		          
 		return pdfTO.getFile();
 	}
 	
 	private String getPersonaParte(Long idTramite, Long idGarantia, Long idParte) {
 		
+            
 		List<VDetalleBoletaPartes> partes = null;
 		StringBuffer sb = new StringBuffer();
 		try {

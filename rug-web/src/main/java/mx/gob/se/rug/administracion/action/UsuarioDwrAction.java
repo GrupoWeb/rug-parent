@@ -32,13 +32,13 @@ public class UsuarioDwrAction extends AbstractBaseDwrAction {
 			registroUsuarioRecupera = usuarioService.getPregunta(personaFisica);
 			if(registroUsuarioRecupera == null || registroUsuarioRecupera.getTipoCuenta() == null) {
 				response.setCodeError(1);
-				response.setMessage("El usuario no es vÃ¡lido, verifique la cuenta de correo.");
+				response.setMessage("El usuario no es válido, verifique la cuenta de correo.");
 			} else {
 				if(registroUsuarioRecupera.getTipoCuenta().equals("P")) {
 					// es cuenta principal
 					if (registroUsuarioRecupera.getPregunta() != null) {
 						response.setCodeError(0);
-						response.setMessage("Es un usuario vÃ¡lido, puede continuar.");
+						response.setMessage("Es un usuario válido, puede continuar.");
 						ObjectMapper mapper = new ObjectMapper();
 						
 						try {
@@ -48,12 +48,12 @@ public class UsuarioDwrAction extends AbstractBaseDwrAction {
 						}
 					} else {
 						response.setCodeError(1);
-						response.setMessage("El usuario no es vÃ¡lido, verifique la cuenta de correo.");
+						response.setMessage("El usuario no es válido, verifique la cuenta de correo.");
 					}
 				} else {
 					// es subcuenta
 					response.setCodeError(0);
-					response.setMessage("Es un usuario vÃ¡lido, puede continuar.");
+					response.setMessage("Es un usuario válido, puede continuar.");
 					ObjectMapper mapper = new ObjectMapper();
 					
 					try {

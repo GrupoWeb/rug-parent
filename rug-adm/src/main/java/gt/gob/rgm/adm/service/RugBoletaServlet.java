@@ -30,12 +30,18 @@ public class RugBoletaServlet extends HttpServlet {
 		//RugBoletaPdf boleta = boletaService.getBoleta(id);
 		List<RugBoletaPdf> boletas = boletaService.getBoletasByTramite(idTramite);
 		
+                
 		byte[] archivo;
 		if(boletas != null && !boletas.isEmpty() && !generar) {
+                        System.out.println("nulo");
 			archivo = boletas.get(boletas.size() - 1).getArchivo();
+                        
 		} else {
+                        System.out.println("estoy en el else");
 			archivo = boletaPdfService.getBoletaPdf(idTramite, idGarantia);
 		}
+                
+                System.out.println("afuera");
 		ByteArrayInputStream in = new ByteArrayInputStream(archivo);
 		OutputStream out = res.getOutputStream();
 		

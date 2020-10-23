@@ -92,6 +92,7 @@ C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\BoletaSer
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\RugCatTipoTramite.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\RugContrato.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\HomologadoRepository.java
+C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\conectiondB.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\domain\Guarantee.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\solr\SolrAdd.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\BoletaSum.java
@@ -188,6 +189,7 @@ C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\VGarantiaPart
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\RugSecuUsuarioService.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\RugCertificacionesService.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\CambioServiceImp.java
+C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\BaseRugDao.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\RugBoletaPdfRepository.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\RugBitacTramitesRepository.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\RugPreguntaServiceImp.java

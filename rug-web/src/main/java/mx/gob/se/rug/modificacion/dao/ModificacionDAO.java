@@ -31,8 +31,8 @@ public class ModificacionDAO {
 //	  peIdTramiteTemp          IN  RUG_REL_TRAM_INC_GARAN.ID_TRAMITE_TEMP%TYPE,  --  IDENTIFICADOR DEL TRAMITE ASOCIADO A LA GARANTIA
 //    peIdGarantia             IN  RUG_GARANTIAS_PENDIENTES.ID_GARANTIA_PEND%TYPE,    --  IDENTIFICADOR DE LA GARANTIA
 //    peIdTipoGarantia         IN  RUG_GARANTIAS_PENDIENTES.ID_TIPO_GARANTIA%TYPE,  --IDENTIFICADOR DEL TIPO DE GARANTIA QUE SE INSCRIBE
-//    peFechaCelebGarantia      IN  RUG_GARANTIAS_PENDIENTES.FECHA_INSCR %TYPE, -- Fecha de celebración del Acto o Contrato, que crea la garantia
-//    peCambiosBienesMonto     IN  RUG_GARANTIAS_PENDIENTES.CAMBIOS_BIENES_MONTO%TYPE, --  El Acto o Contrato prevé incrementos, reducciones o sustituciones de los bienes muebles o del monto garantizado
+//    peFechaCelebGarantia      IN  RUG_GARANTIAS_PENDIENTES.FECHA_INSCR %TYPE, -- Fecha de celebraciï¿½n del Acto o Contrato, que crea la garantia
+//    peCambiosBienesMonto     IN  RUG_GARANTIAS_PENDIENTES.CAMBIOS_BIENES_MONTO%TYPE, --  El Acto o Contrato prevï¿½ incrementos, reducciones o sustituciones de los bienes muebles o del monto garantizado
 //    peIdPerson               IN  RUG_PERSONAS.ID_PERSONA%TYPE, --   IDENTIFICADOR DE LA PERSONA QUE  HACE LA INSCRIPCION
 //    peTipoBien               IN  VARCHAR2,  --CADENA QUE CONTIENE LOS IDS TIPOS DE BIENES QUE INTEGRA UNA GARANTIA, SEPARADOS POR EL CARACTER |  
 //    peDescGarantia           IN  RUG_GARANTIAS_PENDIENTES.DESC_GARANTIA%TYPE,
@@ -107,7 +107,7 @@ public class ModificacionDAO {
 			}else{cs.setInt(6, modifica.getIdpersona());}
 			if(modifica.getModtipobien()==null){
 				cs.setString(7," |");
-			}else{cs.setString(7, modifica.getModtipobien().replace(",", "|"));}		
+			}else{cs.setString(7, modifica.getModtipobien().replace(",", "|"));}	 	
 			if(modifica.getModdescripcion()==null){
 				cs.setString(8,"" );
 			}else{cs.setString(8, modifica.getModdescripcion());}
@@ -321,12 +321,12 @@ public class ModificacionDAO {
 		CallableStatement cs =null;
 		try {
 			 cs = connection.prepareCall(sql);
-			MyLogger.Logger.log(Level.INFO, "1,"+ idPersona);
-			MyLogger.Logger.log(Level.INFO, "2,"+ idTipoPersona);
-			MyLogger.Logger.log(Level.INFO, "3,"+ idGarantia);			
-			MyLogger.Logger.log(Level.INFO, "id Personav = " + idPersona);
-			MyLogger.Logger.log(Level.INFO, "id garantia = " + idGarantia);
-			MyLogger.Logger.log(Level.INFO, "id tipopersona = " + idTipoPersona);
+			 // MyLogger.Logger.log(Level.INFO, "1,"+ idPersona);
+			 // MyLogger.Logger.log(Level.INFO, "2,"+ idTipoPersona);
+			 // MyLogger.Logger.log(Level.INFO, "3,"+ idGarantia);			
+			 // MyLogger.Logger.log(Level.INFO, "id Personav = " + idPersona);
+			 // MyLogger.Logger.log(Level.INFO, "id garantia = " + idGarantia);
+			// MyLogger.Logger.log(Level.INFO, "id tipopersona = " + idTipoPersona);
 			
 			cs.setInt(1, idPersona);
 			cs.setInt(2, idTipoPersona);	
@@ -334,12 +334,15 @@ public class ModificacionDAO {
 			cs.registerOutParameter(4, Types.INTEGER);
 			cs.registerOutParameter(5, Types.INTEGER);
 			cs.registerOutParameter(6, Types.VARCHAR);	
+			// cs.registerOutParameter(6, Types.VARCHAR);	
 			
 			cs.executeQuery();
-			MyLogger.Logger.log(Level.INFO, "4 "+ cs.getInt(4));
-			MyLogger.Logger.log(Level.INFO, "5 "+ cs.getInt(5));
-			MyLogger.Logger.log(Level.INFO, "6 "+ cs.getString(6));
+			// MyLogger.Logger.log(Level.INFO, "4 "+ cs.getInt(4)); 82547
+			// MyLogger.Logger.log(Level.INFO, "5 "+ cs.getInt(5)); 
+			// MyLogger.Logger.log(Level.INFO, "6 "+ cs.getString(6));
 			int idGenerado = cs.getInt(5);
+			MyLogger.Logger.log(Level.INFO, "Parametros de los Querys para alterar tramite: " + cs);
+			MyLogger.Logger.log(Level.INFO, "Parametro 1: " + idPersona + " Parametro 2: "+ idTipoPersona + " parametro 3: " + idGarantia + " parametro 4" + cs.getInt(4) + " parametro 5: " + cs.getInt(5) + " parametro 6: " + cs.getString(6));
 			if (idGenerado == 0){
 				regresa= cs.getInt(4);
 			}else{
@@ -580,12 +583,12 @@ public class ModificacionDAO {
 //	    peIdTramiteTemp            IN  RUG_REL_TRAM_INC_GARAN.ID_TRAMITE_TEMP%TYPE,  --  IDENTIFICADOR DEL TRAMITE ASOCIADO A LA GARANTIA
 //	    peIdGarantia                   IN  RUG_GARANTIAS_PENDIENTES.ID_GARANTIA_PEND%TYPE,    --  IDENTIFICADOR DE LA GARANTIA
 //	    peIdTipoGarantia             IN  RUG_GARANTIAS_PENDIENTES.ID_TIPO_GARANTIA%TYPE,  --IDENTIFICADOR DEL TIPO DE GARANTIA QUE SE INSCRIBE
-//	    peFechaCelebGarantia     IN  RUG_GARANTIAS_PENDIENTES.FECHA_INSCR %TYPE, -- Fecha de celebración del Acto o Contrato, que crea la garantia
+//	    peFechaCelebGarantia     IN  RUG_GARANTIAS_PENDIENTES.FECHA_INSCR %TYPE, -- Fecha de celebraciï¿½n del Acto o Contrato, que crea la garantia
 //	    peMontoMaxGarantizado    IN  RUG_GARANTIAS_PENDIENTES.MONTO_MAXIMO_GARANTIZADO%TYPE,
 //	    peIdMoneda                      IN  RUG_CAT_MONEDAS.ID_MONEDA%TYPE,
 //	    peTipoBien                        IN  VARCHAR2,  --CADENA QUE CONTIENE LOS IDS TIPOS DE BIENES QUE INTEGRA UNA GARANTIA,
 //	    peDescGarantia                 IN  RUG_GARANTIAS_PENDIENTES.DESC_GARANTIA%TYPE,
-//	    peCambiosBienesMonto     IN  RUG_GARANTIAS_PENDIENTES.CAMBIOS_BIENES_MONTO%TYPE, --  El Acto o Contrato prevé incrementos, reducciones o 
+//	    peCambiosBienesMonto     IN  RUG_GARANTIAS_PENDIENTES.CAMBIOS_BIENES_MONTO%TYPE, --  El Acto o Contrato prevï¿½ incrementos, reducciones o 
 //	    peInstrumentoPublico         IN  RUG_GARANTIAS_PENDIENTES.INSTRUMENTO_PUBLICO%TYPE,
 //	    peOtrosTerminosG            IN  RUG_GARANTIAS_PENDIENTES.OTROS_TERMINOS_GARANTIA%TYPE,
 //	    peTipoContratoOb             IN  RUG_CONTRATO.TIPO_CONTRATO%TYPE,

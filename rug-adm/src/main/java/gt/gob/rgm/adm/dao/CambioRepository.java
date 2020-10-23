@@ -63,7 +63,6 @@ public class CambioRepository {
 			if(restrictions != null) {
 				restrictions = cb.and(restrictions,
 					cb.between(cambios.get("fechaRegistro"), fechaInicio, fechaFin));
-                                
 			} else {
 				restrictions = cb.between(cambios.get("fechaRegistro"), fechaInicio, fechaFin);
 			}
@@ -113,7 +112,8 @@ public class CambioRepository {
 		
 		if(fechaInicio != null) {			
 			if(restrictions != null) {
-				restrictions = cb.and(restrictions, cb.between(cambios.get("fechaRegistro"), fechaInicio, fechaFin));
+				restrictions = cb.and(restrictions,
+					cb.between(cambios.get("fechaRegistro"), fechaInicio, fechaFin));
 			} else {
 				restrictions = cb.between(cambios.get("fechaRegistro"), fechaInicio, fechaFin);
 			}

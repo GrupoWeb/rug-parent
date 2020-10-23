@@ -183,7 +183,15 @@
 	        <artifactId>barcodes</artifactId>
 	        <version>${itext.version}</version>
 	    </dependency>
-	
+            <!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itext7-core</artifactId>
+                <version>7.1.12</version>
+                <type>pom</type>
+            </dependency>
+
+
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
@@ -269,7 +277,7 @@
 		</dependency>
 		<dependency>
 		    <groupId>mx.gob.rug</groupId>
-		    <artifactId>firmacentral</artifactId>
+		    <artifactId>firmacentral</artifactId> 
 		    <version>1.0.0</version>
 		    <scope>provided</scope>
 		</dependency>
@@ -284,6 +292,8 @@
 		    <artifactId>rgm-firma</artifactId>
 		    <version>1.0.0</version>
 		</dependency>
+                
+
 	</dependencies>
 	<build>
 		<resources>

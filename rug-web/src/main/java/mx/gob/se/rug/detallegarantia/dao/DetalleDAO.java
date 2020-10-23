@@ -321,7 +321,7 @@ public class DetalleDAO{
 			ps.setInt(1, idgarantia);	
 			ps.setInt(2, idtramite);
 			System.out.println("sql:  " + sqlQuery);
-			System.out.println("params: " + ps);
+			System.out.println("parametros: " + ps);
 			rs = ps.executeQuery();
 			if(rs.next()){
 				detalle.setIdgarantia(idgarantia);
@@ -419,10 +419,13 @@ public class DetalleDAO{
 			ps.setInt(1, idgarantia);	
 			ps.setInt(2, idtramite);
 			System.out.println("sql:  " + sqlQuery);
-			System.out.println("params: " + ps);
+			//System.out.println("params update: " + ps);
+                        System.out.println("params update:  garantia->" + idgarantia + " tramite->" + idtramite);
 			//DateUtilRug dur = new DateUtilRug();
 			rs = ps.executeQuery();
+                        
 			if(rs.next()){
+                                
 				detalle.setIdgarantia(idgarantia);
 				detalle.setIdtipogarantia(new Integer(rs.getInt("ID_TIPO_GARANTIA")));
 				detalle.setTipogarantia(rs.getString("TIPO_GARANTIA"));				
@@ -460,7 +463,7 @@ public class DetalleDAO{
 				} else { 
 					detalle.setOtrosterminos(rs.getString("OBSERVACIONES"));
 				}
-				System.out.println("--------------"+rs.getInt("VIGENCIA"));
+				System.out.println("-------------- Vigencia"+rs.getInt("VIGENCIA"));
 				detalle.setVigencia(rs.getInt("VIGENCIA"));
 				//System.out.println("rs.getInt('RELACION_BIEN') " + rs.getInt("RELACION_BIEN"));
 				if(rs.getInt("RELACION_BIEN")==0 ){
@@ -498,12 +501,16 @@ public class DetalleDAO{
 					detalle.setNoGarantiaPreviaOt("");
 				}else{detalle.setNoGarantiaPreviaOt(rs.getString("NO_GARANTIA_PREVIA_OT"));}
 			}
+                           
+                        
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+                        //System.out.println("detalle:  = " + detalle );
 		}finally{
 			bd.close(connection,rs,ps);
 		}
+                
 		return detalle;
 	}
 
@@ -705,6 +712,7 @@ public class DetalleDAO{
 		ConexionBD bd = new ConexionBD();
 		Connection connection = bd.getConnection();
 		String sql = "";
+                System.out.println("Tramite Query = " + idTramite);
 		
 		if(pQuery == 1) {
 			sql = "SELECT ID_GARAN_BIEN_PEND,ID_TRAMITE_TEMP,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN " +

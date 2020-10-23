@@ -1,9 +1,12 @@
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@page import="mx.gob.se.rug.garantia.dao.GarantiasDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <div class="section"></div>
 <main>
+    
+      
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col s12 l6">

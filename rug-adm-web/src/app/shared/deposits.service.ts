@@ -19,6 +19,7 @@ export class DepositsService {
   constructor(private http: HttpClient) {}
 
   getDeposits() {
+
     return this.deposits.slice();
   }
 
@@ -51,6 +52,7 @@ export class DepositsService {
       param += (param.length === 0 ? '?' : '&') + 'page=' + page + '&size=' + size;
     }
     param += (filtro != null && filtro.getFilter().length > 0) ? (param.length === 0 ? '?' : '&') + filtro.getFilter() : '';
+    // console.log("parametro: ", param, " url ", environment.api_url);
     return this.http.get<ResponseRs>(environment.api_url + '/boletas' + param);
   }
 

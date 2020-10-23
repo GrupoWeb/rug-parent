@@ -6,211 +6,226 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the TRAMITES database table.
- * 
+ *
  */
 @Entity
-@Table(name="TRAMITES")
-@NamedQuery(name="Tramites.findAll", query="SELECT t FROM Tramites t")
+@Table(name = "TRAMITES")
+@NamedQuery(name = "Tramites.findAll", query = "SELECT t FROM Tramites t")
 public class Tramites implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="ID_TRAMITE")
-	private long idTramite;
+    private static final long serialVersionUID = 1L;
 
-	@Column(name="B_CARGA_MASIVA")
-	private Integer bCargaMasiva;
+    @Id
+    @Column(name = "ID_TRAMITE")
+    private long idTramite;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="FECH_PRE_INSCR")
-	private Date fechPreInscr;
+    @Column(name = "B_CARGA_MASIVA")
+    private Integer bCargaMasiva;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="FECHA_CREACION")
-	private Date fechaCreacion;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "FECH_PRE_INSCR")
+    private Date fechPreInscr;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="FECHA_INSCR")
-	private Date fechaInscr;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "FECHA_CREACION")
+    private Date fechaCreacion;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="FECHA_STATUS")
-	private Date fechaStatus;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "FECHA_INSCR")
+    private Date fechaInscr;
 
-	@Column(name="ID_PASO")
-	private Integer idPaso;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "FECHA_STATUS")
+    private Date fechaStatus;
 
-	@Column(name="ID_PERSONA")
-	private Long idPersona;
+    @Column(name = "ID_PASO")
+    private Integer idPaso;
 
-	@Column(name="ID_STATUS_TRAM")
-	private Integer idStatusTram;
+    @Column(name = "ID_PERSONA")
+    private Long idPersona;
 
-	@Column(name="ID_TRAMITE_TEMP")
-	private Long idTramiteTemp;
-	
-	@OneToOne
-	@JoinColumn(name="ID_TRAMITE_TEMP", insertable=false, updatable=false)
-	private TramitesRugIncomp tramiteIncomp;
+    @Column(name = "ID_STATUS_TRAM")
+    private Integer idStatusTram;
 
-	@Column(name="STATUS_REG")
-	private String statusReg;
+    @Column(name = "ID_TRAMITE_TEMP")
+    private Long idTramiteTemp;
 
-	//bi-directional many-to-one association to RugGarantia
-	/*@OneToOne
+    @OneToOne
+    @JoinColumn(name = "ID_TRAMITE_TEMP", insertable = false, updatable = false)
+    private TramitesRugIncomp tramiteIncomp;
+
+    //Join OneToMany Contratos
+//    @OneToMany
+//    @JoinColumn(name = "ID_TRAMITE_TEMP", insertable = false, updatable = false)
+//    private RugContrato tramiteContrato;
+
+    @Column(name = "STATUS_REG")
+    private String statusReg;
+
+    //bi-directional many-to-one association to RugGarantia
+    /*@OneToOne
 	@JoinColumn(name="ID_TRAMITE", referencedColumnName="ID_ULTIMO_TRAMITE", insertable=false, updatable=false)
 	private RugGarantias garantia;*/
+    //bi-directional many-to-one association to RugCatTipoTramite
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_TIPO_TRAMITE")
+    private RugCatTipoTramite tipoTramite;
 
-	//bi-directional many-to-one association to RugCatTipoTramite
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="ID_TIPO_TRAMITE")
-	private RugCatTipoTramite tipoTramite;
-	
-	//@OneToMany(mappedBy="tramite", fetch=FetchType.LAZY)
-	@OneToMany
-	@JoinColumn(name="ID_TRAMITE")
-	private List<RugRelTramPartes> partes;
-	
-	@ManyToOne
-	@JoinColumn(name="ID_PERSONA", insertable=false, updatable=false)
-	private RugSecuUsuario usuario;
-	
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="ID_TRAMITE", referencedColumnName="ID_TRAMITE", insertable=false, updatable=false)
-	private List<RugRelTramGaran> relGarantia;
-	
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="ID_TRAMITE_CERT", referencedColumnName="ID_TRAMITE", insertable=false, updatable=false)
-	private List<RugCertificaciones> certificacion;
+    //@OneToMany(mappedBy="tramite", fetch=FetchType.LAZY)
+    @OneToMany
+    @JoinColumn(name = "ID_TRAMITE")
+    private List<RugRelTramPartes> partes;
 
-	public Tramites() {
-	}
+    @ManyToOne
+    @JoinColumn(name = "ID_PERSONA", insertable = false, updatable = false)
+    private RugSecuUsuario usuario;
 
-	public long getIdTramite() {
-		return this.idTramite;
-	}
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_TRAMITE", referencedColumnName = "ID_TRAMITE", insertable = false, updatable = false)
+    private List<RugRelTramGaran> relGarantia;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_TRAMITE_TEMP", referencedColumnName = "ID_TRAMITE_TEMP", insertable = false, updatable = false)
+    private List<RugContrato> contrato;
 
-	public void setIdTramite(long idTramite) {
-		this.idTramite = idTramite;
-	}
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_TRAMITE_CERT", referencedColumnName = "ID_TRAMITE", insertable = false, updatable = false)
+    private List<RugCertificaciones> certificacion;
 
-	public Integer getBCargaMasiva() {
-		return this.bCargaMasiva;
-	}
+    public List<RugContrato> getContrato() {
+        return contrato;
+    }
 
-	public void setBCargaMasiva(Integer bCargaMasiva) {
-		this.bCargaMasiva = bCargaMasiva;
-	}
+    public void setContrato(List<RugContrato> contrato) {
+        this.contrato = contrato;
+    }
 
-	public Date getFechPreInscr() {
-		return this.fechPreInscr;
-	}
 
-	public void setFechPreInscr(Date fechPreInscr) {
-		this.fechPreInscr = fechPreInscr;
-	}
+    public Tramites() {
+    }
 
-	public Date getFechaCreacion() {
-		return this.fechaCreacion;
-	}
+    public long getIdTramite() {
+        return this.idTramite;
+    }
 
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
+    public void setIdTramite(long idTramite) {
+        this.idTramite = idTramite;
+    }
 
-	public Date getFechaInscr() {
-		return this.fechaInscr;
-	}
+    public Integer getBCargaMasiva() {
+        return this.bCargaMasiva;
+    }
 
-	public void setFechaInscr(Date fechaInscr) {
-		this.fechaInscr = fechaInscr;
-	}
+    public void setBCargaMasiva(Integer bCargaMasiva) {
+        this.bCargaMasiva = bCargaMasiva;
+    }
 
-	public Date getFechaStatus() {
-		return this.fechaStatus;
-	}
+    public Date getFechPreInscr() {
+        return this.fechPreInscr;
+    }
 
-	public void setFechaStatus(Date fechaStatus) {
-		this.fechaStatus = fechaStatus;
-	}
+    public void setFechPreInscr(Date fechPreInscr) {
+        this.fechPreInscr = fechPreInscr;
+    }
 
-	public Integer getIdPaso() {
-		return this.idPaso;
-	}
+    public Date getFechaCreacion() {
+        return this.fechaCreacion;
+    }
 
-	public void setIdPaso(Integer idPaso) {
-		this.idPaso = idPaso;
-	}
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
 
-	public Long getIdPersona() {
-		return this.idPersona;
-	}
+    public Date getFechaInscr() {
+        return this.fechaInscr;
+    }
 
-	public void setIdPersona(Long idPersona) {
-		this.idPersona = idPersona;
-	}
+    public void setFechaInscr(Date fechaInscr) {
+        this.fechaInscr = fechaInscr;
+    }
 
-	public Integer getIdStatusTram() {
-		return this.idStatusTram;
-	}
+    public Date getFechaStatus() {
+        return this.fechaStatus;
+    }
 
-	public void setIdStatusTram(Integer idStatusTram) {
-		this.idStatusTram = idStatusTram;
-	}
+    public void setFechaStatus(Date fechaStatus) {
+        this.fechaStatus = fechaStatus;
+    }
 
-	public Long getIdTramiteTemp() {
-		return this.idTramiteTemp;
-	}
+    public Integer getIdPaso() {
+        return this.idPaso;
+    }
 
-	public void setIdTramiteTemp(Long idTramiteTemp) {
-		this.idTramiteTemp = idTramiteTemp;
-	}
-	
+    public void setIdPaso(Integer idPaso) {
+        this.idPaso = idPaso;
+    }
 
-	public String getStatusReg() {
-		return this.statusReg;
-	}
+    public Long getIdPersona() {
+        return this.idPersona;
+    }
 
-	public TramitesRugIncomp getTramiteIncomp() {
-		return tramiteIncomp;
-	}
+    public void setIdPersona(Long idPersona) {
+        this.idPersona = idPersona;
+    }
 
-	public void setTramiteIncomp(TramitesRugIncomp tramiteIncomp) {
-		this.tramiteIncomp = tramiteIncomp;
-	}
+    public Integer getIdStatusTram() {
+        return this.idStatusTram;
+    }
 
-	public void setStatusReg(String statusReg) {
-		this.statusReg = statusReg;
-	}
+    public void setIdStatusTram(Integer idStatusTram) {
+        this.idStatusTram = idStatusTram;
+    }
 
-	/*public RugGarantias getGarantia() {
+    public Long getIdTramiteTemp() {
+        return this.idTramiteTemp;
+    }
+
+    public void setIdTramiteTemp(Long idTramiteTemp) {
+        this.idTramiteTemp = idTramiteTemp;
+    }
+
+    public String getStatusReg() {
+        return this.statusReg;
+    }
+
+    public TramitesRugIncomp getTramiteIncomp() {
+        return tramiteIncomp;
+    }
+
+    public void setTramiteIncomp(TramitesRugIncomp tramiteIncomp) {
+        this.tramiteIncomp = tramiteIncomp;
+    }
+
+    public void setStatusReg(String statusReg) {
+        this.statusReg = statusReg;
+    }
+
+    /*public RugGarantias getGarantia() {
 		return garantia;
 	}
 
 	public void setGarantia(RugGarantias garantia) {
 		this.garantia = garantia;
 	}*/
+    public RugCatTipoTramite getTipoTramite() {
+        return tipoTramite;
+    }
 
-	public RugCatTipoTramite getTipoTramite() {
-		return tipoTramite;
-	}
+    public void setTipoTramite(RugCatTipoTramite tipoTramite) {
+        this.tipoTramite = tipoTramite;
+    }
 
-	public void setTipoTramite(RugCatTipoTramite tipoTramite) {
-		this.tipoTramite = tipoTramite;
-	}
+    public List<RugRelTramPartes> getPartes() {
+        return this.partes;
+    }
 
-	public List<RugRelTramPartes> getPartes() {
-		return this.partes;
-	}
+    public void setPartes(List<RugRelTramPartes> partes) {
+        this.partes = partes;
+    }
 
-	public void setPartes(List<RugRelTramPartes> partes) {
-		this.partes = partes;
-	}
-
-	/*public RugRelTramPartes addPartes(RugRelTramPartes partes) {
+    /*public RugRelTramPartes addPartes(RugRelTramPartes partes) {
 		getPartes().add(partes);
 		partes.setTramite(this);
 
@@ -223,28 +238,27 @@ public class Tramites implements Serializable {
 
 		return partes;
 	}*/
+    public RugSecuUsuario getUsuario() {
+        return usuario;
+    }
 
-	public RugSecuUsuario getUsuario() {
-		return usuario;
-	}
+    public void setUsuario(RugSecuUsuario usuario) {
+        this.usuario = usuario;
+    }
 
-	public void setUsuario(RugSecuUsuario usuario) {
-		this.usuario = usuario;
-	}
+    public List<RugRelTramGaran> getRelGarantia() {
+        return relGarantia;
+    }
 
-	public List<RugRelTramGaran> getRelGarantia() {
-		return relGarantia;
-	}
+    public void setRelGarantia(List<RugRelTramGaran> relGarantia) {
+        this.relGarantia = relGarantia;
+    }
 
-	public void setRelGarantia(List<RugRelTramGaran> relGarantia) {
-		this.relGarantia = relGarantia;
-	}
+    public List<RugCertificaciones> getCertificacion() {
+        return certificacion;
+    }
 
-	public List<RugCertificaciones> getCertificacion() {
-		return certificacion;
-	}
-
-	public void setCertificacion(List<RugCertificaciones> certificacion) {
-		this.certificacion = certificacion;
-	}
+    public void setCertificacion(List<RugCertificaciones> certificacion) {
+        this.certificacion = certificacion;
+    }
 }

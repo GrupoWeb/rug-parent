@@ -3,6 +3,8 @@ import { ExternalUser } from "../shared/external-user.model";
 export class Guarantee {
   public idGarantia: number;
   public descGarantia: string;
+  public tipoContrato: string;
+  public otrosTerminos: string;
   public esPrioritaria: string;
   public fechaFinGar: Date;
   public fechaInscr: Date;

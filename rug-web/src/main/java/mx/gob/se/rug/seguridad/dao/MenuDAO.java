@@ -113,7 +113,7 @@ public class MenuDAO {
 			try {
 				connection = bd.getConnection();
 				ps = connection.prepareStatement(sql);
-				MyLogger.Logger.log(Level.INFO, "idpersona"
+				MyLogger.Logger.log(Level.INFO, "idpersona otro"
 						+ usuarioTO.getPersona().getIdPersona());
 
 				ps.setInt(1, idAcreedor);
@@ -224,7 +224,7 @@ public class MenuDAO {
 
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				MyLogger.Logger.log(Level.INFO, "id_acreedor:::::"
+				MyLogger.Logger.log(Level.INFO, "id_acreedor::::: Certificaciones "
 						+ rs.getString("id_acreedor"));
 				flag = new Boolean(true);
 			}

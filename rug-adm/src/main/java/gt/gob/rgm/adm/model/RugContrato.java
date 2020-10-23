@@ -53,11 +53,13 @@ public class RugContrato implements Serializable {
 	private double montoLimite;
 
 	private String observaciones;
-
-	@Lob
+//
+//	@Lob
 	@Column(name="OTROS_TERMINOS_CONTRATO")
 	private String otrosTerminosContrato;
 
+       
+        
 	@Column(name="STATUS_REG")
 	private String statusReg;
 
@@ -67,6 +69,8 @@ public class RugContrato implements Serializable {
 	public RugContrato() {
 	}
 
+        
+        
 	public long getIdContrato() {
 		return this.idContrato;
 	}

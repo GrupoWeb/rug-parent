@@ -1,10 +1,11 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@page import="mx.gob.se.rug.constants.Constants"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Registro de Garant&iacute;as Mobiliarias</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Registro de Garant&iacute;as Mobiliarias </title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/materialize.min.css">
@@ -62,7 +63,7 @@ Constants.setContextPath(request.getContextPath());
 	        today: 'Hoy',
 	        clear: 'Inicializar',
 	        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-	        weekdaysShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+	        weekdaysShort: ['Dom','Lun','Mar','MiÃ©','Juv','Vie','SÃ¡b'],
 	        close: 'Ok',
 	        closeOnSelect: false,
 	        format: 'dd/mm/yyyy'

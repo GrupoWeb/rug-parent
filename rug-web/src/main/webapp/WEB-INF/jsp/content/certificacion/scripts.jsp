@@ -17,6 +17,8 @@
   function certificacion(garantia, tramite) {	
 		var ruta = '/Rug/home/certificaTramite.do?idGarantia=' + garantia + '&idTramite='+tramite;
 		
+                
+                
 		// obtener el costo de una certificacion: tipo_tramite=5
 		$.ajax({
 			url: '<%= request.getContextPath() %>/rs/tipos-tramite/5',
@@ -42,9 +44,11 @@
 						}
 					}
 				);
+                        
 			}
 		});
 	}
+
 	
   
 </script>

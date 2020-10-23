@@ -1,9 +1,12 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <script type="text/javascript"    src="${pageContext.servletContext.contextPath}/dwr/interface/UsuarioDwrAction.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/validator.min.js"></script>
+<!-- <script src="<%=request.getContextPath()%>/resources/js/validator.min.js"></script> -->
+<script src="<%=request.getContextPath()%>/resources/js/validate.js"></script>
 
 <script type="text/javascript">
+ 
+    
 function onChangePregunta() {
 	var pregunta = $('#pregunta').val();
 	console.log(pregunta);
@@ -182,4 +185,7 @@ function resultadoEliminar(message) {
 		$('#' + idPersona).remove();
 	}
 }
+
+
+
 </script>

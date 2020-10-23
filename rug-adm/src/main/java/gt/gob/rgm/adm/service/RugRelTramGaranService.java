@@ -2,6 +2,7 @@ package gt.gob.rgm.adm.service;
 
 import java.util.List;
 
+
 import gt.gob.rgm.adm.model.RugRelTramGaran;
 
 public interface RugRelTramGaranService {

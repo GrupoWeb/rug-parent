@@ -67,7 +67,7 @@ public class LayoutAction extends RugBaseAction implements ServletRequestAware {
 			u.setPersona(persona);
 			sessionMap.put(mx.gob.se.rug.constants.Constants.USUARIO,u);
 			MyLogger.Logger.log(Level.INFO, "IMPRIME NOMBE 4"+persona.getIdPersona());
-			MyLogger.Logger.log(Level.INFO, "IMPRIME NOMBE 5"+u.getNombre());
+			MyLogger.Logger.log(Level.INFO, "IMPRIME NOMBE 6"+u.getNombre());
 			user.getProfile().setEmail(u.getNombre());
 			sessionMap.put(Constants.SESSION_USER, user);
 //			sessionMap.put("usuario", user.getProfile().getNombre());

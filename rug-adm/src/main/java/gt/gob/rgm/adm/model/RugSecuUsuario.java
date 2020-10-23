@@ -5,17 +5,16 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-
+import javax.persistence.Entity;
 
 /**
  * The persistent class for the RUG_SECU_USUARIOS database table.
  * 
  */
-
 @Entity
 @Table(name="RUG_SECU_USUARIOS")
 @NamedQueries({
-	@NamedQuery(name="RugSecuUsuario.findAll", query="SELECT r FROM RugSecuUsuario r ORDER BY r.persona.codigoRegistro, r.persona.perJuridica"),
+	@NamedQuery(name="RugSecuUsuario.findAll", query="SELECT r FROM RugSecuUsuario r"),
 	@NamedQuery(name="RugSecuUsuario.findNotMigracion", query="SELECT r FROM RugSecuUsuario r WHERE r.cveUsuario NOT LIKE :email AND r.cveInstitucion <> :institucion ORDER BY r.persona.codigoRegistro, r.persona.perJuridica"),
 	@NamedQuery(name="RugSecuUsuario.countAll", query="SELECT COUNT(r) FROM RugSecuUsuario r ORDER BY r.persona.codigoRegistro, r.persona.perJuridica"),
 	@NamedQuery(name="RugSecuUsuario.countNotMigracion", query="SELECT COUNT(r) FROM RugSecuUsuario r WHERE r.cveUsuario NOT LIKE :email AND r.cveInstitucion <> :institucion ORDER BY r.persona.codigoRegistro, r.persona.perJuridica")

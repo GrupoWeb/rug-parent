@@ -8,6 +8,6 @@ public interface RugBoletaPdfService {
     RugBoletaPdf getBoleta(Long id);
     
     List<RugBoletaPdf> getBoletasByTramite(Long idTramite);
-    
+   
     public void saveBoleta(Long idGarantia, byte[] archivo);
 }

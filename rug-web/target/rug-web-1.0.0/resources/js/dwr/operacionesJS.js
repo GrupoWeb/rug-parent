@@ -66,7 +66,7 @@ function iniciaPaginacionPendientes(idPersona, tipoOperacion){
 	
 	if(tipoOperacion==1){
 		showStuff('tabs-1');
-		elementOperacion="OpPendientes";
+		elementOperacion="OpPendientes"; 
 		//document.getElementById('nombreOtorgante').value="";
 		//document.getElementById('datepicker1').value="";
 		//document.getElementById('datepicker2').value="";

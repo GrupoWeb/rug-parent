@@ -19,7 +19,9 @@ public class RugRelTramGaranServiceImp implements RugRelTramGaranService {
 	@Override
 	public RugRelTramGaran findByTramite(Long idTramite) {
 		try {
+                        
 			return tramGaranDao.findByTramite(idTramite);
+                        
 		} catch(NoResultException nre) {
 			return null;
 		}

@@ -46,17 +46,24 @@ export class ExternalUsersService {
         // this.userOperationEnded.next('El usuario ' + updatedUser.name + ' fue ' + mensaje + ' exitosamente.');
       },
       err => console.error(err),
-      () => console.log('Finalizada la actualizacion')
+      () => console.log('Finalizada la actualizacion') 
     );
   }
 
   fetchData(state: string, page: number, size: number, filtro: ExternalUser) {
+
     let param = (state === 'ALL' ? '' : (state === 'ALLNM' ? '?migracion=false' : (state === 'ALLCE' ? '?emailError=true' : '?state=' + state)));
     if (page) {
       param += (param.length === 0 ? '?' : '&') + 'page=' + page + '&size=' + size;
     }
     param += (filtro != null && filtro.getFilter().length > 0) ? (param.length === 0 ? '?' : '&') + filtro.getFilter() : '';
-    return this.http.get<ResponseRs>(environment.api_url + '/secu-usuarios' + param);
+    console.log("url: ", environment.api_url, " parametro: " , param);
+
+    let  resultado = this.http.get<ResponseRs>(environment.api_url + '/secu-usuarios' + param);
+    // console.log(resultado);
+    // return resultado;
+    return this.http.get<ResponseRs>(environment.api_url + '/secu-usuarios' + param); 
+    // return this.http.get<ResponseRs>(environment.api_url + '/secu-usuarios' + param);
   }
 
   fetchCountData(filter: StatsFilter) {

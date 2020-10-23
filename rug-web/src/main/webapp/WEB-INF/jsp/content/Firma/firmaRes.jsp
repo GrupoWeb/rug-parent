@@ -12,7 +12,7 @@
 						<div class="row">
 							<p><span>A finalizado la operaci&oacute;n existosamente.</span></p>
 							<p><span>Para descargar e imprimir la boleta dar click en el siguiente bot&oacute;n:</span></p>
-							<a class="btn btn-large waves-effect indigo" href="<%= request.getContextPath() %>/pdf.pdo"> Descargar PDF </a> <br/>
+							<a class="btn btn-large waves-effect indigo" href="<%= request.getContextPath() %>/pdf.pdo" target="_blank"> Descargar PDF </a> <br/>
 							<a href="<%= request.getContextPath() %>/carga/masiva/descargaArchivo.servlet?idArchivo=<s:property value="idArchivoRes"/>" > Descargar XML de resultado </a>
 						</div>	
 					</div>

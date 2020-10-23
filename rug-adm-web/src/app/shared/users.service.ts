@@ -55,6 +55,7 @@ export class UsersService {
   }
 
   login(email: string, password: string) {
+    console.log('Login: ' , environment.api_url + '/usuarios/login' )
     return this.http.post<User>(environment.api_url + '/usuarios/login', {
       email: email,
       password

@@ -7,6 +7,7 @@ gt\gob\rgm\adm\model\RugRelTramPartes.class
 gt\gob\rgm\adm\SecuredResourceFilter.class
 gt\gob\rgm\adm\service\FilesServlet.class
 gt\gob\rgm\adm\rs\IncidenteRs.class
+gt\gob\rgm\adm\dao\conectiondB.class
 gt\gob\rgm\adm\domain\GarantiaStats.class
 gt\gob\rgm\adm\rs\ChatBotRs.class
 gt\gob\rgm\adm\model\RugPersonasHPK.class
@@ -59,6 +60,7 @@ gt\gob\rgm\adm\rs\JaxRsActivator.class
 gt\gob\rgm\adm\rs\MailRs.class
 gt\gob\rgm\adm\dao\VDetalleGarantiaRepository.class
 gt\gob\rgm\adm\service\RugPersonasServiceImp.class
+gt\gob\rgm\adm\dao\BaseRugDao.class
 gt\gob\rgm\adm\rs\AdjuntoRs.class
 gt\gob\rgm\adm\service\RugPreguntaServiceImp.class
 gt\gob\rgm\adm\service\CambioServiceImp.class

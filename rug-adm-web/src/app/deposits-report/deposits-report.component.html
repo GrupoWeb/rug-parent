@@ -74,8 +74,9 @@
                       <th>
                         <select materialize="material_select" #filBancoInput [(ngModel)]="filBanco" (ngModelChange)="filBancoChanged($event)">
                           <option value="" selected>Todos</option>
-                          <option value="1">Banrural</option>
+                          <option value="1">Banrural </option>
                           <option value="2">CHN</option>
+                          <option value="BI3">Banco Industrial</option>
                         </select>
                       </th>
                       <th><input type="text" #filBoletaInput [(ngModel)]="filBoleta" (ngModelChange)="filBoletaChanged($event)" [ngModelOptions]="{updateOn: 'blur'}" (keyup.enter)="onFilBoleta()"></th>

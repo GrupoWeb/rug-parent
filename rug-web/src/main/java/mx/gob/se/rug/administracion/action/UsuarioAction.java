@@ -371,7 +371,7 @@ public class UsuarioAction extends RugBaseAction /* implements CaptchaAction */{
 		personaFisica.getDatosContacto().setEmailPersonal(mail.toLowerCase());
 		registroUsuario.setTipoOperacion(OPERACION_I);
 		registroUsuario.setPassword("temporal123");
-		if (registroUsuario.getTipoUsuario().equals("Soporte Tï¿½cnico")) {
+		if (registroUsuario.getTipoUsuario().equals("Soporte Técnico")) {
 			registroUsuario.setIdGrupo("16");
 			registroUsuario.setTipoUsuario("ACREEDOR");
 		}

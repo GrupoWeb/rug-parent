@@ -177,6 +177,7 @@ C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\inscripcion\to\Vig
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\masiva\to\string\DatosGarantia.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\cancelacionAnotacionSNGarantia\dao\CancelacionAnotacionSNGarantiaDAO.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\dto\Extranjero.java
+C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\util\pdf\FileOutputstream.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\to\TipoPersona.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\masiva\to\AcreedorAutoridad.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\to\GaranteTO.java
@@ -411,6 +412,7 @@ C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\operaciones\servic
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\usuario\dao\ControlUsuarioDao.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\action\CertificaBoletaAction.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\to\TelefonoTO.java
+C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\util\pdf\CreateSignature.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\pago\to\PagoTO.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\exception\AnotacionGarantiaException.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\fwk\action\RugBaseAction.java
@@ -421,6 +423,7 @@ C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\administracion\act
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\util\pdf\QRCodeTagWorker.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\masiva\to\string\AvisoPreventivo.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\masiva\to\string\Deudor.java
+C:\angular\src\rug-parent\rug-web\src\main\java\gt\gob\rgm\rs\VehiculosTest.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\inscripcion\to\InscripcionTO.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\masiva\to\string\AcreedorAutoridad.java
 C:\angular\src\rug-parent\rug-web\src\main\java\mx\gob\se\rug\boleta\to\FirmaMasivaTO.java

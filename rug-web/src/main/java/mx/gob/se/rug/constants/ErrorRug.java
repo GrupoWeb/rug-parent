@@ -19,7 +19,7 @@ public class ErrorRug {
 			regresa = new String (ErrorRug.errorRug.get(idError));
 		}catch(Exception e){
 			MyLogger.Logger.log(Level.WARNING, "No se encontro el id del error "+idError);
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 		return regresa;

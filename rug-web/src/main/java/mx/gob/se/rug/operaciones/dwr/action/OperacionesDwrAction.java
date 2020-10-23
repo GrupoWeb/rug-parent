@@ -220,7 +220,7 @@ public class OperacionesDwrAction extends AbstractBaseDwrAction {
 				operacionesTO = it.next();
 				sb.append(" <tr> ");		
 				if (operacionesTO.getTipoTransaccion().contains("sin")){
-					sb.append(" <td class=\"cuerpo1TablaResumen\"><div align=\"center\"> Anotaciï¿½n </div></td> ");
+					sb.append(" <td class=\"cuerpo1TablaResumen\"><div align=\"center\"> Anotación </div></td> ");
 				}else{
 					sb.append(" <td class=\"cuerpo1TablaResumen\"><div align=\"center\">"+operacionesTO.getTipoTransaccion()+"</div></td> ");
 				}				

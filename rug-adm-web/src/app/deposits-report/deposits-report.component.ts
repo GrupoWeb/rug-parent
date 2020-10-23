@@ -62,6 +62,7 @@ export class DepositsReportComponent implements OnInit {
     this.httpSubscription = this.depositsService.fetchData(null, this.currentPage, this.pageSize, this.filtro).subscribe(
       res => {
         this.deposits = res.data;
+        
         this.total = res.total;
         this.depositsService.addDeposits(this.deposits);
       },
@@ -75,6 +76,7 @@ export class DepositsReportComponent implements OnInit {
     this.localSubscription = this.depositsService.depositsChanged.subscribe(
       (deposits: Deposit[]) => {
         this.deposits = deposits;
+       
         this.closeModalReject();
         this.loading = false;
         this.loadingService.changeLoading(this.loading);
@@ -177,8 +179,10 @@ export class DepositsReportComponent implements OnInit {
     this.loading = true;
     this.loadingService.changeLoading(this.loading);
     this.httpSubscription = this.depositsService.fetchData(null, null, null, this.filtro).subscribe(
+      
       res => {
         this.exportDeposits = res.data;
+       
         const temp = this.exportDeposits.map(el => ({
           "Fecha": moment(el.fechaHora, 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY HH:mm:ss'),
           "Banco": this.banco.transform(el.agencia),

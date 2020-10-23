@@ -21,7 +21,7 @@
                     <th>Boleta</th>
                     <th>Persona</th>
                     <th>Monto</th>
-                    <th>Tipo de pago</th>
+                    <th>Tipo de pago</th> 
                     <th>Opciones</th>
                   </tr>
                   <tr>
@@ -30,8 +30,9 @@
                       <!-- <input type="text" #filBancoInput [(ngModel)]="filBanco" (ngModelChange)="filBancoChanged($event)" [ngModelOptions]="{updateOn: 'blur'}" (keyup.enter)="onFilBanco()"> -->
                       <select materialize="material_select" #filBancoInput [(ngModel)]="filBanco" (ngModelChange)="filBancoChanged($event)">
                         <option value="" selected>Todos</option>
-                        <option value="1">Banrural</option>
+                        <option value="1">Banrural </option>
                         <option value="2">CHN</option>
+                        <option value="BI3">Banco Industrial</option>
                       </select>
                     </th>
                     <th><input type="text" #filBoletaInput [(ngModel)]="filBoleta" (ngModelChange)="filBoletaChanged($event)" [ngModelOptions]="{updateOn: 'blur'}" (keyup.enter)="onFilBoleta()"></th>
