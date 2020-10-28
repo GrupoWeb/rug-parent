@@ -46,6 +46,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 		try {
 			Integer	inicio = 1;
 			Integer	fin = 20;
+                        // donde se mide el saldo del usuario
 			if(inscripcionService.getSaldoByUsuario(idPersona,Integer.valueOf(idTipoTramite),0)) {
 			
 				List<BusquedaTO> busquedaGeneral = busquedaDAO.busqueda(busquedaInTO, inicio, fin);
