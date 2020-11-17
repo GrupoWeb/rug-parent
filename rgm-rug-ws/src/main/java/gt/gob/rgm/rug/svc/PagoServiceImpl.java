@@ -108,6 +108,9 @@ public class PagoServiceImpl implements PagoServicePortType{
 		Float chequespropios = 0.0f;
 		Float chequesotros = 0.0f;
 		String noCheques = "NO";
+                String AgenciaID = setBoletaRGMRequest.getPAgencia().toString();
+                String AgenciaBI = "BI3";
+                String AgenciaB3 = "BI3";
 				
 		VCodigoPersonas rugPersona = new VCodigoPersonas();
 		
@@ -153,8 +156,11 @@ public class PagoServiceImpl implements PagoServicePortType{
 				}
 				
 				float montoFinal = efectivo;
+                                
+                                System.out.println("Agencia: " + setBoletaRGMRequest.getPAgencia().toString());
 				
-				if(setBoletaRGMRequest.getTipoPago()==null) {					
+				if(setBoletaRGMRequest.getTipoPago()==null) {
+                                    System.out.println("Nulo");
 					if(chequesotros > 0 && chequespropios > 0 ) {
 						boleta.setCodigoTramite(4); //Mixto con cheques otros bancos
 					} else if(chequesotros > 0 && efectivo > chequesotros) {
@@ -171,7 +177,9 @@ public class PagoServiceImpl implements PagoServicePortType{
 					}
 												
 				} else {
-					boleta.setCodigoTramite(setBoletaRGMRequest.getTipoPago().intValue());
+                                    boleta.setCodigoTramite(setBoletaRGMRequest.getTipoPago().intValue());
+                                    if(setBoletaRGMRequest.getPAgencia().equalsIgnoreCase("BI3")){
+                                        System.out.println("si");
                                         if(chequespropios > 0 && efectivo > 0){
                                             montoFinal = chequespropios + efectivo;
                                         }else if(chequespropios > 0 && efectivo == 0){
@@ -181,10 +189,15 @@ public class PagoServiceImpl implements PagoServicePortType{
                                         }else{
                                             montoFinal = 0.0f;
                                         }
+                                        
+                                        
+                                    }else{
+                                        System.out.println("no");
+                                    }
+					
 				}
 					
-                                System.out.println("montoFinal = " + montoFinal);
-				boleta.setMonto(new BigDecimal(montoFinal));
+                                boleta.setMonto(new BigDecimal(montoFinal));
 				boleta.setMontoOtrosBancos(new BigDecimal(chequesotros));
 				boleta.setResolucion(setBoletaRGMRequest.getPReciboContraloria());
 				boleta.setUsuario(setBoletaRGMRequest.getPUsuario());

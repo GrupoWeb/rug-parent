@@ -37,7 +37,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 		busquedaInTO.setIdTipoTramite(idTipoTramite);
 		          
 		MyLogger.Logger.log(Level.INFO,"Id Tramite "+ busquedaInTO.getIdTramite());
-		MyLogger.Logger.log(Level.INFO,"Entro al resBusqueda DWR");
+		MyLogger.Logger.log(Level.INFO,"Entro al resBusqueda saldo");
 		StringBuffer sb = new StringBuffer();
 		BusquedaDAO busquedaDAO =new BusquedaDAO();
 		InscripcionService inscripcionService = new InscripcionServiceImpl(); 
@@ -47,6 +47,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 			Integer	inicio = 1;
 			Integer	fin = 20;
                         // donde se mide el saldo del usuario
+                        MyLogger.Logger.log(Level.INFO,"saldo");
 			if(inscripcionService.getSaldoByUsuario(idPersona,Integer.valueOf(idTipoTramite),0)) {
 			
 				List<BusquedaTO> busquedaGeneral = busquedaDAO.busqueda(busquedaInTO, inicio, fin);
@@ -89,6 +90,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 		DetalleServiceImpl detserv = new DetalleServiceImpl();
 		
 		List <DetalleTO> detalles = detserv.getTramites(new Integer(idGarantia).intValue(), 0);
+                
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -99,7 +101,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 					"						class=\"centered striped bordered responsive-table\">\r\n" + 
 					"						<thead>\r\n" + 
 					"							<tr>\r\n" + 
-					"								<th>N&uacute;mero de Garant&iacute;a</th>\r\n" + 
+					"								<th>N&uacute;mero de  Garant&iacute;a</th>\r\n" + 
 					"								<th>N&uacute;mero de operaci&oacute;n</th>\r\n" + 
 					"								<th>Tipos de operaci&oacute;n</th>\r\n" + 
 					"								<th>Fecha de creaci&oacute;n</th>\r\n" + 

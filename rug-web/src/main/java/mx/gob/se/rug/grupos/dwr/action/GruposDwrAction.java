@@ -136,7 +136,7 @@ public class GruposDwrAction {
 		MessageDwr dwr = new MessageDwr();
 		dwr.setCodeError(0);
 		MyLogger.Logger.log(Level.INFO, "Entro a parte dwr getParteGrupo");
-		MyLogger.Logger.log(Level.INFO, "idPErsona" + idPersona);
+		MyLogger.Logger.log(Level.INFO, "idPErsona 2" + idPersona);
 		MyLogger.Logger.log(Level.INFO, "idAcreedor" + idAcreedor);
 		try {
 			AcreedoresCatalogosDaoJdbcImpl acreedoresCatalogosDao = new AcreedoresCatalogosDaoJdbcImpl();

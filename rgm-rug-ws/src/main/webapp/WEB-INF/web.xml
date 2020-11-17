@@ -11,15 +11,15 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
  
-<!-- 	<servlet> -->
-<!-- 		<servlet-name>pago</servlet-name> -->
-<!-- 		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSSpringServlet</servlet-class> -->
-<!-- 		<load-on-startup>1</load-on-startup> -->
-<!-- 	</servlet> -->
- 
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>pago</servlet-name> -->
-<!-- 		<url-pattern>/PagoService</url-pattern> -->
-<!-- 	</servlet-mapping> -->
- 
+<!--       <servlet>  -->
+<!--                 <servlet-name>pago</servlet-name> -->
+<!--                <servlet-class>com.sun.xml.ws.transport.http.servlet.WSSpringServlet</servlet-class> -->
+<!--                 <load-on-startup>1</load-on-startup> -->
+<!--         </servlet> -->
+
+<!--         <servlet-mapping> -->
+<!--                 <servlet-name>pago</servlet-name> -->
+<!--                 <url-pattern>/PagoService</url-pattern> -->
+<!--         </servlet-mapping> -->
+
 </web-app>

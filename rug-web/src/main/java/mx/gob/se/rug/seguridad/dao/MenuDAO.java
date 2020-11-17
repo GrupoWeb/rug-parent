@@ -28,7 +28,8 @@ public class MenuDAO {
 		try {
 			connection = bd.getConnection();
 			ps = connection.prepareStatement(sql);
-			MyLogger.Logger.log(Level.INFO, "idpersona"		+ usuarioTO.getPersona().getIdPersona());
+                       
+			MyLogger.Logger.log(Level.INFO, "idpersona 3"		+ usuarioTO.getPersona().getIdPersona());
 			ps.setInt(1, usuarioTO.getPersona().getIdPersona());
 			rs = ps.executeQuery();
 			if (rs.next()) {
@@ -62,7 +63,7 @@ public class MenuDAO {
 				try {
 					connection = bd.getConnection();
 					ps = connection.prepareStatement(sql);
-					MyLogger.Logger.log(Level.INFO, "idpersona"
+					MyLogger.Logger.log(Level.INFO, "idpersona 1"
 							+ usuarioTO.getPersona().getIdPersona());
 
 					ps.setInt(1, usuarioTO.getPersona().getIdPersona());
@@ -156,7 +157,7 @@ public class MenuDAO {
 			try {
 				connection = bd.getConnection();
 				ps = connection.prepareStatement(sql);
-				MyLogger.Logger.log(Level.INFO, "idpersona"
+				MyLogger.Logger.log(Level.INFO, "idpersona 2"
 						+ usuarioTO.getPersona().getIdPersona());
 
 				ps.setInt(1, usuarioTO.getPersona().getIdPersona());
@@ -189,7 +190,7 @@ public class MenuDAO {
 		try {
 			connection = bd.getConnection();
 			ps=connection.prepareStatement(sql);
-			MyLogger.Logger.log(Level.INFO, "idpersona" + idUser);
+			MyLogger.Logger.log(Level.INFO, "idpersona 3" + idUser);
 
 			ps.setInt(1, idUser);
 
@@ -218,7 +219,7 @@ public class MenuDAO {
 		try {
 			connection = bd.getConnection();
 			ps=connection.prepareStatement(sql);
-			MyLogger.Logger.log(Level.INFO, "idpersona" + idUser);
+			MyLogger.Logger.log(Level.INFO, "idpersona 4" + idUser);
 
 			ps.setInt(1, idUser);
 
@@ -257,7 +258,7 @@ public class MenuDAO {
 			connection = bd.getConnection();
 			ps = connection.prepareStatement(sql);
 			MyLogger.Logger.log(Level.INFO, "idRecurso" + menuTO.getIdMenu());
-			MyLogger.Logger.log(Level.INFO, "idpersona"
+			MyLogger.Logger.log(Level.INFO, "idpersona 5"
 					+ usuarioTO.getPersona().getIdPersona());
 
 			ps.setInt(1, usuarioTO.getPersona().getIdPersona());

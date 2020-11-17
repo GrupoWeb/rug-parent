@@ -24,18 +24,19 @@ function busquedaDwr(ruta, idPersona, tipoBusqueda, tipoTramite) {
 	if(!isBlank(idGarantia) || !isBlank(nombre) || !isBlank(folioMercantil) || !isBlank(noSerial) || !isBlank(curpOtorgante)|| !isBlank(rfcOtorgante)){
 		BusquedaDwrAction.buscar(idPersona, noSerial, idGarantia, nombre, folioMercantil,descGarantia,curpOtorgante,rfcOtorgante , ruta, tipoTramite, escribeTablaBusqueda);
 	} else {
-		alert("Falta criterio de búsqueda.");
+		alert("Falta criterio de bï¿½squeda.");
 		//displayLoader(false);
 	}
 }
 
 function certificacionDwr(ruta){
+	
 	var idGarantia = trim(getObject('idGarantia').value);
 	
 	if(!isBlank(idGarantia)) {
 		BusquedaDwrAction.tramites(idGarantia, ruta, escribeTablaBusqueda);
 	} else {
-		alert("Falta criterio de búsqueda.");
+		alert("Falta criterio de bï¿½squeda.");
 	}
 	
 }

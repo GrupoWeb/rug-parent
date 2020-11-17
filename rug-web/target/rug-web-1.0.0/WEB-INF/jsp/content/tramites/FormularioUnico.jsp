@@ -116,10 +116,10 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 				 	<div class="row note">
 				    	<span>
 				    	Advertencia: El acreedor garantizado tiene derecho de prelaci&oacute;n sobre el bien objeto de prenda 
-				    	o garant&iacute;a mobiliaria de conformidad con la inscripción original que se oper&oacute; en el Registro de 
+				    	o garant&iacute;a mobiliaria de conformidad con la inscripciï¿½n original que se oper&oacute; en el Registro de 
 				    	la Propiedad. La presente inscripci&oacute;n publicita a terceros en virtud del art. 26 del Decreto 4-2018  
 				    	a trav&eacute;s del sistema electr&oacute;nico por el que opera el Registro de Garant&iacute;as Mobiliarias la afectaci&oacute;n 
-				    	sobre el veh&acute;culo en garantía. 
+				    	sobre el veh&acute;culo en garantï¿½a. 
 						Toda modificaci&oacute;n a esta garant&iacute;a real deber&aacute; operarse en el Registro de Garant&iacute;as Mobiliarias. 	
 				    	</span>
 				 	</div>				 	
@@ -212,7 +212,7 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 									cssClass="validate" maxlength="150" />								
 							</div>
 						</div>
-						<div id="secId2" class="row" style="display: none;"><span class="col s12 center-align">o</span></div>
+						<div id="secId2" class="row" style="display: none;"><span class="col s12 center-align">Y</span></div>
 						<div id="secId3" class="row" style="display: none;">
 							<div class="input-field col s12">
 								<s:textfield name="mdIdentificador2" id="mdIdentificador2"

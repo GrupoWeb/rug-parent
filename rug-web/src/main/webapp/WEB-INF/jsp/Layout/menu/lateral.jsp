@@ -1,4 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@page import="java.util.Iterator"%>
 <%@page import="mx.gob.se.rug.seguridad.to.MenuTO"%>
 <%@page import="mx.gob.se.rug.to.UsuarioTO"%>
@@ -8,17 +10,24 @@
 	<li>
 		<div class="user-view">
 			<div class="background">
-				<div style="width: 100%; height: 100%; background-color: #1c3144c7;"></div>
+				<div class="imgSider"></div>
 			</div>
-			<a href="#"><img class="circle" src="<%=request.getContextPath()%>/resources/imgs/msn-user-profile.png" style="background-color: #e2e5ef;"></a>
-			<a href="#">
+			<!-- <div class="background">
+				<img src="<%=request.getContextPath()%>/resources/imgs/msn-user-profile.png">
+			</div> -->
+			<!-- <a href="#"><img class="circle" src="<%=request.getContextPath()%>/resources/imgs/msn-user-profile.png"
+					style="background-color: #e2e5ef;"></a>
+			<a href="#"> -->
+			<a href="#user"><img class="circle" src="<%=request.getContextPath()%>/resources/imgs/img/user1.png"></a>
+			<!-- <a href="#user"><img class="circle" src="<%=request.getContextPath()%>/resources/imgs/msn-user-profile.png"></a> -->
 				<span class="white-text name">
 					<s:property value="#session.User.profile.nombre" />
-			        <s:property  value="#session.User.profile.apellidoPaterno" />
-			        <s:property value="#session.User.profile.apellidoMaterno" />
+					<s:property value="#session.User.profile.apellidoPaterno" />
+					<s:property value="#session.User.profile.apellidoMaterno" />
 				</span>
 			</a>
-			<a href="#"><span class="white-text email"><s:property value="#session.User.profile.email" /></span></a>
+			<a href="#"><span class="white-text email">
+					<s:property value="#session.User.profile.email" /></span></a>
 		</div>
 	</li>
 	<%

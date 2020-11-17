@@ -9,6 +9,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/materialize.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/custom.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/footable.standalone.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css">
 <!--     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
@@ -18,6 +19,7 @@
 	<script type="text/javascript"    src="${pageContext.servletContext.contextPath}/dwr/engine.js"></script>
 	<script type="text/javascript"	src="${pageContext.servletContext.contextPath}/dwr/util.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/Utils/GeneralUtil.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/custom.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/moment.min.js"></script>
 	<tiles:insertAttribute name=".header-scripts"/>
   </head>

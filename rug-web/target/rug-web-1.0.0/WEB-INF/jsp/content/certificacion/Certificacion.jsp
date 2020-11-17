@@ -26,7 +26,7 @@
 							 	</div>							 	
 							 	<center>
 						            <div class='row'>
-						            	<a class="btn btn-large waves-effect indigo" onclick="tramitesJSP();">Buscar</a>
+						            	<a class="btn btn-large waves-effect indigo" onclick="tramitesJSP(<s:property value="idPersona"/>);">Buscar</a>
 						            </div>
 					          	</center>
 							</s:form>
