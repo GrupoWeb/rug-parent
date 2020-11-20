@@ -5,7 +5,7 @@
 <%@page import="mx.gob.se.rug.seguridad.serviceimpl.MenusServiceImpl"%>
 <%@include file="/WEB-INF/jsp/Layout/menu/applicationCtx.jsp"%>
 <div class="navmenu">
-	<ul>
+	<ul>2
 		<%
 			MenuTO menuTO = new MenuTO(1, request.getContextPath());
 			MenusServiceImpl menuService = (MenusServiceImpl) ctx

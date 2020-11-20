@@ -220,7 +220,10 @@ public class GarantiasDAO extends BaseRugDao {
 			cs.setInt(3, idTipoTramite);
 			cs.setInt(4, idTramite);
 			cs.execute();
+                        
+                        
 			int valor = Integer.valueOf(cs.getInt(1));
+                        
 			if (valor == 1){
 				regresa = true;
 			}			

@@ -1,4 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/dwr/engine.js"></script>
@@ -213,7 +215,7 @@ function sendForm(){
 	  }
 	  
 	  if (!noVacio(observaciones)){
-		alertMaterialize('El campo Datos Adicionales de la garant韆 es obligatorio');
+		alertMaterialize('El campo Datos Adicionales de la garant铆a es obligatorio');
 	    return false;
 	  }
 	   
@@ -231,7 +233,7 @@ function sendForm(){
  function copiaContrato(){
 	  if (!noVacio(getObject('datepicker1').value)){
 	   getObject('cpContrato').checked=0;
-	   alert('El campo Fecha de celebraci髇 del Acto o Contrato es obligatorio');
+	   alert('El campo Fecha de celebraci贸n del Acto o Contrato es obligatorio');
 	   return false;
 	  }
 	  if(getObject('cpContrato').checked){
@@ -277,8 +279,8 @@ function escondePartes(){
 	    
 	    document.getElementById('obligacionDIV').style.visibility = 'hidden';
 	    document.getElementById('obligacionDIV').style.display = 'none';     
-	    document.getElementById('fechaCeleb').innerHTML = '<span class="textoGeneralRojo"> * Fecha de surgimiento del Derecho de Retenci髇 :</span>';
-	    document.getElementById('terIDcond').innerHTML = '<span class="textoGeneralRojo"> * Fundamento Legal del cual surge el Derecho de Retenci髇';
+	    document.getElementById('fechaCeleb').innerHTML = '<span class="textoGeneralRojo"> * Fecha de surgimiento del Derecho de Retenci贸n :</span>';
+	    document.getElementById('terIDcond').innerHTML = '<span class="textoGeneralRojo"> * Fundamento Legal del cual surge el Derecho de Retenci贸n';
 	    break;
 	    
 	   case "12":
@@ -292,8 +294,8 @@ function escondePartes(){
 	   default:
 	    //document.getElementById('obligacionDIV').style.visibility = 'visible';
 	    //document.getElementById('obligacionDIV').style.display = 'block';
-	    //document.getElementById('fechaCeleb').innerHTML = '<span class="textoGeneralRojo"> Fecha de celebraci髇 del acto o contrato :</span>';
-	    //document.getElementById('terIDcond').innerHTML = '<span class="textoGeneralRojo"> T閞minos y Condiciones del Acto o Contrato de la Garant韆 Mobiliaria que desee incluir';
+	    //document.getElementById('fechaCeleb').innerHTML = '<span class="textoGeneralRojo"> Fecha de celebraci贸n del acto o contrato :</span>';
+	    //document.getElementById('terIDcond').innerHTML = '<span class="textoGeneralRojo"> T茅rminos y Condiciones del Acto o Contrato de la Garant铆a Mobiliaria que desee incluir';
 	    break;
 	  }
 }
@@ -330,20 +332,20 @@ function continuar(id){
 	 switch(mensaje.codeError){
 	  	case 0:
 	  		
-	  		//alert("Acreedores tienen folio Electr髇ico "+<s:property value="idInscripcion"/>);
+	  		//alert("Acreedores tienen folio Electr贸nico "+<s:property value="idInscripcion"/>);
 	  		displayLoader(false);
 		  break;
 	  	
 	  	case 1:
-	  		displayMessageFolioElectronicoAcreedores(true,'Folio Electr髇ico','El Acreedor Representado para esta garant韆 no cuenta con Folio Electr髇ico','continuar('+mensaje.codeError+')','cancelar()');
+	  		displayMessageFolioElectronicoAcreedores(true,'Folio Electr贸nico','El Acreedor Representado para esta garant铆a no cuenta con Folio Electr贸nico','continuar('+mensaje.codeError+')','cancelar()');
 	  		//alert('Validar Folio Acreedor  Ir a alta de acreedores'+ <s:property value="idInscripcion"/>);
 		  break;
 		  
-		  displayMessageFolioElectronicoAcreedores(true,'Folio Electr髇ico','El Acreedor Adicional para esta garant韆 no cuenta con Folio Electr髇ico','continuar('+mensaje.codeError+')','cancelar()');
+		  displayMessageFolioElectronicoAcreedores(true,'Folio Electr贸nico','El Acreedor Adicional para esta garant铆a no cuenta con Folio Electr贸nico','continuar('+mensaje.codeError+')','cancelar()');
 	  		//alert('Validar Folios Acreedor Adicional Ir a Paso 1'+ <s:property value="idInscripcion"/>);
 	  	break;
 	  	case 3:
-	  		displayMessageFolioElectronicoAcreedores(true,'Folio Electr髇ico','Los Acreedores para esta garant韆 no cuentan con Folio Electr髇ico','continuar('+mensaje.codeError+')','cancelar()');
+	  		displayMessageFolioElectronicoAcreedores(true,'Folio Electr贸nico','Los Acreedores para esta garant铆a no cuentan con Folio Electr贸nico','continuar('+mensaje.codeError+')','cancelar()');
 	  		//alert('Ninguno tiene folio Ir a alta de acreedores'+ <s:property value="idInscripcion"/>);
 		  break;
 
@@ -419,7 +421,7 @@ function loadMaterialize(){
 }
 
 function msg_guardar() {
-	alertMaterialize('El sistema le guardara la garant韆 temporalmente por 72 horas, esto no constituye una inscripci&oacute;n y por lo tanto no otorga prelacion.');
+	alertMaterialize('El sistema le guardara la garant铆a temporalmente por 72 horas, esto no constituye una inscripci&oacute;n y por lo tanto no otorga prelacion.');
 	return false;
 }
 

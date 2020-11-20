@@ -178,7 +178,7 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 									cssClass="validate" maxlength="150" />								
 							</div>
 						</div>
-						<div id="secId2" class="row" style="display: none;"><span class="col s12 center-align">o</span></div>
+						<div id="secId2" class="row" style="display: none;"><span class="col s12 center-align">Y</span></div>
 						<div id="secId3" class="row" style="display: none;">
 							<div class="input-field col s12">
 								<s:textfield name="mdIdentificador2" id="mdIdentificador2"

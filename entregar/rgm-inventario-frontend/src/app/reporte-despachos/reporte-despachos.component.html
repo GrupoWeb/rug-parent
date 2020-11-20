@@ -7,13 +7,14 @@
         <div class="card-content">
           <span class="card-title">Reporte de despachos</span>
           <div class="row">
-            <ngx-daterangepicker [(ngModel)]="rangoFechas" (ngModelChange)="onRangeChanged($event)" [options]="options"></ngx-daterangepicker>
+            <ngx-daterangepicker [(ngModel)]="rangoFechas" (ngModelChange)="onRangeChanged($event)" [options]="options">
+            </ngx-daterangepicker>
           </div>
           <div class="row">
             <a href="{{urlReporteDespachos}}" class="btn" target="_blank">Generar reporte</a>
           </div>
           <div class="row">
-            <table>
+            <table class="striped bordered centered">
               <thead>
                 <tr>
                   <th>Código</th>
@@ -23,30 +24,28 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let despacho of despachos | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: currentPage, totalItems: total }; let i = index">
+                <tr
+                  *ngFor="let despacho of despachos | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: currentPage, totalItems: total }; let i = index">
                   <td>{{ despacho.correlativo }}</td>
                   <td>{{ despacho.fecha }}</td>
                   <td>{{ despacho.requisicion.correlativo }}</td>
                   <td>
-                    <a
-                      class="waves-effect waves-light btn-floating"
-                      (click)="onViewDetalleClicked(i)"><i class="material-icons">visibility</i></a>
-                    <a
-                      class="waves-effect waves-light btn-floating"
+                    <a class="waves-effect waves-light btn-floating" (click)="onViewDetalleClicked(i)"><i
+                        class="material-icons">visibility</i></a>
+                    <a class="waves-effect waves-light btn-floating"
                       href="{{urlBase}}/reporte-despacho?tipoReporte=2&usuario={{authenticatedUser.usuarioId}}&id={{despacho.despachoId}}"
                       target="_blank"><i class="material-icons">print</i></a>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <pagination-template #p="paginationApi"
-              id="server"
-              (pageChange)="onPageChange($event)">
+            <pagination-template #p="paginationApi" id="server" (pageChange)="onPageChange($event)">
               <ul class="pagination custom-pagination">
                 <li class="pagination-previous" [class.disabled]="p.isFirstPage()">
                   <a *ngIf="!p.isFirstPage()" (click)="p.previous()"><i class="material-icons">chevron_left</i></a>
                 </li>
-                <li *ngFor="let page of p.pages" [class.active]="p.getCurrent() === page.value" [class.waves-effect]="p.getCurrent() !== page.value">
+                <li *ngFor="let page of p.pages" [class.active]="p.getCurrent() === page.value"
+                  [class.waves-effect]="p.getCurrent() !== page.value">
                   <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
                     {{ page.label }}
                   </a>
@@ -66,7 +65,8 @@
   </div>
 </main>
 <div class="section"></div>
-<div id="modDetalle" class="modal" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+<div id="modDetalle" class="modal" materialize="modal" [materializeParams]="[{dismissible: true}]"
+  [materializeActions]="modalActions">
   <div class="modal-content">
     <h4>Detalle de despacho</h4>
     <div class="card">

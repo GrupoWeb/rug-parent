@@ -26,12 +26,25 @@ import mx.gob.se.rug.operaciones.to.CargaMasivaResumenTO;
 import mx.gob.se.rug.operaciones.to.OperacionesTO;
 import mx.gob.se.rug.to.MessageDwr;
 import mx.gob.se.rug.util.to.DateUtilRug;
+import gt.gob.rgm.util.ExcelCreator;
+import java.util.logging.Level;
+import org.apache.struts2.ServletActionContext;
+import javax.servlet.ServletOutputStream;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import javax.json.Json;
+import javax.json.JsonObject;
+import mx.gob.se.rug.util.MyLogger;
 
 
 
 public class OperacionesDwrAction extends AbstractBaseDwrAction {
+
+
+	private String persona;
+        private String filtroExcel;
 	
 	private List <OperacionesTO> listaPendientes;
+        private List <OperacionesTO> listadoPendientesExcel;
 	private List <CargaMasivaResumenTO> listaPendientesFirmaMasiva;
 	
 	public MessageDwr muestraMOTodos(String ruta, String idAcreedorStr, String idPersona){
@@ -220,7 +233,7 @@ public class OperacionesDwrAction extends AbstractBaseDwrAction {
 				operacionesTO = it.next();
 				sb.append(" <tr> ");		
 				if (operacionesTO.getTipoTransaccion().contains("sin")){
-					sb.append(" <td class=\"cuerpo1TablaResumen\"><div align=\"center\"> Anotación </div></td> ");
+					sb.append(" <td class=\"cuerpo1TablaResumen\"><div align=\"center\"> Anotaciï¿½n </div></td> ");
 				}else{
 					sb.append(" <td class=\"cuerpo1TablaResumen\"><div align=\"center\">"+operacionesTO.getTipoTransaccion()+"</div></td> ");
 				}				
@@ -861,7 +874,8 @@ public class OperacionesDwrAction extends AbstractBaseDwrAction {
 					case 2:
 						sb.append(writeTablaPendientesFirma( opService.getOpPendientesFirma(idPersona,1, registroPaginas>registroTotales?registroTotales:registroPaginas)));
 						break;
-					case 3:						
+					case 3:
+						//se llena por primera vez la tabla						
 						sb.append(writeTablaTerminadas(operacionesDAO.muestraOpTerminadasPagInicioFin(idPersona,1, registroPaginas > registroTotales?registroTotales:registroPaginas)));
 						break;
 					default:
@@ -1208,17 +1222,56 @@ public class OperacionesDwrAction extends AbstractBaseDwrAction {
 			regFinal = inicio + (regPagina-1);
 			//OperacionesService opService= new OperacionesService();
 			listaPendientes = operacionesDAO.muestraOpTerminadasPagInicioFin(idPersona, inicio, regFinal);
+			// listaPendientesExcel = operacionesDAO.muestraOpTerminadasPagInicioFinExcel(idPersona);
 			StringBuffer sb = new StringBuffer();
 			sb.append("<div align=\"right\">")
 //			.append(writeSeccionHeader(numeroPaginas, pagActiva, regPagina, registroTotales,"pagPendientes",""))
 			.append("</div>");
+			//Tabla de terminadas
+			System.out.println("Registros:"+regPagina);
 			sb.append(writeTablaTerminadas(listaPendientes));	
+			// sb.append(writeTablaTerminadas(listaPendientesExcel));	
 			sb.append(writeSeccionPaginado(numeroPaginas, pagActiva, regPagina,registroTotales,"pagOpTerminadas",""));
 			dwr.setMessage(sb.toString());
 		} catch (Exception  e) {
 			e.printStackTrace();
 		}	
 		return dwr;
+	}
+
+	// public MessageDwr ExportExcel(String idPersonaString,String nombre){
+	public String ExportExcel() throws Exception {
+
+		
+
+		MyLogger.Logger.log(Level.INFO, "EXPORTAR A EXCEL DATA: " + getFiltroExcel());
+		OperacionesDAO operacionesDAO = new OperacionesDAO();
+		List<OperacionesTO> listadoPendientesExcel = operacionesDAO.muestraOpTerminadasPagInicioFinExcel(Integer.parseInt(getPersona()), getFiltroExcel());
+
+	// public String ExportExcel(String idPersonaString,String nombre) throws Exception {
+            
+            
+    // MessageDwr dwr = new MessageDwr();
+		//int idPersona = Integer.valueOf(idPersonaString);
+		
+			// StringBuffer sb = new StringBuffer();
+			// sb.append("<div align=\"right\">")
+			// .append(listadoPendientesExcel)
+			// .append("</div>");
+			// dwr.setMessage(sb.toString());
+			
+			ExcelCreator excelCreator = new ExcelCreator();
+			//XSSFWorkbook workbook = excelCreator.createTramitesWorkbook(listadoPendientesExcel);
+                        XSSFWorkbook workbook = excelCreator.createOperacionesWorkbook(listadoPendientesExcel);
+			ServletActionContext.getResponse().setHeader("Content-Disposition", "attachment; filename=Operaciones.xlsx");
+			ServletOutputStream out = ServletActionContext.getResponse().getOutputStream();
+			workbook.write(out);
+			out.flush();
+			out.close();
+			return null;
+		
+		// return dwr;
+
 	}
 	
 	public String writeSeccionHeader(int numeroPaginas,int pagActiva, int regPagina, 
@@ -1254,7 +1307,7 @@ public class OperacionesDwrAction extends AbstractBaseDwrAction {
 			.append("<span class=\"well\">Mostrando ").append(pagActiva==1?1:((pagActiva-1)*regPagina)+1).append(" a ")
 			.append(((pagActiva*regPagina)>registroTotales)?registroTotales:(pagActiva*regPagina)).append(" de ").append(registroTotales).append(" registros")
 			.append("</span>").append("</td>");
-			sb.append("<td>").append(" <div class=\"pagination\"> <ul>");
+			sb.append("<td>").append(" <div  class=\"pagination\"> <ul>");
 			
 			if (numeroPaginas> 5){
 				if (pagActiva > 1){
@@ -1550,7 +1603,7 @@ public class OperacionesDwrAction extends AbstractBaseDwrAction {
 	public String writeTablaTerminadas(List<OperacionesTO> tramitesPendientes){
 		StringBuffer sb = new StringBuffer();
 		try{						
-			sb.append(" <table class=\"table\" data-paging=\"true\" data-filtering=\"true\" data-sorting=\"true\" > ");			
+			sb.append(" <table id=\"prueba\" class=\"table\" data-paging=\"true\" data-filtering=\"true\" data-sorting=\"true\" > ");			
 			sb.append(" <thead> <tr>");			
 			sb.append(" <th>N&uacute;mero de Operaci&oacute;n</th>");
 			sb.append(" <th>Tipo de Transacci&oacute;n</th>");
@@ -1578,7 +1631,7 @@ public class OperacionesDwrAction extends AbstractBaseDwrAction {
 					}else{
 						sb.append(" <td style=\"vertical-align: middle;\"><div align=\"center\">"+tramite.getTipoTransaccion()+"</div></td> ");
 					}
-					sb.append(" <td style=\"vertical-align: middle;\"><div align=\"center\">").append(tramite.getFechaOperacionInicio()).append("<br> </div> </td>");
+					sb.append(" <td  style=\"vertical-align: middle;\"><div align=\"center\">").append(tramite.getFechaOperacionInicio()).append("<br> </div> </td>");
 					sb.append(" <td style=\"vertical-align: middle;\"><div align=\"center\"> ").append(tramite.getNumGarantia()).append("</div></td>");
 					/*sb.append(" <td>");
 					sb.append(" 	<div align=\"center\">");
@@ -1638,6 +1691,34 @@ public class OperacionesDwrAction extends AbstractBaseDwrAction {
 		}	
 		return sb.toString();
 	}
+
+    /**
+     * @return the persona
+     */
+    public String getPersona() {
+        return persona;
+    }
+
+    /**
+     * @param persona the persona to set
+     */
+    public void setPersona(String persona) {
+        this.persona = persona;
+    }
+
+    /**
+     * @return the filtroExcel
+     */
+    public String getFiltroExcel() {
+        return filtroExcel;
+    }
+
+    /**
+     * @param filtroExcel the filtroExcel to set
+     */
+    public void setFiltroExcel(String filtroExcel) {
+        this.filtroExcel = filtroExcel;
+    }
 	
 	
 }

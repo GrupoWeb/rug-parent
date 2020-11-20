@@ -41,6 +41,8 @@ private static final long serialVersionUID = 1L;
 		params.put("estado", estado);
 		params.put("fechaInicio", fechaInicio);
 		params.put("fechaFin", fechaFin);
+                
+                System.out.println("Fecha");
 
 		byte[] pdf = null; 
 				

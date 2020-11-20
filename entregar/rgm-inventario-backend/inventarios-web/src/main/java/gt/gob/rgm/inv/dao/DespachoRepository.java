@@ -35,6 +35,8 @@ public class DespachoRepository {
         Predicate restrictions = null;
 		
 		restrictions = cb.equal(cb.literal(1), 1);
+                
+                
         
 		if(params.get("estado") !=null && !params.get("estado").equals("T")) {
         	restrictions = cb.and(restrictions, cb.equal(despachos.get("estado"), params.get("estado")));
@@ -45,12 +47,17 @@ public class DespachoRepository {
 	        Date fechaFin = formatter.parse(params.get("fechaFin").toString());
 	        
 	        restrictions = cb.and(restrictions, cb.between(despachos.get("fecha"), fechaInicio, fechaFin));
+                
+                
         }
+                
+                
         
         criteria.select(cb.construct(Long.class, cb.count(despachos.get("correlativo"))))
         	.where(restrictions);
         
         TypedQuery<Long> query = em.createQuery(criteria);
+        
 		return (Long) query.getSingleResult();
         
 	}
@@ -68,6 +75,7 @@ public class DespachoRepository {
         }
         if(params.get("fechaInicio")!=null && params.get("fechaFin")!=null) {
 	        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 	        Date fechaInicio = formatter.parse(params.get("fechaInicio").toString());
 	        Date fechaFin = formatter.parse(params.get("fechaFin").toString());
 	        
@@ -78,11 +86,16 @@ public class DespachoRepository {
         	.where(restrictions);
         
         TypedQuery<Despacho> query = em.createQuery(criteria);
+            
         if(page != null) {
 			query.setFirstResult((page - 1) * size);
 			query.setMaxResults(size);
 		}
+        
+                
 		return query.getResultList();
+                
+                
 	}
 	
 	public List<Despacho> findAllByYear(String year){

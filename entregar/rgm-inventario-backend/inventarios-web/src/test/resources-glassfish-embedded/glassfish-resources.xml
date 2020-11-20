@@ -7,9 +7,9 @@
         name="rug_ds_pool" 
         datasource-classname="oracle.jdbc.pool.OracleDataSource"
         res-type="javax.sql.DataSource">
-         <property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-    	 <property name="User" value="INVENTARIO"/>
-         <property name="Password" value="INVENTARIO"/>
+         <property name="URL" value="jdbc:oracle:thin:@ninja_code.mineco.gob.gt:1521:orcl"/>
+    	 <property name="User" value="c##inventario"/>
+         <property name="Password" value="inventario"/>
     </jdbc-connection-pool>
 
     <jdbc-resource 

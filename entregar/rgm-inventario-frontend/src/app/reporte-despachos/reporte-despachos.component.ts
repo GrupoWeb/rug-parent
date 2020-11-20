@@ -74,6 +74,7 @@ export class ReporteDespachosComponent implements OnInit {
     this.despachos = [];
     this.httpSubscription = this.despachosService.fetchData(this.filtro, this.currentPage, this.pageSize).subscribe(
       data => {
+        
         this.despachos = data.value;
         this.total = data.total;
       }
@@ -81,6 +82,7 @@ export class ReporteDespachosComponent implements OnInit {
   }
 
   onRangeChanged(event) {
+    
     if (this.filtro.fechaInicio !== event.from || this.filtro.fechaFin !== event.to) {
       this.filtro.fechaInicio = event.from;
       this.filtro.fechaFin = event.to;
@@ -110,6 +112,7 @@ export class ReporteDespachosComponent implements OnInit {
     this.despachos = [];
     this.httpSubscription = this.despachosService.fetchData(this.filtro, 1, this.pageSize).subscribe(
       data => {
+        console.log("data", data)
         this.despachos = data.value;
         this.total = data.total;
         this.loading = false;

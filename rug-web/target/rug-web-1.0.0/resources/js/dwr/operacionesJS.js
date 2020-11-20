@@ -116,6 +116,7 @@ function showAprobadas(message){
 }
 
 function iniciaPaginacionFiltro(idPersona, tipoOperacion, filtro){
+	console.log("Persona: ", idPersona, " Operacion: " , tipoOperacion , " filtro:" , filtro );
 	displayLoader(true);
 	
 	if(tipoOperacion==1){
@@ -196,10 +197,18 @@ function pagPenAsiMultiples(registroTotales,pagActiva,regPagina){
 }
 
 function pagOpTerminadas(registroTotales,pagActiva,regPagina){
+	
 	displayLoader(true);
 	var idPersona=document.getElementById('idPersona').value;
 	OperacionesDwrAction.pagOperacionesTerminadas(idPersona, registroTotales,pagActiva,'20',showPendientes);
 }
+
+// function ExportExcelTerminadas(){
+
+// 	let resultado = OperacionesDwrAction.ExportExcel(idPersona,showPendientes);
+
+
+// }
 
 function pagOpTerminadasFiltro(registroTotales,pagActiva,regPagina, filtro){
 	displayLoader(true);
