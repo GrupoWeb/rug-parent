@@ -1,6 +1,9 @@
 package gt.gob.rgm.util;
 
 import java.util.List;
+import mx.gob.se.rug.common.util.NullsFree;
+import mx.gob.se.rug.inscripcion.to.OtorganteTO;
+import mx.gob.se.rug.operaciones.to.OperacionesTO;
 
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -20,9 +23,9 @@ public class ExcelCreator {
 		if(tramites != null) {
 			XSSFRow row = sheet.createRow(0);
 			XSSFCell cell = row.createCell(0);
-			cell.setCellValue("NÃºmero de GarantÃ­a");
+			cell.setCellValue("Nï¿½mero de Garantï¿½ï¿½a");
 			cell = row.createCell(1);
-			cell.setCellValue("TrÃ¡mite");
+			cell.setCellValue("Trï¿½mite");
 			cell = row.createCell(2);
 			cell.setCellValue("Fecha");
 			cell = row.createCell(3);
@@ -50,6 +53,65 @@ public class ExcelCreator {
 			}
 		}
 		
+		return wb;
+	}
+        
+        public XSSFWorkbook createOperacionesWorkbook(List<OperacionesTO> operaciones) throws Exception {
+		XSSFWorkbook wb = new XSSFWorkbook();
+		XSSFSheet sheet = wb.createSheet("Operaciones");
+
+		int i = 1;
+		if(operaciones != null) {
+			XSSFRow row = sheet.createRow(0);
+			XSSFCell cell = row.createCell(0);
+			cell.setCellValue("Número de Operación");
+			cell = row.createCell(1);
+			cell.setCellValue("Transacción");
+			cell = row.createCell(2);
+			cell.setCellValue("Fecha");
+			cell = row.createCell(3);
+			cell.setCellValue("Número de Garaní­a");
+                        cell = row.createCell(4);
+			cell.setCellValue("Deudor");
+                        cell = row.createCell(5);
+			cell.setCellValue("Número de Identificación");
+			cell = row.createCell(6);
+			cell.setCellValue("Usuario");
+		
+                
+                for(OperacionesTO operacion : operaciones) {
+				row = sheet.createRow(i);
+				cell = row.createCell(0);
+				cell.setCellValue(operacion.getIdInscripcion());
+                                cell = row.createCell(1);
+				cell.setCellValue(operacion.getTipoTransaccion());
+				CellStyle cellStyle = wb.createCellStyle();
+				CreationHelper createHelper = wb.getCreationHelper();
+				cellStyle.setDataFormat(createHelper.createDataFormat().getFormat("dd/MM/yyyy hh:mm:ss"));
+				cell = row.createCell(2);
+				cell.setCellStyle(cellStyle);
+				cell.setCellValue(operacion.getFechaOperacionInicio());
+				cell = row.createCell(3);
+				cell.setCellValue(operacion.getNumGarantia());
+                                
+                            List<OtorganteTO> otorgantes = operacion.getOtorgantes();
+                            
+                                if(otorgantes.size() > 0){
+                                    for(OtorganteTO otorgante: otorgantes){
+                                        cell = row.createCell(4);
+                                        cell.setCellValue(otorgante.getNombreCompleto());
+                                        cell = row.createCell(5);
+                                        cell.setCellValue(otorgante.getTipoPersona().equalsIgnoreCase("PF")?NullsFree.getNotNullValue(otorgante.getCurp()):NullsFree.getNotNullValue(otorgante.getRfc()));
+                                    }
+                                }
+                                cell = row.createCell(6);
+                                cell.setCellValue(operacion.getUsuario());
+				
+				i++;
+			}
+                
+                }
+		          System.out.println("excel" + wb);
 		return wb;
 	}
 }

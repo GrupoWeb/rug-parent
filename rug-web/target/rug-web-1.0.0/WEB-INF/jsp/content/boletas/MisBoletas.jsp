@@ -147,6 +147,7 @@
 								      <option value="" disabled selected>Seleccione una opci&oacute;n</option>
 								      <option value="1">Banrural</option>
 								      <option value="2">CHN</option>								      
+								      <option value="BI3">BI</option>								      
 								    </select>
 							    	<label>Banco</label>
 							    </div>
@@ -338,6 +339,7 @@ function exportData() {
 		return;
 	}
 	var URL="<%=request.getContextPath()%>/home/exportExcel.do?filtro=" + filtro.nombre + "&fechaInicial=" + filtro.fechaInicial + "&fechaFinal=" + filtro.fechaFinal;
+	console.log(URL);
 	window.open(URL, "_blank");
 }
 function docReady(fn) {

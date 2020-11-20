@@ -221,8 +221,8 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
-								<s:textarea rows="10" id="mdDescripcion" cols="80" name="mdDescripcion" cssClass="materialize-textarea" maxlength="500"/>
-								<label id="lblMdDescripcion" for="mdDescripcion">Descripci&oacute;n del bien</label>
+								<s:textarea rows="10" id="mdDescripcion" cols="80" name="mdDescripcion" cssClass="materialize-textarea" data-length="500" />
+								<label id="lblMdDescripcion" for="mdDescripcion">Descripci&oacute;n del bien </label>
 							</div>
 						</div>
 						<div id="secId1" class="row" style="display: none;">
@@ -255,7 +255,7 @@
 						<div id="secId2" class="row" style="display: none;"><span class="col s12 center-align">Y</span></div>
 						<div id="secId3" class="row" style="display: none;">
 							<div class="input-field col s12">
-								<s:textfield name="mdIdentificador2" id="mdIdentificador2" cssClass="validate" maxlength="150" />
+								<s:textfield name="mdIdentificador2" id="mdIdentificador2" cssClass="validate"  data-length="150" />
 								<label id="lblMdIdentificador2" for="mdIdentificador2">VIN</label>
 							</div>
 						</div>

@@ -216,6 +216,8 @@ public class BoletasAction extends RugBaseAction implements ServletRequestAware{
 				.add("fechaInicial", fechaInicial)
 				.add("fechaFinal", fechaFinal)
 				.build();
+
+				MyLogger.Logger.log(Level.INFO, "EXPORTAR A EXCEL DATA: " + jsonFiltro);
 		List<AccionTO> tramites = inscripcionService.getTramitesEfectuadosOptimizado(usuario.getPersona().getIdPersona(),jsonFiltro, 0,50000);
 		ExcelCreator excelCreator = new ExcelCreator();
 		XSSFWorkbook workbook = excelCreator.createTramitesWorkbook(tramites);

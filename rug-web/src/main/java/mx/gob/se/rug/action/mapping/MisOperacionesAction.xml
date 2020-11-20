@@ -50,5 +50,9 @@
 			<result name="error" type="tiles">busqueda.home</result>
 		</action>
 		
+		<action name="exportOperaciones" method="ExportExcel" class="operacionesDwrAction">
+			<result type="tiles">misOperaciones.home</result>
+		</action>
+		
 	</package>
 </struts>

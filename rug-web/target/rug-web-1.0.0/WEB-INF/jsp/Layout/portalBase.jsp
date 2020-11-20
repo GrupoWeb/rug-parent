@@ -13,14 +13,18 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/footable.standalone.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css">
 <!--     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-	 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/material-icons.css">
+	  <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/material-icons.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/rgm.css?v=1.4" />
     <tiles:insertAttribute name=".include-styles" />
 	<script type="text/javascript"    src="${pageContext.servletContext.contextPath}/dwr/engine.js"></script>
 	<script type="text/javascript"	src="${pageContext.servletContext.contextPath}/dwr/util.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/Utils/GeneralUtil.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/custom.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/moment.min.js"></script>
+	
+	
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/moment.min.js"></script>
+
+	
 	<tiles:insertAttribute name=".header-scripts"/>
   </head>
 <%
@@ -33,10 +37,13 @@ Constants.setContextPath(request.getContextPath());
 	<tiles:insertAttribute name=".tabs" />
  	<tiles:insertAttribute name="working.region" />
 	<tiles:insertAttribute name=".footer" />
-	<script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/modernizr.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/materialize.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/footable.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/modernizr.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/materialize.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/footable.min.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/js-xlsx/xlsx.core.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/tableExport.min.js"></script>
 	<script>
 	$(document).ready(function() {
 		$(".btn-menu").sideNav();

@@ -1400,9 +1400,10 @@ public class OperacionesDAO {
 		finally{
 			bd.close(connection,rs,ps);
 		}
-		MyLogger.Logger.log(Level.INFO, "" + "::::::Tamaño de la lista que regresa: "+listaTerminadas.size());
+		MyLogger.Logger.log(Level.INFO, "" + "::::::Tamaño de la lista que regresa: "+sql);
 		return listaTerminadas;
 	}
+	
 	
 	public List<OperacionesTO> muestraOpTerminadasPagInicioFin(Integer idPersona, Integer inicio, Integer fin){
 		ConexionBD bd = new ConexionBD();
@@ -1451,6 +1452,69 @@ public class OperacionesDAO {
 			bd.close(connection,rs,ps);
 		}
 		MyLogger.Logger.log(Level.INFO, "" + "::::::Tamaño de la lista que regresa: "+listaTerminadas.size());
+		MyLogger.Logger.log(Level.INFO, "" + "::::::Query de Terminado "+sql);
+		return listaTerminadas;
+	}
+	
+	public List<OperacionesTO> muestraOpTerminadasPagInicioFinExcel(Integer idPersona, String filtro){
+            MyLogger.Logger.log(Level.INFO, "" + filtro);
+		if(filtro == "null"){
+                    filtro = "";
+                }
+                        
+		ConexionBD bd = new ConexionBD();
+		Connection connection = null;
+		ResultSet rs = null;
+		PreparedStatement ps =null;
+		//Integer anioAct = getCountOpTerminadasMuestra(idPersona);
+		String usuariosIn = getUsuariosRelacionados(idPersona);
+		
+		List <OperacionesTO> listaTerminadas = new ArrayList<OperacionesTO>();		
+		String sql = "SELECT * FROM ( SELECT ROWNUM RN, TT.* " +
+				"FROM (  SELECT ID_TRAMITE, DESCRIPCION AS TIPO_TRAMITE, FECHA_CREACION AS FECHA_STATUS, ID_GARANTIA, DESCRIP_STATUS, ID_TIPO_TRAMITE, ID_PERSONA_LOGIN, USUARIO AS NOMBRE_PERSONA " +
+				"FROM RUG.V_TRAMITES_TERMINADOS_REG WHERE ID_PERSONA_LOGIN IN (" + usuariosIn + ") AND TRAMITE_REASIGNADO = 'F' " +	
+				"AND ( " +
+						"(TO_CHAR(ID_TRAMITE) like '%"+ filtro +"%') or " +
+						"(DESCRIPCION like '%"+ filtro +"%') or " +
+						"(TO_CHAR(ID_GARANTIA) like '%"+ filtro +"%') or " +
+						"(TO_CHAR(FECHA_CREACION,'yyyy-mm-dd hh24:mi:ss') like '%"+ filtro +"%') or " +
+						"(USUARIO like '%" + filtro +"%') " +
+					") " +							
+				"ORDER BY FECHA_STATUS DESC ) TT )";
+		try {
+			connection = bd.getConnection();
+			ps = connection.prepareStatement(sql);
+			//ps.setString(1, usuariosIn);
+			// ps.setInt(1, inicio);
+			// ps.setInt(2, fin);
+			MyLogger.Logger.log(Level.INFO, "" + ps);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				OperacionesTO operacionesTO = new OperacionesTO();
+				operacionesTO.setIdInscripcion(rs.getInt("ID_TRAMITE"));
+				operacionesTO.setTipoTransaccion(rs.getString("TIPO_TRAMITE"));
+				operacionesTO.setFechaOperacionInicio(rs.getString("FECHA_STATUS"));
+				if (rs.getInt("ID_GARANTIA")==0){
+					operacionesTO.setNumGarantia("N/A");
+				}else{
+					operacionesTO.setNumGarantia(rs.getString("ID_GARANTIA"));
+				}
+				operacionesTO.setEstatus(rs.getString("DESCRIP_STATUS"));
+				operacionesTO.setOtorgantes(getDeudorByTramite(rs.getInt("ID_TRAMITE")));	
+				operacionesTO.setIdTipoTramite(rs.getInt("ID_TIPO_TRAMITE"));
+				operacionesTO.setDescripcionGeneral("");
+				operacionesTO.setUsuario(rs.getString("NOMBRE_PERSONA"));
+				listaTerminadas.add(operacionesTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		finally{
+			bd.close(connection,rs,ps);
+		}
+		MyLogger.Logger.log(Level.INFO, "" + "::::::Tamaño de la lista que regresa: "+sql);
 		return listaTerminadas;
 	}
 	
@@ -1734,7 +1798,7 @@ public class OperacionesDAO {
 		finally{
 			bd.close(connection,rs,ps);
 		}
-		MyLogger.Logger.log(Level.INFO, "" + "::::::Tamaño de la lista que regresa: "+total);		
+		MyLogger.Logger.log(Level.INFO, "" + "::::::Tamaño de la lista que regresa filtro: "+total);		
 		
 		return total;
 	}

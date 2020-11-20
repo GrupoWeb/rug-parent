@@ -55,8 +55,10 @@
 									<button type="button" class="btn waves-effect indigo" onclick = "buscarporfiltro()" >
 										<span class="fooicon fooicon-search"></span>
 									</button>
+									<p class="waves-effect waves-light btn" onclick="ExportExcelTerminadas()">Exportar</p>
 								</div>								
 							</form>
+							
 					 		<div id="OpTerminadas">
 					   		</div>
 					 	</div>											   
@@ -69,3 +71,15 @@
 		</div>
 	</div>	
 </main>
+
+<script type="text/javascript">
+
+	function ExportExcelTerminadas(){
+		var idPersona=document.getElementById('idPersona').value;
+		var filtros = getObject('terfiltro').value;
+		var URL="<%=request.getContextPath()%>/home/exportOperaciones.do?persona=" + idPersona + "&filtroExcel=" + filtros;
+		window.open(URL, "_blank");
+	}
+
+
+</script>
