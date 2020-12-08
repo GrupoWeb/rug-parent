@@ -26,7 +26,7 @@ public class TipobienesDAO {
 			String sqlQuery = "";
 			sqlQuery = "select ID_TIPO_BIEN, DESC_TIPO_BIEN, DESC_TIPO_BIEN_EN, ID_PADRE, STATUS_REG from RUG_CAT_TIPO_BIEN where STATUS_REG = 'AC' order by ID_TIPO_BIEN";
 			ps = connection.prepareStatement(sqlQuery);
-			MyLogger.Logger.log(Level.INFO, "sql " + ps);
+			MyLogger.Logger.log(Level.INFO, "sql v" + ps);
 			 rs = ps.executeQuery();
 			while(rs.next()){
 				tipo = new TipoBienesTO();

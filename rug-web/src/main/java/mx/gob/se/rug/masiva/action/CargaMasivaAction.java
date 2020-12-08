@@ -567,7 +567,7 @@ public class CargaMasivaAction extends RugBaseAction implements
 						}
 						/*
 						 * TODO
-						 * Extraer a un método nuevo
+						 * Extraer a un metodo nuevo
 						 */
 						cargaMasivaResultado = masivaService.generaFirmaMasiva(cargaMasivaResultado, cargaMasivaPreProcesed, usuario, archivoTO, acreedor);
 						idFirmaMasiva = cargaMasivaResultado.getIdFirmaMasiva();
@@ -653,7 +653,7 @@ public class CargaMasivaAction extends RugBaseAction implements
 					}
 	
 					break;
-				// Transmisiones Múltiples
+				// Transmisiones Multiples
 				case 8:
 					if (cm.getTransmision().size() > 0) {
 						TransmisionService transmisionService= new TransmisionService();
@@ -2132,8 +2132,8 @@ public class CargaMasivaAction extends RugBaseAction implements
 										.println("El folio electronico es obligatorio");
 								regresa = new ControlError();
 								PlSql plSql = new PlSql();
-								plSql.setResStrPl("Error en el Otorgante:  El campo folio electrónico es obligatorio.");
-								plSql.setStrPl("Error en el Otorgante:  El campo folio electrónico es obligatorio.");
+								plSql.setResStrPl("Error en el Otorgante:  El campo folio electronico es obligatorio.");
+								plSql.setStrPl("Error en el Otorgante:  El campo folio electronico es obligatorio.");
 								plSql.setIntPl(2);
 								regresa.setPlSql(plSql);
 								regresa.setIdInscripcion(numInscripcion);

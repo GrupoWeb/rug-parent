@@ -42,10 +42,10 @@ public class GruposDwrAction {
 		
 			if(numeroUsuarios>0){
 				dwr.setCodeError(new Integer(0));
-				dwr.setMessage("El grupo que esta intentando eliminar contiene "+numeroUsuarios+" usuarios asignados, los cuales seran tambien eliminados. ¿Desea continuar?");
+				dwr.setMessage("El grupo que esta intentando eliminar contiene "+numeroUsuarios+" usuarios asignados, los cuales seran tambien eliminados. Â¿Desea continuar?");
 			}else{
 				dwr.setCodeError(new Integer(0));
-				dwr.setMessage("El grupo que esta intentando eliminar no contiene usuarios asignados. ¿Desea continuar?");
+				dwr.setMessage("El grupo que esta intentando eliminar no contiene usuarios asignados. Â¿Desea continuar?");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -142,7 +142,7 @@ public class GruposDwrAction {
 			AcreedoresCatalogosDaoJdbcImpl acreedoresCatalogosDao = new AcreedoresCatalogosDaoJdbcImpl();
 			List<GrupoPerfilTO> lista = acreedoresCatalogosDao
 					.getGrupos(Integer.valueOf(idAcreedor));
-			MyLogger.Logger.log(Level.INFO, "tamaño de la lista:" + lista.size());
+			MyLogger.Logger.log(Level.INFO, "tamaÃ±o de la lista:" + lista.size());
 			List<PerfilTO> listaPerfil = acreedoresCatalogosDao.getPerfiles();
 			dwr.setCodeError(0);
 			String mensaje = writeParteGrupo(lista, listaPerfil, idPersona,
@@ -167,7 +167,7 @@ public class GruposDwrAction {
 		sb.append(" <table>");
 		sb.append(" <tr><td style=\"visibility: hidden; display: none\" id=\"descGrupo\">");
 		sb.append(" </td></tr> </table>");
-		sb.append("<table style=\"cursor: pointer;\" class=\"nota\"><tr><td class=\"imgNota\" width=\"44\"> <img src=\"/Rug/resources/imgs/ico_nota.png\" align=\"center\"> </td><td align=\"justify\" class=\"contenidoNota\">Podrá crear diversos grupos para que los usuarios que agregue a los mismos puedan realizar las operaciones permitidas (privilegios) para el grupo correspondiente.</td></tr></table>");
+		sb.append("<table style=\"cursor: pointer;\" class=\"nota\"><tr><td class=\"imgNota\" width=\"44\"> <img src=\"/Rug/resources/imgs/ico_nota.png\" align=\"center\"> </td><td align=\"justify\" class=\"contenidoNota\">PodrÃ¡ crear diversos grupos para que los usuarios que agregue a los mismos puedan realizar las operaciones permitidas (privilegios) para el grupo correspondiente.</td></tr></table>");
 		sb.append(" <table>");
 		sb.append(" <tr><td><a onclick=\"mostrarAltaGrupo();ocultarDesGrupo();\" style=\"cursor: pointer;\" class=\"tituloInteriorRojo\"> + Agregar Grupo</a></td></tr>");
 		sb.append(" <tr><td style=\"visibility: hidden; display: none\" id=\"agreNuevo\">");

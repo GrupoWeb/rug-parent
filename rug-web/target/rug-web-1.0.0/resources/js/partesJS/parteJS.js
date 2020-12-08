@@ -361,6 +361,7 @@ function modificaParteBien(elementId, idTramite, tipoBien, tipoId, ident, desc, 
 		  document.getElementById("secId4").style.display = 'none';		  
 		  
 		  document.getElementById("lblMdIdentificador2").innerHTML = 'No. Factura';
+		  document.getElementById("lblMdIdentificador3").innerHTML = 'Serie';
 		  document.getElementById("lblMdDescripcion").innerHTML = 'Emitido Por';
 		  
 		  document.getElementById("mdBienEspecial").value = 2;
@@ -385,12 +386,15 @@ function modificaParteBien(elementId, idTramite, tipoBien, tipoId, ident, desc, 
 	     var m_mdIdentificador = document.getElementById("mdIdentificador").value;
 	     var m_mdIdentificador1 = document.getElementById("mdIdentificador1").value;
 	     var m_mdIdentificador2 = document.getElementById("mdIdentificador2").value;
-		
-		ParteDwrAction.modificaParteBien(elementId, idTramite, m_mdDescripcion, m_idTipo, m_mdIdentificador, m_mdIdentificador1, m_mdIdentificador2, idTramiteGar, showParteBienes);
+	     var m_mdIdentificador3 = document.getElementById("mdIdentificador3").value;
+
+		ParteDwrAction.modificaParteBien(elementId, idTramite, m_mdDescripcion, m_idTipo, m_mdIdentificador, m_mdIdentificador1, m_mdIdentificador2, m_mdIdentificador3, idTramiteGar, showParteBienes);
+		$('#frmBien').modal('close');
 	}
 	
-	$('#frmBien').modal('open');	
+	$('#frmBien').modal('open');
 	Materialize.updateTextFields();
+	//$('#frmBien').modal('close');
 }
 
 function eliminaParteDeudor(elementId, idTramite, idPersona,

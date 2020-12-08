@@ -96,6 +96,69 @@ public class BusquedaDAO {
 		return busquedaTOs;
 	}
 
+	public List<BusquedaTO> searchIvoice(BusquedaTO busquedaTO, Integer start, Integer finish){
+        List<BusquedaTO> busquedaTOs= new ArrayList<BusquedaTO>();
+        ConexionBD bd = new ConexionBD();
+        String sql = "{ call RUG.SP_CONSULTA_GARANTIAS_REG("+"?,?,?,?,?,"+"?,?,?,?,?,?,"+"?,?)}";
+        Connection connection = bd.getConnection();
+        ResultSet rs = null;
+        CallableStatement cs = null;
+        try {
+            cs = connection.prepareCall(sql);
+
+
+            cs.setString(1, busquedaTO.getDescGarantia());
+            cs.setString(2, busquedaTO.getNombre());
+            if (busquedaTO.getIdGarantia() != null && !busquedaTO.getIdGarantia().equals("") ){
+                cs.setInt(3, Integer.valueOf(busquedaTO.getIdGarantia()));
+            }else{
+                cs.setNull(3, Types.NULL);
+            }
+            cs.setString(4, busquedaTO.getFolioMercantil());
+            cs.setString(5, busquedaTO.getCurpOtorgante());
+            cs.setString(6, busquedaTO.getRfcOtorgante());
+            cs.setInt(7, start);
+            cs.setInt(8, finish);
+            cs.setString(9, busquedaTO.getNoSerial());
+            cs.setInt(10, new Integer(busquedaTO.getIdPersona()));
+            cs.setInt(11, new Integer(busquedaTO.getIdTipoTramite()));
+            cs.registerOutParameter(12, Types.INTEGER);
+            cs.registerOutParameter(13, oracle.jdbc.OracleTypes.CURSOR);
+            cs.execute();
+            rs = (ResultSet)cs.getObject(13);
+            int numReg = (Integer) cs.getObject(12);
+            BusquedaTO busquedaTO2;
+            if (numReg == 0) {
+                busquedaTO2= new BusquedaTO();
+                busquedaTO.setNumReg(numReg);
+                busquedaTOs.add(busquedaTO);
+            }else {
+                while (rs.next()){
+                    busquedaTO= new BusquedaTO();
+                    busquedaTO.setIdTramite(rs.getString("ID_TRAMITE"));
+                    busquedaTO.setIdTipoTramite(rs.getString("ID_TIPO_TRAMITE"));
+                    busquedaTO.setFechaCreacion(rs.getString("FECHA_CREACION"));
+                    busquedaTO.setDescripcion(rs.getString("DESCRIPCION"));
+                    busquedaTO.setNombre(rs.getString("NOMBRE"));
+                    //busquedaTO.setCurpOtorgante(rs.getString("CURP"));
+                    busquedaTO.setRfcOtorgante(rs.getString("FOLIO_MERCANTIL"));
+                    busquedaTO.setIdGarantia(rs.getString("ID_GARANTIA"));
+                    busquedaTO.setDescGarantia(rs.getString("DESC_TIPOS_BIENES"));
+                    busquedaTO.setNumReg(numReg);
+                    busquedaTOs.add(busquedaTO);
+                }
+            }
+        } catch (SQLException e) {
+            MyLogger.Logger.log(Level.INFO,"EXCEPTION: " +e.getMessage());
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally{
+            bd.close(connection, rs, cs);
+        }
+        //MyLogger.Logger.log(Level.INFO,"RREESSUULLTTAADDOO: " +busquedaTOs.toString());
+        return busquedaTOs;
+    }
+
 	public List<BusquedaTO> busqueda(BusquedaTO busquedaInTO, Integer inicio, Integer fin){
 		List<BusquedaTO> busquedaTOs= new ArrayList<BusquedaTO>();
                 System.out.println("busquedaTOs = " + busquedaInTO.getNoSerial());

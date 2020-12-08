@@ -24,13 +24,13 @@ public class AutoridadInstruye implements Serializable {
 	public String getEtiquetaTipoTramite() {
 		
 		switch(idTipoTramite){
-		case 1: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Inscripci髇 y contenido de la Resoluci髇 ";break;
-		case 2: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Anotaci髇";break;
-		case 4: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Cancelaci髇 y Resoluci髇 Judicial ";break;
-		case 6: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Rectificaci髇 y contenido de la Resoluci髇";break;
-		case 7: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Modificaci髇 y contenido de la Resoluci髇";break;
-		case 8: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Transmisi髇 y contenido de la Resoluci髇";break;
-		case 9: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Renovaci髇 o Reducci髇 de la Vigencia ";break;
+		case 1: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Inscripci贸n y contenido de la Resoluci贸n ";break;
+		case 2: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Anotaci贸n";break;
+		case 4: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Cancelaci贸n y Resoluci贸n Judicial ";break;
+		case 6: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Rectificaci贸n y contenido de la Resoluci贸n";break;
+		case 7: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Modificaci贸n y contenido de la Resoluci贸n";break;
+		case 8: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Transmisi贸n y contenido de la Resoluci贸n";break;
+		case 9: etiquetaTipoTramite="Persona que solicita o Autoridad que instruye la Renovaci贸n o Reducci贸n de la Vigencia ";break;
 		default:etiquetaTipoTramite ="";break;
 		}
 		

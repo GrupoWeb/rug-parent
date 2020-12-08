@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
+
 import mx.gob.economia.dgi.framework.dwr.action.AbstractBaseDwrAction;
 import mx.gob.se.rug.busqueda.dao.BusquedaDAO;
 import mx.gob.se.rug.busqueda.to.BusquedaTO;
@@ -20,7 +21,67 @@ import mx.gob.se.rug.util.MyLogger;
 import mx.gob.se.rug.util.pdf.to.PdfTO;
 
 public class BusquedaDwrAction extends AbstractBaseDwrAction {
-	
+
+	public MessageDwr searchIvoice(String ivoice, String set, String idPersona, String idTipoTramite, String ruta){
+		BusquedaTO searchTO = new BusquedaTO();
+
+		searchTO.setInvoice(ivoice.trim());
+		searchTO.setSet(set.trim());
+		MyLogger.Logger.log(Level.INFO, "Metodo Search Independiente");
+
+		StringBuffer sb = new StringBuffer();
+		BusquedaDAO busquedaDAO =new BusquedaDAO();
+		InscripcionService inscripcionService = new InscripcionServiceImpl();
+		MessageDwr dwrTO = new MessageDwr();
+		dwrTO.setCodeError(0);
+		try{
+			Integer start = 1;
+			Integer finish = 20;
+
+			MyLogger.Logger.log(Level.INFO, "Usuario " + (Integer.parseInt(idPersona) == 17381));
+			if(Integer.parseInt(idPersona) == 17381){
+				if(inscripcionService.getSaldoByUsuario(idPersona, Integer.valueOf(idTipoTramite), 0)){
+					List<BusquedaTO> busquedaGeneral = busquedaDAO.busqueda(searchTO, start, finish);
+					int pagActiva = Integer.valueOf(1);
+					int regPagina = Integer.valueOf(20);
+					int registroTotales = searchTO.getNumReg();
+					System.out.println("NUMERO DE REGISTROS :::: " + registroTotales);
+					int numeroPaginas = registroTotales/regPagina;
+					if ( registroTotales %regPagina > 0){
+						numeroPaginas++;
+					}
+					if (numeroPaginas < pagActiva){
+						pagActiva = 1;
+					}
+					if (pagActiva != 1){
+						start = ((pagActiva-1)*regPagina) + 1;
+					}
+
+					sb.append(tableSearch(searchTO,busquedaGeneral,registroTotales,ruta));
+					sb.append(writeSeccionPaginado(numeroPaginas, 1, 20, registroTotales,"pagBusquedaDwr",""));
+					sb.append("<div class=\"row\">");
+					sb.append("<p><span>Para descargar la boleta dar click en el siguiente bot&oacute;n :</span></p>");
+					sb.append("<input type=\"button\"class=\"btn btn-large waves-effect indigo\" value=\"Descargar PDF \" onclick=\"showBoleta();\"  />");
+					sb.append("</div>");
+				}else {
+					sb.append("<div class=\"row\">");
+					sb.append("<p><span class=\"red-text text-darken-4\">No tiene saldo para realizar la operaci&oacute;n</span></p>");
+					sb.append("</div>");
+				}
+			}else{
+				System.out.println("NUMERO DE REGISTROS :::: " );
+				sb.append("<div class=\"row\">");
+				sb.append("<p><span class=\"red-text text-darken-4\">No tiene saldo para realizar la operaci&oacute;n</span></p>");
+				sb.append("</div>");
+			}
+
+		}catch (Exception  e) {
+			e.printStackTrace();
+		}
+		dwrTO.setMessage(sb.toString());
+		return dwrTO;
+	}
+
 	public MessageDwr buscar(String idPersona, String noSerial, String idGarantia, String nombre, 
 			String folioMercantil, String descGarantia, String curpOtorgante, String rfcOtorgante, 
 			String ruta, String idTipoTramite){

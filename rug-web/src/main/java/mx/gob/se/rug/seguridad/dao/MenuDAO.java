@@ -98,7 +98,7 @@ public class MenuDAO {
 				&& !usuarioTO.getPersona().getPerfil().equalsIgnoreCase("ROOT")) {
 			MyLogger.Logger.log(Level.INFO, "submenu-----Inicia subAcreedor");
 			// if(getAcreedoresByIdUser(usuarioTO.getPersona().getIdPersona()).booleanValue()){
-			MyLogger.Logger.log(Level.INFO, "submenu de  acreedor");
+			MyLogger.Logger.log(Level.INFO, "submenu de  acreedor test" + idAcreedor);
 			GarantiasDAO gdao = new GarantiasDAO();
 			idAcreedor = gdao.getCuentaMaestra(idAcreedor.longValue()).intValue();
 			ConexionBD bd = new ConexionBD();
@@ -147,7 +147,7 @@ public class MenuDAO {
 				&& !usuarioTO.getPersona().getPerfil().equalsIgnoreCase("ROOT")) {
 			MyLogger.Logger.log(Level.INFO, "submenuAnotacionSinGarantia-----Inicia subAcreedor");
 			// if(getAcreedoresByIdUser(usuarioTO.getPersona().getIdPersona()).booleanValue()){
-			MyLogger.Logger.log(Level.INFO, "submenu de  acreedor");
+			MyLogger.Logger.log(Level.INFO, "submenu de  acreedor test 2"+ usuarioTO.getPersona().getIdPersona());
 			ConexionBD bd = new ConexionBD();
 			Connection connection = null;
 			List<String> html = new ArrayList<String>();

@@ -268,7 +268,7 @@ public class BusquedaOpDwrAction {
 			regFinal = inicio + (regPagina-1);
 			OperacionesService opService= new OperacionesService();
 			listaPendientes = opService.getBusOpPendientes(idPersona, inicio, regFinal, dateStart, dateEnd);
-			System.out.println("::::::El tamaño debe de ser igual a 20 tamaño: "+listaPendientes.size());
+			System.out.println("::::::El tamaÃ±o debe de ser igual a 20 tamaÃ±o: "+listaPendientes.size());
 			StringBuffer sb = new StringBuffer();
 			sb.append("<div align=\"right\">")
 //			.append(writeSeccionHeader(numeroPaginas, pagActiva, regPagina, registroTotales,"pagPendientes",""))
@@ -309,7 +309,7 @@ public class BusquedaOpDwrAction {
 			regFinal = inicio + (regPagina-1);
 			OperacionesService opService= new OperacionesService();
 			listaPendientes = opService.getBusOpPenByOtorgante(idPersona, inicio, regFinal, nomOtorgante);
-			System.out.println("::::::El tamaño debe de ser igual a 20 tamaño: "+listaPendientes.size());
+			System.out.println("::::::El tamaÃ±o debe de ser igual a 20 tamaÃ±o: "+listaPendientes.size());
 			StringBuffer sb = new StringBuffer();
 			sb.append("<div align=\"right\">")
 //			.append(writeSeccionHeader(numeroPaginas, pagActiva, regPagina, registroTotales,"pagPendientes",""))
@@ -350,7 +350,7 @@ public class BusquedaOpDwrAction {
 			regFinal = inicio + (regPagina-1);
 			OperacionesService opService= new OperacionesService();
 			listaPendientes = opService.getBusOpPenFirma(idPersona, inicio, regFinal, dateStart, dateEnd);
-			System.out.println("::::::El tamaño debe de ser igual a 20 tamaño: "+listaPendientes.size());
+			System.out.println("::::::El tamaÃ±o debe de ser igual a 20 tamaÃ±o: "+listaPendientes.size());
 			StringBuffer sb = new StringBuffer();
 			sb.append("<div align=\"right\">")
 //			.append(writeSeccionHeader(numeroPaginas, pagActiva, regPagina, registroTotales,"pagPendientes",""))
@@ -391,7 +391,7 @@ public class BusquedaOpDwrAction {
 			regFinal = inicio + (regPagina-1);
 			OperacionesService opService= new OperacionesService();
 			listaPendientes = opService.getBusOpPenFirmaByOtorgante(idPersona, inicio, regFinal, nomOtorgante);
-			System.out.println("::::::El tamaño debe de ser igual a 20 tamaño: "+listaPendientes.size());
+			System.out.println("::::::El tamaÃ±o debe de ser igual a 20 tamaÃ±o: "+listaPendientes.size());
 			StringBuffer sb = new StringBuffer();
 			sb.append("<div align=\"right\">")
 //			.append(writeSeccionHeader(numeroPaginas, pagActiva, regPagina, registroTotales,"pagPendientes",""))
@@ -513,7 +513,7 @@ public class BusquedaOpDwrAction {
 			regFinal = inicio + (regPagina-1);
 			OperacionesService opService= new OperacionesService();
 			listaPendientes = opService.getBusOpTerminadas(idPersona, inicio, regFinal, dateStart, dateEnd);
-			System.out.println("::::::El tamaño debe de ser igual a 20 tamaño: "+listaPendientes.size());
+			System.out.println("::::::El tamaÃ±o debe de ser igual a 20 tamaÃ±o: "+listaPendientes.size());
 			StringBuffer sb = new StringBuffer();
 			sb.append("<div align=\"right\">")
 //			.append(writeSeccionHeader(numeroPaginas, pagActiva, regPagina, registroTotales,"pagPendientes",""))
@@ -554,7 +554,7 @@ public class BusquedaOpDwrAction {
 			regFinal = inicio + (regPagina-1);
 			OperacionesService opService= new OperacionesService();
 			listaPendientes = opService.getBusOpTermByOtorgante(idPersona, inicio, regFinal, nomOtorgante);
-			System.out.println("::::::El tamaño debe de ser igual a 20 tamaño: "+listaPendientes.size());
+			System.out.println("::::::El tamaÃ±o debe de ser igual a 20 tamaÃ±o: "+listaPendientes.size());
 			StringBuffer sb = new StringBuffer();
 			sb.append("<div align=\"right\">")
 //			.append(writeSeccionHeader(numeroPaginas, pagActiva, regPagina, registroTotales,"pagPendientes",""))
@@ -725,8 +725,8 @@ public class BusquedaOpDwrAction {
 			sb.append(" <table class=\"mytabledaO\" width=\"100%\" cellspacing=\"1\" cellpadding=\"1\" align=\"left\"> ");
 			sb.append(" 	<thead> ");
 			sb.append(" 		<tr height=\"25\"> ");
-			sb.append(" 			<td width=\"92px\" class=\"encabezadoTablaResumen\" style=\"text-align: center\">Tipo de Operación</td>");
-			sb.append(" 			<td width=\"92px\" class=\"encabezadoTablaResumen\" style=\"text-align: center\">Numero de Garantía</td>");
+			sb.append(" 			<td width=\"92px\" class=\"encabezadoTablaResumen\" style=\"text-align: center\">Tipo de OperaciÃ³n</td>");
+			sb.append(" 			<td width=\"92px\" class=\"encabezadoTablaResumen\" style=\"text-align: center\">Numero de GarantÃ­a</td>");
 			sb.append(" 			<td width=\"496px\" class=\"encabezadoTablaResumen\" style=\"text-align: center\">");
 			sb.append(" 				<table style=\"width: 100%\" class=\"mytabledaO\"");
 			sb.append(" 					<tr height=\"25\">");
@@ -847,7 +847,7 @@ public class BusquedaOpDwrAction {
 				}
 			}else{
 				sb.append(" <tr>");
-				sb.append("	<td colspan=\"6\" >No existen Operaciones Pendientes de Confirmación Registros Multiples.</td>");
+				sb.append("	<td colspan=\"6\" >No existen Operaciones Pendientes de ConfirmaciÃ³n Registros Multiples.</td>");
 				sb.append(" </tr>");
 			}
 			sb.append(" </tbody> ");

@@ -25,42 +25,45 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 		<div class="col s12"><div class="card">
 			<div class="col s2"></div>
 			<div class="col s8">
+				<!-- row note teal -->
 				<form id="fafactoraje" name="fafactoraje" action="saveFactoraje.do" method="post">
 					<span class="card-title"><s:property value="%{textosFormulario.get(0)}"/></span>
 					<input type="hidden" name="refInscripcion" id="refInscripcion" value="<s:property value='idTramite'/>" />
-					<input type="hidden" name="reftipogarantia" id="reftipogarantia" value="<s:property value='idTipoGarantia'/>" />						
-					<div class="row note teal">
-						<span class="white-text"><s:property value="%{textosFormulario.get(1)}"/></span>
-					</div>					
-					<div class="row">														
-						<div id ="divParteDWRxx2"></div>							
+					<input type="hidden" name="reftipogarantia" id="reftipogarantia" value="<s:property value='idTipoGarantia'/>" />
+					<div class="row note_tabs light-blue darken-4">
+
+						    <span class="white-text"><s:property value="%{textosFormulario.get(1)}"/></span>
+
 					</div>
-					<div class="row note teal">
-						<span class="white-text"><s:property value="%{textosFormulario.get(2)}"/></span>
-					</div>					
 					<div class="row">
-						<div id="divParteDWRxx3"></div>												
-					</div>	
-					<s:if test="hayOtorgantes">							
-						<div class="row note teal">
+						<div id ="divParteDWRxx2"></div>
+					</div>
+					<div class="row note_tabs light-blue darken-4">
+						<span class="white-text"><s:property value="%{textosFormulario.get(2)}"/></span>
+					</div>
+					<div class="row">
+						<div id="divParteDWRxx3"></div>
+					</div>
+					<s:if test="hayOtorgantes">
+						<div class="row note_tabs light-blue darken-4">
 							<span class="white-text"><s:property value="%{textosFormulario.get(3)}"/></span>
-						</div>					
-						<div class="row">						
+						</div>
+						<div class="row">
 							<div id ="divParteDWRxx4"></div>
-						</div>		
-					</s:if>								
-					<div class="row note teal">
+						</div>
+					</s:if>
+					<div class="row note_tabs light-blue darken-4">
 						<span class="white-text"><s:property value="%{textosFormulario.get(4)}"/></span>
-					</div>					
+					</div>
 				 	<div class="row">
 						<div class="input-field col s12">
 							<s:textarea name="moddescripcion" cols="70" rows="10" id="tiposbienes" value="%{moddescripcion}" />
-							<label for="tiposbienes">Descripci&oacute;n General:</label>							
+							<label for="tiposbienes">Descripci&oacute;n General:</label>
 						</div>
-					</div>				
+					</div>
 					<div class="row">
 						<span class="blue-text text-darken-2"><s:property value="%{textosFormulario.get(5)}"/></span>
-					</div>					
+					</div>
 					<div class="row">
 						<div class="col s12 right-align">
 							<a class="btn-floating btn-large waves-effect indigo modal-trigger" onclick="limpiaCampos()"
@@ -68,38 +71,38 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 								class="material-icons left">add</i></a>
 							<a class="btn-floating btn-large waves-effect indigo modal-trigger" onclick="limpiaCamposFile()"
 									href="#frmFile" id="btnFile"><i
-									class="material-icons left">attach_file</i></a>							
-						</div>													
-						<div id="divParteDWRBienes"></div>						
-					</div>																					 	
-				 	<div class="row note teal">
+									class="material-icons left">attach_file</i></a>
+						</div>
+						<div id="divParteDWRBienes"></div>
+					</div>
+				 	<div class="row note_tabs light-blue darken-4">
 						<span class="white-text"><s:property value="%{textosFormulario.get(6)}"/></span>
-					</div>										 									 	
+					</div>
 				 	<div class="row">
 				    	<div class="input-field col s12">
-				        	<s:textarea rows="10" cols="80" id="instrumento" name="instrumento" value="%{instrumento}"  
+				        	<s:textarea rows="10" cols="80" id="instrumento" name="instrumento" value="%{instrumento}"
 									    maxlength="3500" />
 				        	<label for="instrumento"><s:property value="%{textosFormulario.get(7)}"/></label>
 				   		</div>
-				 	</div>				 	
+				 	</div>
 				 	<div class="row">
 				    	<div class="input-field col s12">
-				    		<s:textarea id="modotrosgarantia" name="modotrosgarantia" cols="80" rows="10" maxlength="3500" value="%{modotrosgarantia}" />				        										
+				    		<s:textarea id="modotrosgarantia" name="modotrosgarantia" cols="80" rows="10" maxlength="3500" value="%{modotrosgarantia}" />
 				        	<label for="modotrosgarantia"><s:property value="%{textosFormulario.get(8)}"/></label>
 				   		</div>
-				 	</div>				 					 					 	
+				 	</div>
 				    <hr />
 				 	<center>
-			            <div class='row'>			            	
-			            	<input type="button" id="bFirmar" name="button" class="btn btn-large waves-effect indigo" value="Aceptar" onclick="inscripcionFactoraje();"/>			            				            							            	
+			            <div class='row'>
+			            	<input type="button" id="bFirmar" name="button" class="btn btn-large waves-effect indigo" value="Aceptar" onclick="inscripcionFactoraje();"/>
 			            </div>
-		          	</center>						
-				</form>	
+		          	</center>
+				</form>
 				<s:if test="aBoolean">
 					<script type="text/javascript">
 							document.getElementById('aBoolean').checked = 1;
 					</script>
-				</s:if>		
+				</s:if>
 				<s:if test="aMonto">
 					<script type="text/javascript">
 							document.getElementById('aMonto').checked = 1;
@@ -116,9 +119,9 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 							document.getElementById("txtregistro").disabled = false;
 							Materialize.updateTextFields();
 					</script>
-				</s:if>						
+				</s:if>
 			</div>
-		</div></div>	
+		</div></div>
 	</div>
 </div>
 <script type="text/javascript"> 	
@@ -133,14 +136,14 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 					//escondePartes();	
 				</script> 				
 </main>
-<div id="frmBien" class="modal">
+<div id="frmBien" class="modal  modal-fixed-footer">
 	<div class="modal-content">
 		<div class="card">
 			<div class="card-content">						
 				<span class="card-title">Bien Especial</span>
 				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s10">
+<%--					<div class="col s1"></div>--%>
+					<div class="col s12">
 						<div class="row">
 							<div class="input-field col s12">
 								<s:select name="mdBienEspecial" id="mdBienEspecial" list="listaBienEspecial" listKey="idTipo" listValue="desTipo" 
@@ -148,64 +151,75 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 						    	<label>Tipo Bien Especial</label>
 						  	</div>
 						</div>
-						<div id="secId4" class="row">
-							<div class="input-field col s6">
-								<s:textfield name="mdFactura1" id="mdFactura1"
-									cssClass="validate" maxlength="150" />
-								<label id="lblMdFactura1" for="mdFactura1">No. Contribuyente Emite:</label>
-							</div>						
-							<div class="input-field col s6">
-								<input type="text" name="mdFactura2" class="datepicker" id="mdFactura2" />									
-								<label id="lblMdFactura2" for="mdFactura2">Fecha: </label>
-							</div>						
+						<div id="showContainerData">
+							<div id="secId4" class="row">
+								<div class="input-field col s6">
+									<s:textfield name="mdFactura1" id="mdFactura1"
+										cssClass="validate" maxlength="150" onkeypress="return characterNotAllowed(event);"/>
+									<label id="lblMdFactura1" for="mdFactura1">No. Contribuyente Emite: (NIT)</label>
+								</div>
+								<div class="input-field col s6">
+									<input type="text" name="mdFactura2" class="datepicker" id="mdFactura2" />
+									<label id="lblMdFactura2" for="mdFactura2">Fecha: </label>
+								</div>
+							</div>
+							<div class="row" >
+								<div class="input-field col s12">
+									<s:textarea rows="10" id="mdDescripcion" cols="80"
+												name="mdDescripcion2" data-length="700" cssClass="materialize-textarea" maxlength="700"/>
+									<label id="lblMdDescripcion" for="mdDescripcion">Descripci&oacute;n del bien</label>
+								</div>
+							</div>
+							<div id="secId3" class="row" style="display: none;">
+								<div class="input-field col s6">
+									<s:textfield name="mdIdentificador3" id="mdIdentificador3"
+												 cssClass="validate" maxlength="150" onkeypress="return characterNotAllowed(event);"/>
+									<label id="lblMdIdentificador3" for="mdIdentificador3">VIN</label>
+								</div>
+								<div class="input-field col s6">
+									<s:textfield name="mdIdentificador2" id="mdIdentificador2"
+										cssClass="validate" maxlength="150" />
+									<label id="lblMdIdentificador2" for="mdIdentificador2">VIN</label>
+								</div>
+							</div>
+							<div id="secId1"class="row" style="display: none;">
+								<div class="input-field col s3">
+									<label id="lblMdIdentificador">Placa</label>
+								</div>
+								<div class="input-field col s3">
+									<s:select name="mdIdentificador" id="mdIdentificador" list="listaUsos" listKey="idTipo" listValue="desTipo"/>
+								</div>
+								<div class="input-field col s6">2
+									<s:textfield name="mdIdentificador1" id="mdIdentificador1"
+										cssClass="validate" maxlength="150" />
+								</div>
+							</div>
+							<div id="secId2" class="row" style="display: none;"><span class="col s12 center-align">Y</span></div>
+<%--							<br />--%>
+<%--							<hr />--%>
+
+
 						</div>
-						<div class="row">
-							<div class="input-field col s12">
-								<s:textarea rows="10" id="mdDescripcion" cols="80" 												
-											name="mdDescripcion" />							    	 								        	
-				        		<label id="lblMdDescripcion" for="mdDescripcion">Descripci&oacute;n del bien</label>
-				        	</div>
-						</div>							
-						<div id="secId1"class="row" style="display: none;">
-							<div class="input-field col s3">
-								<label id="lblMdIdentificador">Placa</label>
-							</div>						
-							<div class="input-field col s3">
-								<s:select name="mdIdentificador" id="mdIdentificador" list="listaUsos" listKey="idTipo" listValue="desTipo"/>																
-							</div>
-							<div class="input-field col s6">
-								<s:textfield name="mdIdentificador1" id="mdIdentificador1"
-									cssClass="validate" maxlength="150" />								
-							</div>
-						</div>
-						<div id="secId2" class="row" style="display: none;"><span class="col s12 center-align">Y</span></div>
-						<div id="secId3" class="row" style="display: none;">
-							<div class="input-field col s12">
-								<s:textfield name="mdIdentificador2" id="mdIdentificador2"
-									cssClass="validate" maxlength="150" />
-								<label id="lblMdIdentificador2" for="mdIdentificador2">VIN</label>
-							</div>
-						</div>														
-						<br />
-						<hr />
-						<center>
-							<div id="secId5" class="row">
-								<a href="#!"
-									class="btn-large indigo"
-									onclick="add_bien();">Aceptar</a>
-							</div>
-							<div id="secId6" class="row">
-								<a href="#!" id="formBienButton"
-									class="btn-large indigo"
-									onclick="add_bien();">Aceptar</a>
-							</div>
-						</center>
+
 					</div>
-					<div class="col s1"></div>
+<%--					<div class="col s1"></div>--%>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="modal-footer">
+		<div id="secId5" >
+			<a href="#!"
+				class="modal-action modal-close btn teal lighten-1"
+				onclick="add_bien();">Aceptar</a>
+		</div>
+		<div id="secId6" >
+			<a href="#!" id="formBienButton"
+				class="modal-action modal-close btn teal lighten-1"
+				onclick="add_bien();">Aceptar</a>
+		</div>
+	</div>
+
 </div>
 
 <div id="frmFile" class="modal">
@@ -234,8 +248,7 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 										 <input type="file" name="excelfile" id="excelfile" />										
 									</div>
 									<div class="file-path-wrapper">
-										<input class="file-path validate" type="text" name="namefile" id="namefile"
-											placeholder="Seleccione...">
+										<input class="file-path validate" type="text" name="namefile" id="namefile"	placeholder="Seleccione..." >
 									</div>								
 								</div>
 							</div>
@@ -265,7 +278,16 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 </div>
 <script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/xlsx.core.min.js"></script> 
-<script type="text/javascript"> 
+<script type="text/javascript">
+
+	function characterNotAllowed(evt){
+		var charText = evt.which;
+		if(charText >= 32 && charText <= 47){
+			return false;
+		}else if(charText >= 58 && charText <=64){
+			return false;
+		}
+	}
 function add_bien() {
 	  
 	  var idTramite = document.getElementById("refInscripcion").value;
@@ -274,7 +296,8 @@ function add_bien() {
 	  var mdIdentificador = document.getElementById("mdIdentificador").value;
 	  var mdIdentificador1 = document.getElementById("mdIdentificador1").value;
 	  var mdIdentificador2 = document.getElementById("mdIdentificador2").value;
-	  
+	  var mdIdentificador3 = document.getElementById("mdIdentificador3").value;
+
 	  if(!noVacio(mdDescripcion)){
 		  alertMaterialize('Debe ingresar la descripcion del bien especial');
 		  return false;
@@ -291,8 +314,10 @@ function add_bien() {
 		  }
 	  } 
 	  
-	  ParteDwrAction.registrarBien('divParteDWRBienes',idTramite, mdDescripcion, idTipo, mdIdentificador, 
-			  mdIdentificador1, mdIdentificador2, showParteBienes);
+	  ParteDwrAction.registrarBien('divParteDWRBienes',idTramite, mdDescripcion, idTipo, mdIdentificador,
+			  mdIdentificador1, mdIdentificador2, mdIdentificador3,showParteBienes);
+          
+
 	  
 	  $(document).ready(function() {	  
 			$('#frmBien').modal('close');
@@ -301,7 +326,8 @@ function add_bien() {
 
 function cambiaBienesEspeciales() {
 	  var x = document.getElementById("mdBienEspecial").value;
-	  
+	console.log(x);
+
 	  if(x=='1'){
 		  document.getElementById("mdDescripcion").disabled = false;	  
 		  document.getElementById("secId1").style.display = 'block'; 
@@ -312,6 +338,8 @@ function cambiaBienesEspeciales() {
 		  document.getElementById("lblMdDescripcion").innerHTML = 'Descripci&oacute;n del veh&iacute;culo';
 		  document.getElementById("lblMdIdentificador2").innerHTML = 'VIN';
 	  } else if (x=='2'){
+
+	  	document.getElementById('showContainerData').style.display = 'block';
 		  document.getElementById("mdDescripcion").disabled = false;	  
 		  document.getElementById("secId1").style.display = 'none'; 
 		  document.getElementById("secId2").style.display = 'none';
@@ -319,6 +347,7 @@ function cambiaBienesEspeciales() {
 		  document.getElementById("secId4").style.display = 'block';
 		  
 		  document.getElementById("lblMdIdentificador2").innerHTML = 'No. Factura';
+		  document.getElementById("lblMdIdentificador3").innerHTML = 'Serie'
 		  document.getElementById("lblMdDescripcion").innerHTML = 'Observaciones Generales';
 	  } else if (x=='3'){
 		  document.getElementById("mdDescripcion").disabled = false;	  
@@ -335,6 +364,11 @@ function cambiaBienesEspeciales() {
 }
   
 function limpiaCampos() {
+
+	// show Data info
+	document.getElementById('showContainerData').style.display = 'none';
+
+
 	  document.getElementById("secId1").style.display = 'none'; 
 	  document.getElementById("secId2").style.display = 'none';
 	  document.getElementById("secId3").style.display = 'none';
@@ -345,7 +379,8 @@ function limpiaCampos() {
 	  document.getElementById("mdIdentificador").value = '0';
 	  document.getElementById("mdIdentificador1").value = '';
 	  document.getElementById("mdIdentificador2").value = '';
-	  
+	  document.getElementById("mdIdentificador3").value = '';
+
 	  document.getElementById("mdFactura1").value = '';
 	  document.getElementById("mdFactura2").value = '';
 	  	  
@@ -358,7 +393,7 @@ function limpiaCampos() {
 	  Materialize.updateTextFields();
 }
   
-  function otroRegistro() {
+function otroRegistro() {
 	  var checkBox = document.getElementById("aRegistro");
 	  if (checkBox.checked == true) {
 		  document.getElementById("txtregistro").disabled = false;

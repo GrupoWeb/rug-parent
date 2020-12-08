@@ -133,6 +133,7 @@ public class BoletaAction extends RugBaseAction {
 
     public String getBoleta() {
 
+        System.out.println("Entramos a getboleta");
         UsuarioTO usuarioTO = (UsuarioTO) sessionMap.get(Constants.USUARIO);
 
         if (usuarioTO == null) {

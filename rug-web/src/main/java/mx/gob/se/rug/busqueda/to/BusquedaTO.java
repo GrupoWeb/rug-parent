@@ -16,6 +16,26 @@ public class BusquedaTO implements Serializable{
 	private String curpOtorgante;
 	private String rfcOtorgante;
 	private String noSerial;
+	// search invoice and set
+	private String invoice;
+	private String set;
+
+	public String getInvoice() {
+		return invoice;
+	}
+
+	public void setInvoice(String invoice) {
+		this.invoice = invoice;
+	}
+
+	public String getSet() {
+		return set;
+	}
+
+	public void setSet(String set) {
+		this.set = set;
+	}
+
 	public String getNoSerial() {
 		return noSerial;
 	}

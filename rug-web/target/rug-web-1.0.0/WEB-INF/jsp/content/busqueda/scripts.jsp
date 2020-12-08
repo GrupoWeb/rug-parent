@@ -38,6 +38,7 @@
 		}
 
 	function aceptaalfa(evt) {
+	    console.log(evt);
 			var charCode = (evt.which) ? evt.which : event.keyCode
 			if (charCode > 31 && (charCode < 48 || charCode > 57) &&
 				(charCode < 65 || charCode > 90) &&
@@ -72,6 +73,59 @@
 			displayLoader(false);
 
 		}
+
+		function checkText(idPersona,tipoBusqueda){
+
+	        if($('#invoice').val().length == 0 && $('#set').val().length == 0){
+	            MaterialDialog.alert(
+	                'Complete los criterios de búsqueda',{
+	                    title: '<table><tr><td width="10%"><i class="medium icon-yellow material-icons">warning</i></td><td style="vertical-align: middle; text-align:left;">Alerta</td></tr></table>',
+                        buttons: {
+	                        close: {
+	                            text: 'cerrar',
+                                className: 'red'
+                            }
+                        }
+                    }
+                );
+	            return false;
+            }
+
+            var ruta = '${pageContext.servletContext.contextPath}';
+            if (checkUser(idPersona)) {
+                searchInvoiceform(ruta, idPersona, tipoBusqueda, 11);
+            } else {
+                $.ajax({
+                    url: '<%= request.getContextPath() %>/rs/tipos-tramite/11',
+                    success: function (result) {
+                        MaterialDialog.dialog(
+                            "El costo de una " + result.descripcion + " es de Q. " + (Math.round(result.precio * 100) / 100)
+                                .toFixed(2) + ", Está seguro que desea continuar?", {
+                                title: '<table><tr><td width="10%"><i class="medium icon-green material-icons">check_circle</i></td><td style="vertical-align: middle; text-align:left;">Confirmar</td></tr></table>', // Modal title
+                                buttons: {
+                                    // Use by default close and confirm buttons
+                                    close: {
+                                        className: "red",
+                                        text: "cancelar"
+                                    },
+                                    confirm: {
+                                        className: "indigo",
+                                        text: "aceptar",
+                                        modalClose: true,
+                                        callback: function () {
+                                            searchInvoiceform(ruta, idPersona, tipoBusqueda, 11);
+                                        }
+                                    }
+                                }
+                            }
+                        );
+                    }
+                });
+            }
+
+        }
+
+
 
 		function busquedaJSP(idPersona, tipoBusqueda) {
 			if (!$('#idGarantia').val() && !$('#nombreOtorgante').val() && !$('#rfcOtorgante').val() && !$('#curpOtorgante').val() && !$('#serial').val()) {

@@ -10,7 +10,8 @@ function busquedaDwr(ruta, idPersona, tipoBusqueda, tipoTramite) {
 	var rfcOtorgante = trim(getObject('rfcOtorgante').value);
 	var curpOtorgante = trim(getObject('curpOtorgante').value);
 	var noSerial = trim(getObject('serial').value);
-	
+
+
 	//se resetean campos
 	if(tipoBusqueda == 1){
 		idGarantia = '';
@@ -20,12 +21,33 @@ function busquedaDwr(ruta, idPersona, tipoBusqueda, tipoTramite) {
 		curpOtorgante = '';
 		noSerial = '';
 	}
-	
-	if(!isBlank(idGarantia) || !isBlank(nombre) || !isBlank(folioMercantil) || !isBlank(noSerial) || !isBlank(curpOtorgante)|| !isBlank(rfcOtorgante)){
+
+
+
+	if(!isBlank(idGarantia) || !isBlank(nombre) || !isBlank(folioMercantil) || !isBlank(noSerial) || !isBlank(curpOtorgante)|| !isBlank(rfcOtorgante) ){
 		BusquedaDwrAction.buscar(idPersona, noSerial, idGarantia, nombre, folioMercantil,descGarantia,curpOtorgante,rfcOtorgante , ruta, tipoTramite, escribeTablaBusqueda);
-	} else {
+	}
+	else {
 		alert("Falta criterio de b�squeda.");
 		//displayLoader(false);
+	}
+}
+
+function searchInvoiceform(ruta, idPersona, tipoBusqueda, tipoTramite){
+	// search data invoice
+
+	var invoice = trim(getObject('invoice').value);
+	var set = trim(getObject('set').value);
+
+   if (!isBlank(invoice) || !isBlank(set)){
+		BusquedaDwrAction.searchIvoice(invoice,set,idPersona,tipoTramite,ruta);
+	}
+}
+
+function clearData(tipoBusqueda){
+ 	if(tipoBusqueda == 3){
+		invoice = '';
+		set = '';
 	}
 }
 

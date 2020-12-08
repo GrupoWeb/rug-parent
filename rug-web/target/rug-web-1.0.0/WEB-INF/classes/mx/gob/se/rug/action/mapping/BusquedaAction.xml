@@ -19,6 +19,11 @@
 			<result name="input" type="tiles">busqueda.home</result>	
 			<result name="success" type="tiles">resBusqueda.home</result>
 		</action>
+
+		<action name="busquedaFac" method="busquedaFac" class="busquedaAction">
+
+			<result name="success" type="tiles">busquedaFac.home</result>
+		</action>
 		
 		<action name="busquedaJud" method="muestraBusqueda" class="busquedaJudAction">
 			<result type="tiles">busquedaJud.home</result>

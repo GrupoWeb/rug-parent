@@ -120,7 +120,7 @@ public class DetalleDAO{
 		ConexionBD bd = new ConexionBD();
 		Connection connection = null;
 		Boolean regresa=false;
-		System.out.println("idgarantia " + idGarantia);
+		System.out.println("idgarantia vigencia " + idGarantia);
 		String sql = "select count(*) VIGENCIAS from V_TRAMITES_TERM_VIGENCIA where id_garantia = ?";  
 		ResultSet rs =null;
 		PreparedStatement ps =null;
@@ -131,6 +131,7 @@ public class DetalleDAO{
 			rs = ps.executeQuery();
 			if(rs.next()){
 				MyLogger.Logger.log(Level.INFO, "El resultado del query Vigencia " + rs.getInt("VIGENCIAS"));
+				MyLogger.Logger.log(Level.INFO, "El parametro es: " +idGarantia );
 				if ((rs.getInt("VIGENCIAS") == 0)){
 				regresa=true;
 				}
@@ -321,7 +322,7 @@ public class DetalleDAO{
 			ps.setInt(1, idgarantia);	
 			ps.setInt(2, idtramite);
 			System.out.println("sql:  " + sqlQuery);
-			System.out.println("parametros: " + ps);
+			System.out.println("parametros: " + idgarantia + " " + idtramite);
 			rs = ps.executeQuery();
 			if(rs.next()){
 				detalle.setIdgarantia(idgarantia);
@@ -642,7 +643,7 @@ public class DetalleDAO{
 			ps = connection.prepareStatement(sqlQuery);
 			ps.setInt(1, idgarantia);
 			ps.setInt(2, idtramite);	
-			System.out.println("sql " + ps);
+			System.out.println("sql p" + ps);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				partes= new PartesTO();
@@ -712,7 +713,7 @@ public class DetalleDAO{
 		ConexionBD bd = new ConexionBD();
 		Connection connection = bd.getConnection();
 		String sql = "";
-                System.out.println("Tramite Query = " + idTramite);
+                System.out.println("Tramite Query = " + idTramite + " " + pQuery);
 		
 		if(pQuery == 1) {
 			sql = "SELECT ID_GARAN_BIEN_PEND,ID_TRAMITE_TEMP,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN " +
@@ -772,7 +773,7 @@ public class DetalleDAO{
 			 ps = connection.prepareStatement(sqlQuery);
 			ps.setInt(1, idgarantia);
 			ps.setInt(2, idtramite);
-			System.out.println("sql " + ps);
+			System.out.println("sql p2" + ps);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				partes= new PartesTO();
@@ -857,7 +858,7 @@ public class DetalleDAO{
 			sqlQuery = "SELECT ID_GARANTIA,ID_PERSONA,DESC_PARTE,FOLIO_MERCANTIL,NOMBRE,PER_JURIDICA,RFC FROM V_GARANTIA_PARTES  WHERE DESC_PARTE ='ACREEDOR REPRESENTADO' AND ID_GARANTIA = ?";
 			ps = connection.prepareStatement(sqlQuery);
 			ps.setInt(1, idgarantia);
-			System.out.println("sql " + ps);
+			System.out.println("sql p3" + ps);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				partes= new PartesTO();
@@ -896,7 +897,7 @@ public class DetalleDAO{
 			 ps = connection.prepareStatement(sqlQuery);
 			ps.setInt(1, idgarantia);
 			ps.setInt(2, idtramite);
-			System.out.println("sql " + ps);
+			System.out.println("sql p4" + ps);
 			rs = ps.executeQuery();
 			while(rs.next()){
 						bienes = new TipoBienTO();
@@ -935,7 +936,7 @@ public class DetalleDAO{
 			ps = connection.prepareStatement(sqlQuery);
 			ps.setInt(1, idgarantia);
 //			ps.setInt(2, idtramite);
-			System.out.println("sql " + ps);
+			System.out.println("sql p5" + ps);
 			rs = ps.executeQuery();
 			while(rs.next()){
 					basa = new DetalleTO();

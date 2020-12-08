@@ -131,11 +131,13 @@ public class ProrrogaAction extends RugBaseAction implements ServletRequestAware
 			
 			MyLogger.Logger.log(Level.INFO, "usuario::"+usuario.getPersona().getIdPersona());
 			MyLogger.Logger.log(Level.INFO, "idGarantia::"+idGarantia);		
+			MyLogger.Logger.log(Level.INFO, "Prorroga data ::"+prorrogaService.getVigencia(idGarantia));
 			SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
 			
 			vigenciaValida= detservd.vigenciaValida(Integer.parseInt(getIdGarantia()));
 			
 			GarantiaTO garantiaTO = prorrogaService.getVigencia(idGarantia);
+			MyLogger.Logger.log(Level.INFO, "fecha de garantiaTO::"+ garantiaTO.getFechaFin());
 			setVigencia(garantiaTO.getVigencia());
 			setFechaFin((formato.format(garantiaTO.getFechaFin())));
 			setVigenciaM(getVigencia());
@@ -153,9 +155,11 @@ public class ProrrogaAction extends RugBaseAction implements ServletRequestAware
 			regresa= "success";
 		}catch(NoDataFoundException e){
 			regresa = "failed";
+			MyLogger.Logger.log(Level.INFO, "dio error en el try");
 			MyLogger.Logger.log(Level.SEVERE, e.getMessage(),e);
 		}catch(Exception e){
 			regresa = "failed";
+			MyLogger.Logger.log(Level.INFO, "dio error en el try 2");
 			MyLogger.Logger.log(Level.SEVERE, e.getMessage(),e);
 		}
 		
@@ -171,7 +175,7 @@ public class ProrrogaAction extends RugBaseAction implements ServletRequestAware
 			ProrrogaService prorrogaService= new ProrrogaService();
 			GarantiaTO garantiaTO = prorrogaService.getVigencia(idGarantia);
 			setVigenciaM(garantiaTO.getVigencia()+getMeses());
-			MyLogger.Logger.log(Level.INFO, "los años a agregar son "+getVigenciaM());
+			MyLogger.Logger.log(Level.INFO, "los aÃ±os a agregar son "+getVigenciaM());
 			Integer idTramiteNuevo = prorrogaService.setVigencia(idGarantia,usuario.getPersona().getIdPersona(), 9, getVigenciaM());
 			sessionMap.put(Constants.ID_TRAMITE_NUEVO, idTramiteNuevo);
 			MyLogger.Logger.log(Level.INFO, "id tramite nuevo "+idTramiteNuevo);

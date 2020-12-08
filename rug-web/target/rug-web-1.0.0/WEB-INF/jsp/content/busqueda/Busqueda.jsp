@@ -4,76 +4,96 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <div class="section"></div>
 <main>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col s12 l6">
-				<div class="card">
-					<div class="card-content">
-						<span class="card-title">Consulta o B&uacute;squeda Principal</span>
-						<div class="row note">
-							Para cualquier consulta puede ingresar uno o m&aacute;s criterios.
-						</div>
-						<div class="row">
-							<s:form namespace="usuario" action="resBusqueda.do" theme="simple" cssClass="col s12">
-							 	<div class="row">
-							    	<div class="input-field col s12">
-							        	<s:textfield name="curpOtorgante" id="curpOtorgante" size="15" maxlength="15" onkeypress="return aceptaalfa(event);" 
-							        				cssClass="validate tooltipped" data-position="right" data-delay="50" data-tooltip="Ingrese su n�mero sin espacios en blanco"/>
-							        	<label for="curpOtorgante">N&uacute;mero de Identificaci&oacute;n del Deudor Garante (DPI o Pasaporte)</label>
-							   		</div>
-							 	</div>
-							 	<div class="row">
-							    	<div class="input-field col s12">
-							        	<s:textfield name="rfcOtorgante" id="rfcOtorgante" size="15" maxlength="15" onkeypress="return aceptaalfa(event);"  
-							        		cssClass="validate tooltipped" data-position="right" data-delay="50" data-tooltip="Ingrese su n�mero sin espacios en blanco ni gui�n"/>
-							        	<label for="rfcOtorgante">NIT del Deudor Garante</label>
-							   		</div>
-							 	</div>
-							 	<div class="row">
-							    	<div class="input-field col s12">
-							        	<s:textfield name="serial" id="serial" size="25"  maxlength="25" />
-							        	<label for="serial">N&uacute;mero de serie</label>
-							   		</div>
-							 	</div>
-							 	<center>
-						            <div class='row'>
-						            	<a class="btn btn-large waves-effect indigo" onclick="busquedaJSP(<s:property value="idPersona"/>,1);">Consultar</a>
-						            </div>
-					          	</center>
-							</s:form>
-						</div>
+	<div class="container">
+		<div class="card">
+<%--			<div class="card-content">--%>
+<%--				<p>Consulta Principal</p>--%>
+<%--			</div>--%>
+			<div class="card-tabs">
+				<ul class="tabs tabs-fixed-width">
+					<li class="tab"><a class="active" href="#criterio">B&uacute;squeda  por Criterios</a></li>
+					<li class="tab"><a href="#secundaria">B&uacute;squeda  Secundaria</a></li>
+					<li class="tab"><a href="#factura">B&uacute;squeda por Factura</a></li>
+				</ul>
+			</div>
+			<div class="card-content grey lighten-4">
+				<div id="criterio">
+					<div class="row">
+						<s:form namespace="usuario" action="resBusqueda.do" theme="simple" cssClass="col s12">
+							<div class="row">
+								<div class="input-field col s12">
+									<s:textfield name="curpOtorgante" id="curpOtorgante" size="15" maxlength="15" onkeypress="return aceptaalfa(event);"
+												 cssClass="validate tooltipped" data-position="right" data-delay="50" data-tooltip="Ingrese su n�mero sin espacios en blanco"/>
+									<label for="curpOtorgante">N&uacute;mero de Identificaci&oacute;n del Deudor Garante (DPI o Pasaporte)</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<s:textfield name="rfcOtorgante" id="rfcOtorgante" size="15" maxlength="15" onkeypress="return aceptaalfa(event);"
+												 cssClass="validate tooltipped" data-position="right" data-delay="50" data-tooltip="Ingrese su n�mero sin espacios en blanco ni gui�n"/>
+									<label for="rfcOtorgante">NIT del Deudor Garante</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<s:textfield name="serial" id="serial" size="25"  maxlength="25" />
+									<label for="serial">N&uacute;mero de serie</label>
+								</div>
+							</div>
+							<center>
+								<div class='row'>
+									<a class="btn btn-large waves-effect indigo" onclick="busquedaJSP(<s:property value="idPersona"/>,1);">Consultar</a>
+								</div>
+							</center>
+						</s:form>
 					</div>
 				</div>
-			</div>
-			<div class="col s12 l6">
-				<div class="card">
-					<div class="card-content">
-						<span class="card-title">Consulta o B&uacute;squeda Secundaria</span>
-						<div class="row">
-							<s:form namespace="usuario" action="resBusqueda.do" theme="simple" cssClass="col s12">
-							 	<div class="row">
-							    	<div class="input-field col s12">
-							        	<s:textfield name="nombreOtorgante" id="nombreOtorgante" size="32" maxlength="100" />
-							        	<label for="nombreOtorgante">Nombre o Raz&oacute;n Social del Deudor Garante</label>
-							   		</div>
-							 	</div>
-							 	<div class="row">
-							    	<div class="input-field col s12">
-							        	<s:textfield name="idGarantia" id="idGarantia" size="17"   maxlength="20" />
-							        	<label for="idGarantia">N&uacute;mero de inscripci&oacute;n de la Garant&iacute;a</label>
-							   		</div>
-							 	</div>
-							 	<center>
-						            <div class='row'>
-						            	<a class="btn btn-large waves-effect indigo" onclick="busquedaJSP(<s:property value="idPersona"/>,2);">Consultar</a>
-						            </div>
-					          	</center>
-							</s:form>
-						</div>
+				<div id="secundaria">
+					<div class="row">
+						<s:form namespace="usuario" action="resBusqueda.do" theme="simple" cssClass="col s12">
+							<div class="row">
+								<div class="input-field col s12">
+									<s:textfield name="nombreOtorgante" id="nombreOtorgante" size="32" maxlength="100" />
+									<label for="nombreOtorgante">Nombre o Raz&oacute;n Social del Deudor Garante</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<s:textfield name="idGarantia" id="idGarantia" size="17"   maxlength="20" />
+									<label for="idGarantia">N&uacute;mero de inscripci&oacute;n de la Garant&iacute;a</label>
+								</div>
+							</div>
+							<center>
+								<div class='row'>
+									<a class="btn btn-large waves-effect indigo" onclick="busquedaJSP(<s:property value="idPersona"/>,2);">Consultar</a>
+								</div>
+							</center>
+						</s:form>
+					</div>
+				</div>
+				<div id="factura">
+					<div class="row">
+						<s:form	 namespace="usuario" action="busquedaFac.do" theme="simple" cssClass="col s12">
+							<div class="row">
+								<div class="input-field col s6">
+									<s:textfield id="invoice" name="invoice" class="validate" />
+									<label for="invoice">No. Factura:</label>
+								</div>
+								<div class="input-field col s6">
+									<s:textfield type="text" id="set" name="set" class="validate" />
+									<label for="set">Serie:</label>
+								</div>
+								<div class="row center-align">
+									<a class="btn btn-large waves-effect indigo" onclick="checkText(<s:property value="idPersona"/>,2);">Consultar</a>
+								</div>
+							</div>
+						</s:form>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col s12">
 				<div class="card">

@@ -3,7 +3,7 @@ package mx.gob.se.rug.to;
 import java.io.Serializable;
 /**
  * 
- * @author Adat Gonzalez Dorantes,Carmen Aburto Castañeda
+ * @author Adat Gonzalez Dorantes,Carmen Aburto Castaneda
  * @see FolioMercantilTO
  * @see PersonaTO
  * @version 1.0

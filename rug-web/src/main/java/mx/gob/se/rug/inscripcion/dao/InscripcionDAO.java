@@ -173,16 +173,16 @@ public class InscripcionDAO {
 		String sql = "";
 		
 		if(pQuery == 1) {
-			sql = "SELECT ID_GARAN_BIEN_PEND,ID_TRAMITE_TEMP,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN " +
+			sql = "SELECT ID_GARAN_BIEN_PEND,ID_TRAMITE_TEMP,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN,SERIE " +
 				  "FROM RUG_GARANTIAS_BIENES_PEND " + 
 				  "WHERE ID_TRAMITE_TEMP = ?";
 		} else {
-			sql = "SELECT ID_GARAN_BIEN,ID_TRAMITE,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN " +
+			sql = "SELECT ID_GARAN_BIEN,ID_TRAMITE,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN, SERIE " +
 					  "FROM RUG_GARANTIAS_BIENES " + 
 					  "WHERE ID_TRAMITE = ?";
 		}
 		
-		MyLogger.Logger.log(Level.INFO, "pQuery::" + pQuery);
+		MyLogger.Logger.log(Level.INFO, "pQuery2::" + pQuery);
 		MyLogger.Logger.log(Level.INFO, "sql::" + sql);
 		
 		ResultSet rs = null;
@@ -203,7 +203,8 @@ public class InscripcionDAO {
 				bienEspecialTO.setTipoIdentificador(rs.getInt("TIPO_IDENTIFICADOR"));
 				bienEspecialTO.setIdentificador(rs.getString("IDENTIFICADOR"));
 				bienEspecialTO.setDescripcion(rs.getString("DESCRIPCION_BIEN"));
-				
+				bienEspecialTO.setSerie(rs.getString("SERIE"));
+
 				listaBienes.add(bienEspecialTO);
 			}
 		} catch (SQLException e) {
@@ -247,27 +248,32 @@ public class InscripcionDAO {
 		String regresa = Constants.FAILED;
 		ConexionBD bd = new ConexionBD();
 		Connection connection = bd.getConnection();
-		String sql = "{call RUG.SP_ALTA_GARANTIA_BIENES( ?,?,?,?,?,?,? ) } ";
+		String sql = "{call RUG.SP_ALTA_GARANTIA_BIENES( ?,?,?,?,?,?,?,? ) } ";
 		CallableStatement cs = null;
+
+
 		try {
 			cs = connection.prepareCall(sql);
 			cs.setInt(1, bienEspecialTO.getIdTramite());
 			cs.setInt(2, bienEspecialTO.getTipoBienInt());
 			cs.setInt(3, bienEspecialTO.getTipoIdentificadorInt());
 			cs.setString(4, bienEspecialTO.getIdentificador());
-			cs.setString(5, bienEspecialTO.getDescripcion());			
-			cs.registerOutParameter(6, Types.INTEGER);
-			cs.registerOutParameter(7, Types.VARCHAR);
+			cs.setString(5, bienEspecialTO.getDescripcion());
+			cs.setString(6, bienEspecialTO.getSerie());
+			cs.registerOutParameter(7, Types.INTEGER);
+			cs.registerOutParameter(8, Types.VARCHAR);
 			cs.executeQuery();
-			regresa = cs.getString(7);
-			MyLogger.Logger.log(Level.INFO, "InscripcionDAO insert bienEspecialTO: Integer Result  = "
-					+ cs.getInt(6));
+			regresa = cs.getString(8);
+
+			MyLogger.Logger.log(Level.INFO, "InscripcionDAO insert bienEspecialTO3: Integer Result  = "
+					+ cs.getInt(7));
 			MyLogger.Logger.log(Level.INFO, "InscripcionDAO insert bienEspecialTO: Varchar Result  = "
-					+ cs.getString(7));
+					+ cs.getString(8));
 			cs.close();
 		} catch (SQLException e) {
+			MyLogger.Logger.log(Level.INFO, "error");
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			bd.close(connection,null,cs);
 		}
@@ -279,7 +285,7 @@ public class InscripcionDAO {
 		String regresa = Constants.FAILED;
 		ConexionBD bd = new ConexionBD();
 		Connection connection = bd.getConnection();
-		String sql = "{call RUG.SP_MODIFICA_GARANTIA_BIENES( ?,?,?,?,?,?,? ) } ";
+		String sql = "{call RUG.SP_MODIFICA_GARANTIA_BIENES( ?,?,?,?,?,?,?,? ) } ";
 		CallableStatement cs = null;
 		try {
 			cs = connection.prepareCall(sql);
@@ -288,14 +294,15 @@ public class InscripcionDAO {
 			cs.setInt(3, bienEspecialTO.getTipoIdentificadorInt());
 			cs.setString(4, bienEspecialTO.getIdentificador());
 			cs.setString(5, bienEspecialTO.getDescripcion());			
-			cs.registerOutParameter(6, Types.INTEGER);
-			cs.registerOutParameter(7, Types.VARCHAR);
+			cs.setString(6, bienEspecialTO.getSerie());
+			cs.registerOutParameter(7, Types.INTEGER);
+			cs.registerOutParameter(8, Types.VARCHAR);
 			cs.executeQuery();
-			regresa = cs.getString(7);
+			regresa = cs.getString(8);
 			MyLogger.Logger.log(Level.INFO, "InscripcionDAO update bienEspecialTO: Integer Result  = "
-					+ cs.getInt(6));
+					+ cs.getInt(7));
 			MyLogger.Logger.log(Level.INFO, "InscripcionDAO update bienEspecialTO: Varchar Result  = "
-					+ cs.getString(7));
+					+ cs.getString(8));
 			cs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
