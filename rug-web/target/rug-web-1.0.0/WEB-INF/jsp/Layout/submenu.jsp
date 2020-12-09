@@ -50,8 +50,10 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 		Boolean noVigencia = (Boolean) request.getAttribute("vigenciaValida");
 		if(noHayCancel==null ||(noHayCancel!=null && noHayCancel.booleanValue()==true)){
 			Integer idAcreedorRepresentado=(Integer) session.getAttribute(Constants.ID_ACREEDOR_REPRESENTADO);
+//			System.out.println("data " + session.getAttribute(Constants.ID_ACREEDOR_REPRESENTADO));
 			MenuTO menuSecundarioTO = new MenuTO(2, request.getContextPath());
 			menuSecundarioTO = menuService.cargaMenuSecundario(idAcreedorRepresentado,usuarioTO,menuSecundarioTO,noVigencia);
+//			menuSecundarioTO = menuService.cargaMenuSecundario(51071,usuarioTO,menuSecundarioTO,noVigencia);
 			Iterator<String> iterator2 = menuSecundarioTO.getHtml().iterator();
 			while (iterator2.hasNext()) {
 				String menuItem = iterator2.next();
@@ -68,7 +70,7 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 <script>
 function cancelacion(){
 	<% if (priv.get(new Integer(20))!=null ) { %>
-		tb_show('Cancelación de la Garantía Mobiliaria','<%= request.getContextPath() %>/home/iniciaCancelacion.do?keepThis=true&TB_iframe=true&height=371&width=500&modal=true','');
+		tb_show('Cancelaciï¿½n de la Garantï¿½a Mobiliaria','<%= request.getContextPath() %>/home/iniciaCancelacion.do?keepThis=true&TB_iframe=true&height=371&width=500&modal=true','');
 		
 		
 	<% }else{%>
@@ -87,10 +89,10 @@ function sendForm(){
 		document.fcancelacion.submit()
 	}
 	else{
-		alert("El campo de Autoridad que instruye la Anotación es obligatorio");
+		alert("El campo de Autoridad que instruye la Anotaciï¿½n es obligatorio");
 		displayMessageAlertCancel(false);
 		changeStyle("messageAlertDiv","HEIGHT:150px; WIDTH:300px");
-		displayAlert(true,"Información Incompleta","El campo de Autoridad que instruye la Anotación es obligatorio");
+		displayAlert(true,"Informaciï¿½n Incompleta","El campo de Autoridad que instruye la Anotaciï¿½n es obligatorio");
 		changeStyle("messageAlertDiv","HEIGHT:260px; WIDTH:450px");
 		displayMessageAlertCancel(true);
 	}

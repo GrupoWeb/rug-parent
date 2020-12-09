@@ -185,11 +185,11 @@ public class DetalleAction extends RugBaseAction implements ServletRequestAware 
 				int valor = getDetalleTO().getIdtipogarantia();	
 				switch(valor){					
 						case 8:
-							setTitulofecha("Fecha de surgimiento del Derecho de Retención ");
+							setTitulofecha("Fecha de surgimiento del Derecho de Retenciï¿½n ");
 							habilitaobligacion=false;
 							break;
 						case 9:
-							setTitulofecha("Fecha de surgimiento del Derecho de Retención ");
+							setTitulofecha("Fecha de surgimiento del Derecho de Retenciï¿½n ");
 							habilitaobligacion=false;						
 							break;
 						case 12:
@@ -198,7 +198,7 @@ public class DetalleAction extends RugBaseAction implements ServletRequestAware 
 							habilitaobligacion=true;						
 							break;	
 						default :
-							setTitulofecha("Fecha de celebración del Acto o Contrato :");
+							setTitulofecha("Fecha de celebraciï¿½n del Acto o Contrato :");
 							habilitaobligacion=true;						
 							break;
 									
@@ -314,11 +314,11 @@ public class DetalleAction extends RugBaseAction implements ServletRequestAware 
 				int valor = getDetalleTO().getIdtipogarantia();	
 				switch(valor){					
 						case 8:
-							setTitulofecha("Fecha de surgimiento del Derecho de Retención ");
+							setTitulofecha("Fecha de surgimiento del Derecho de Retenciï¿½n ");
 							habilitaobligacion=false;
 							break;
 						case 9:
-							setTitulofecha("Fecha de surgimiento del Derecho de Retención ");
+							setTitulofecha("Fecha de surgimiento del Derecho de Retenciï¿½n ");
 							habilitaobligacion=false;						
 							break;
 						case 12:
@@ -327,7 +327,7 @@ public class DetalleAction extends RugBaseAction implements ServletRequestAware 
 							habilitaobligacion=true;						
 							break;	
 						default :
-							setTitulofecha("Fecha de celebración del Acto o Contrato :");
+							setTitulofecha("Fecha de celebraciï¿½n del Acto o Contrato :");
 							habilitaobligacion=true;						
 							break;
 									
@@ -367,11 +367,12 @@ public class DetalleAction extends RugBaseAction implements ServletRequestAware 
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		System.out.println("DetalleAction.crearDetalle" + regresa);
 		return regresa;
 	}
 	
 	public String inicia(){
-
+		System.out.println("inicio");
 	    SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT_DDMMYY);
 		String regresa = Constants.FAILED;
 		Integer idTramiteAct=(Integer) sessionMap.get(Constants.ID_TRAMITE);
@@ -464,11 +465,11 @@ public class DetalleAction extends RugBaseAction implements ServletRequestAware 
 			int valor = getDetalleTO().getIdtipogarantia();	
 			switch(valor){					
 					case 8:
-						setTitulofecha("Fecha de surgimiento del Derecho de Retención ");
+						setTitulofecha("Fecha de surgimiento del Derecho de Retenciï¿½n ");
 						habilitaobligacion=false;
 						break;
 					case 9:
-						setTitulofecha("Fecha de surgimiento del Derecho de Retención ");
+						setTitulofecha("Fecha de surgimiento del Derecho de Retenciï¿½n ");
 						habilitaobligacion=false;						
 						break;
 					case 12:
@@ -477,7 +478,7 @@ public class DetalleAction extends RugBaseAction implements ServletRequestAware 
 						habilitaobligacion=true;						
 						break;	
 					default :
-						setTitulofecha("Fecha de celebración del Acto o Contrato :");
+						setTitulofecha("Fecha de celebraciï¿½n del Acto o Contrato :");
 						habilitaobligacion=true;						
 						break;
 								

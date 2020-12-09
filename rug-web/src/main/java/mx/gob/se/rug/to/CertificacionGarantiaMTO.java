@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * 
- * @author Adat Gonzalez Dorantes,Carmen Aburto Castañeda
+ * @author Adat Gonzalez Dorantes,Carmen Aburto Castaneda
  * @see GarantiaTO
  * @see PersonaTO
  * @see TramiteRUGTO

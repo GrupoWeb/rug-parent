@@ -276,7 +276,7 @@ public class BoletaDAO extends BaseRugDao{
 			 ps=connection.prepareStatement(sqlQuery);
 			ps.setInt(1, idgarantia);
 			ps.setInt(2, idtramite);
-			MyLogger.Logger.log(Level.INFO, "sql " + ps);
+			MyLogger.Logger.log(Level.INFO, "sql v1" + ps);
 			rs = ps.executeQuery();
 					
 			while(rs.next()){					
@@ -345,7 +345,7 @@ public class BoletaDAO extends BaseRugDao{
 			sqlQuery = "SELECT ID_PERSONA,DESC_PARTE,FOLIO_MERCANTIL,NOMBRE,PER_JURIDICA,RFC FROM V_TRAMITES_TERM_PARTES WHERE ID_PARTE =3 AND ID_TRAMITE = ?";
 			ps = connection.prepareStatement(sqlQuery);
 			ps.setInt(1, idtramite);
-			MyLogger.Logger.log(Level.INFO, "sql " + ps);
+			MyLogger.Logger.log(Level.INFO, "sql v2" + ps);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 					if(tabla2==null){
@@ -375,7 +375,7 @@ public class BoletaDAO extends BaseRugDao{
 			sqlQuery = "SELECT ID_PERSONA,DESC_PARTE,FOLIO_MERCANTIL,NOMBRE,PER_JURIDICA,RFC FROM V_TRAMITES_TERM_PARTES WHERE ID_PARTE =3 AND ID_TRAMITE = ?";
 			ps = connection.prepareStatement(sqlQuery);
 			ps.setInt(1, idtramite);
-			MyLogger.Logger.log(Level.INFO, "sql " + ps);
+			MyLogger.Logger.log(Level.INFO, "sql v3" + ps);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 					if(tabla2==null){
@@ -432,7 +432,7 @@ public class BoletaDAO extends BaseRugDao{
 			sqlQuery = "SELECT ID_PERSONA,DESC_PARTE,FOLIO_MERCANTIL,NOMBRE,PER_JURIDICA,RFC FROM V_TRAMITES_TERM_PARTES WHERE ID_PARTE =1 AND ID_TRAMITE = ?";
 			ps = connection.prepareStatement(sqlQuery);
 			ps.setInt(1, idtramite);
-			MyLogger.Logger.log(Level.INFO, "sql " + ps);
+			MyLogger.Logger.log(Level.INFO, "sql v5" + ps);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				tabla2.setNombre(rs.getString("NOMBRE"));
@@ -1152,7 +1152,7 @@ public class BoletaDAO extends BaseRugDao{
 				certificacion.setFechaStatus(rs.getString("FECHA_STATUS"));
 				certificacion.setFechaInscripcion(rs.getString("FECHA_INSCRIPCION"));
 			}else{
-						throw new NoDataFoundException("No se encontro anotación sin garantía::"+idTramite);
+						throw new NoDataFoundException("No se encontro anotaciï¿½n sin garantï¿½a::"+idTramite);
 			}
 		}catch(SQLException e){
 			e.printStackTrace();

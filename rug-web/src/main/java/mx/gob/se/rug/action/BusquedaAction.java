@@ -20,6 +20,9 @@ public class BusquedaAction extends RugBaseAction {
 	private String idGarantia;
 	private String serial;
 	private String idPersona;
+	// serie - factura
+	private String set;
+	private String invoice;
 	
 	
 	public String getIdPersona() {
@@ -128,6 +131,16 @@ public class BusquedaAction extends RugBaseAction {
 		//setBusquedaTOs(busquedaDAO.busqueda(busquedaInTO));
 		return SUCCESS;
 	}
+
+	public String busquedaFac(){
+
+		if(getSet().trim().equals("") || getInvoice().trim().equals("")){
+			return "input";
+		}
+
+		MyLogger.Logger.log(Level.INFO, "Mensaje de Factura");
+		return SUCCESS;
+	}
 	
 	public String ayuda(){
 		return SUCCESS;
@@ -141,4 +154,19 @@ public class BusquedaAction extends RugBaseAction {
 		this.serial = serial;
 	}
 
+	public String getSet() {
+		return set;
+	}
+
+	public void setSet(String set) {
+		this.set = set;
+	}
+
+	public String getInvoice() {
+		return invoice;
+	}
+
+	public void setInvoice(String invoice) {
+		this.invoice = invoice;
+	}
 }

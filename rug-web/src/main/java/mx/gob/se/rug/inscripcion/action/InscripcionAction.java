@@ -105,6 +105,7 @@ public class InscripcionAction extends RugBaseAction {
 	private String mdIdentificador;
 	private String mdIdentificador1;
 	private String mdIdentificador2;
+	private String mdIdentificador3;
 	private TipoTo mdBienEspecial;
 	private List<BienEspecialTO> listaBienes;
 	private List <TipoTo> listaUsos;	

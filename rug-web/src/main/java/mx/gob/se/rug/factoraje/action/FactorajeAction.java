@@ -227,11 +227,15 @@ private static final long serialVersionUID = 1L;
 	public String saveformulario() {
 		String regresa = Constants.FAILED;
 		try {
+                    
+                        
 			if (inscripcionTO == null) {
 				inscripcionTO = new InscripcionTO();
 			}
 			UsuarioTO usuario = (UsuarioTO) sessionMap.get(Constants.USUARIO);
 			Integer idTipoGarantia = (Integer) sessionMap.get(Constants.ID_TIPO_GARANTIA);
+                        
+                        
 			
 			Integer idTramite;
 			if (getIdInscripcion() != null) {				
@@ -249,6 +253,8 @@ private static final long serialVersionUID = 1L;
 					inscripcionTO = new InscripcionTO();
 				}
 			}
+                        
+                        
 			if (idTramite != null && idTramite != 0) {
 				
 				setGarantiaTO(new GarantiaTO());
@@ -263,6 +269,7 @@ private static final long serialVersionUID = 1L;
 				actoContratoTO.setCpRegistro(isaRegistro());
 				actoContratoTO.setTxtRegistro(getTxtregistro()+" Fecha inscrita: " + getTxtfregistro());
 				
+                                
 				if(obligacionTO==null) {
 					obligacionTO = new ObligacionTO();
 				}
@@ -329,6 +336,7 @@ private static final long serialVersionUID = 1L;
 				 
 				boolean actbit = inscripcionService.insertBitacoraTramite(
 						Integer.valueOf((Integer) sessionMap.get(Constants.ID_TRAMITE_NUEVO)), 1, 3, null,"V");
+                                System.out.println("Actbit: " + actbit);
 				if (actbit) {
 					/** emulo paso 3 **/
 					boolean actbit2 = inscripcionService.insertBitacoraTramite(Integer.valueOf(idTramite), 1, 3, null,"V");
@@ -354,6 +362,8 @@ private static final long serialVersionUID = 1L;
 			} else {
 				throw new Exception("RUG-InscripcionAction>>agregarGarantia::: no se logro especificar el IdTramite");
 			}
+                        
+                        
 
 		} catch (Exception e) {
 			regresa = Constants.FAILED;

@@ -60,7 +60,7 @@ public class MenusServiceImpl implements MenusService {
 	@Override
 	public MenuTO cargaMenuSecundario(Integer idAcreedor,UsuarioTO usuario, MenuTO menu, Boolean vigencia
 			) {
-		MyLogger.Logger.log(Level.INFO,"Start Menu Secundario Service");
+		MyLogger.Logger.log(Level.INFO,"Start Menu Secundario Service" + idAcreedor);
 		try {
 		 return	this.menuTO = this.menuDAO.getMenuSub(idAcreedor, usuario, menu, vigencia);
 		} catch (Exception e) {

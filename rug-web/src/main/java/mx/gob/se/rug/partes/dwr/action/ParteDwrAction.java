@@ -67,7 +67,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 	private InscripcionService inscripcionService = new InscripcionServiceImpl();
 	
 	public MessageDwr registrarBien(String elementId, String idTramite, String mdDescripcion, String idTipo, String mdIdentificador,
-			String mdIdentificador1, String mdIdentificador2) {
+			String mdIdentificador1, String mdIdentificador2, String mdIdentificador3) {
 		MessageDwr dwr = new MessageDwr();		
 		
 		MyLogger.Logger.log(Level.INFO, "Entre a registar bien");
@@ -92,6 +92,8 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 				bienEspecialTO.setIdentificador(mdIdentificador2);
 				bienEspecialTO.setTipoIdentificador(4); // no serie
 			}
+			bienEspecialTO.setSerie(mdIdentificador3);
+                        System.out.println("Identificador: " + mdIdentificador3);
 			inscripcionService.registrarBien(bienEspecialTO);
 			
 			dwr = getParteBienes(elementId, idTramite);
@@ -484,6 +486,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		try {
 			InscripcionDAO inscripcionDAO = new InscripcionDAO();
 			List<BienEspecialTO> listaBienes = inscripcionDAO.getListaBienes(new Integer(idTramite), 1);
+			MyLogger.Logger.log(Level.INFO, "Lista bienes" + listaBienes.size());
 			if (listaBienes.size() > 0) {
 				dwr.setMessage(writeTablaBienes(elementId, idTramite, listaBienes).toString());
 			}
@@ -2421,7 +2424,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 	}
 	
 	public MessageDwr modificaParteBien(String elementId, String idTramite, String mdDescripcion, String idTipo, String mdIdentificador,
-			String mdIdentificador1, String mdIdentificador2, String idTramiteGar) {
+			String mdIdentificador1, String mdIdentificador2, String mdIdentificador3, String idTramiteGar) {
 		MessageDwr dwr = new MessageDwr();
 		try {
 			BienEspecialTO bienEspecialTO = new BienEspecialTO();
@@ -2444,6 +2447,8 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 				bienEspecialTO.setIdentificador(mdIdentificador2);
 				bienEspecialTO.setTipoIdentificador(4); // no serie
 			}
+
+			bienEspecialTO.setSerie(mdIdentificador3);
 						
 			inscripcionService.modificarBien(bienEspecialTO);
 			dwr = getParteBienes(elementId, idTramite);
@@ -3109,7 +3114,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("<div class=\"row\">");
 		sb.append("<div class=\"input-field col s4\">");
 		sb.append("<input value=\"" + notNull(altaParteTO.getCurp()) 
-				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" required=\"true\" maxlength=\"30\" name=\"rfcO\" id=\"rfcO\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su número sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
+				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" required=\"true\" maxlength=\"30\" name=\"rfcO\" id=\"rfcO\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su nï¿½mero sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
 		sb.append("<label id=\"labelRfcO\" for=\"rfcO\">Documento de Identificaci&oacute;n</label>");
 		sb.append("</div>");
 		sb.append("<div class=\"col s4\" id=\"buttonValidar\">");
@@ -3117,7 +3122,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("</div>");
 		sb.append("<div class=\"input-field col s4\">");
 		sb.append("<input value=\"" + notNull(altaParteTO.getRfc()) 
-				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" required=\"true\" maxlength=\"30\" name=\"nitOF\" id=\"nitOF\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su número sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
+				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" required=\"true\" maxlength=\"30\" name=\"nitOF\" id=\"nitOF\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su nï¿½mero sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
 		sb.append("<label id=\"labelNitOF\" for=\"nitOF\">NIT</label>");
 		sb.append("</div>");		
 		sb.append("</div>");
@@ -3396,12 +3401,13 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		
 		Iterator<BienEspecialTO> it = listaBienesTO.iterator();
 		
-		sb.append("<table id=\"bienes\" class=\"table\" data-paging=\"true\" data-filtering=\"false\" data-sorting=\"true\">");
+		sb.append("<table id=\"bienes\" class=\"table responsive-table centered\" data-paging=\"true\" data-filtering=\"false\" data-sorting=\"true\">");
 		sb.append("<thead>");
 		sb.append("<tr>");
 		sb.append("<th>Tipo Bien Especial</th>");
 		sb.append("<th>Tipo Identificador</th>");
 		sb.append("<th>Identificador</th>");
+		sb.append("<th>Serie</th>");
 		sb.append("<th>Descripcion</th>");
 		sb.append("<th>Opciones</th>");
 		sb.append("</tr>");
@@ -3415,6 +3421,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 			sb.append("<td>"	+ bienEspecialTO.getTipoBien() + "</td>");
 			sb.append("<td>"	+ bienEspecialTO.getTipoIdentificador() + "</td>");
 			sb.append("<td>"	+ notNull(bienEspecialTO.getIdentificador()) + "</td>");
+			sb.append("<td>"	+ notNull(bienEspecialTO.getSerie()) + "</td>");
 			sb.append("<td>"	+ notNull(bienEspecialTO.getDescripcion()) + "</td>");
 			sb.append("<td> <a class=\"btn waves-effect red darken-4\" onclick=\"eliminaParteBien('"
 					+ elementID
@@ -3435,7 +3442,10 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 					+ "','"
 					+ notNull(bienEspecialTO.getDescripcion())
 					+ "','"
-					+ bienEspecialTO.getIdTramiteGarantia()+ "')\"><i class=\"material-icons\">edit</i></a></td>");
+					+ bienEspecialTO.getIdTramiteGarantia()
+					+ "','"
+					+ notNull(bienEspecialTO.getSerie())
+					+ "')\"><i class=\"material-icons\">edit</i></a></td>");
 			sb.append("</tr>");
 		}
 		sb.append("</tbody>");
@@ -3514,7 +3524,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("<div class=\"row\">");
 		sb.append("<div class=\"input-field col s4\">");
 		sb.append("<input value=\"" + notNull(altaParteTO.getCurp()) 
-				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" maxlength=\"30\" required=\"true\" name=\"rfcD\" id=\"rfcD\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su número sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
+				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" maxlength=\"30\" required=\"true\" name=\"rfcD\" id=\"rfcD\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su nï¿½mero sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
 		sb.append("<label id=\"labelRfcD\" for=\"rfcD\">Documento de Identificaci&oacute;n</label>");
 		sb.append("</div>");
 		sb.append("<div class=\"col s4\" id=\"buttonValidar\">");
@@ -3522,7 +3532,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("</div>");
 		sb.append("<div class=\"input-field col s4\">");
 		sb.append("<input value=\"" + notNull(altaParteTO.getRfc()) 
-				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" maxlength=\"30\" required=\"true\" name=\"nitDF\" id=\"nitDF\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su número sin espacios en blanco ni guión\" onkeypress=\"return aceptaalfa(event);\">");
+				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" maxlength=\"30\" required=\"true\" name=\"nitDF\" id=\"nitDF\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su nï¿½mero sin espacios en blanco ni guiï¿½n\" onkeypress=\"return aceptaalfa(event);\">");
 		sb.append("<label id=\"labelNitDF\" for=\"nitDF\">NIT</label>");
 		sb.append("</div>");
 		sb.append("</div>");
@@ -3566,7 +3576,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("<div class=\"row\">");
 		sb.append("<div class=\"input-field col s6\">");
 		sb.append("<input value=\"" + notNull(altaParteTO.getRfc()) 
-				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" maxlength=\"30\" required=\"true\" name=\"nitD\" id=\"nitD\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su número sin espacios en blanco ni guión\" onkeypress=\"return aceptaalfa(event);\">");
+				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" maxlength=\"30\" required=\"true\" name=\"nitD\" id=\"nitD\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su nï¿½mero sin espacios en blanco ni guiï¿½n\" onkeypress=\"return aceptaalfa(event);\">");
 		sb.append("<label id=\"labelNitD\" for=\"nitD\">NIT</label>");
 		sb.append("</div>");		
 		sb.append("<div class=\"col s6\" id=\"buttonValidar\">");
@@ -5311,7 +5321,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("<div class=\"row\">");
 		sb.append("<div class=\"input-field col s4\">");
 		sb.append("<input value=\"" + notNull(altaParteTO.getCurp()) 
-				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" required=\"true\" maxlength=\"30\" name=\"rfcA\" id=\"rfcA\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su número sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
+				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" required=\"true\" maxlength=\"30\" name=\"rfcA\" id=\"rfcA\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su nï¿½mero sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
 		sb.append("<label id=\"labelRfcA\" for=\"rfcA\">Documento de Identificaci&oacute;n</label>");
 		sb.append("</div>");
 		sb.append("<div class=\"col s4\" id=\"buttonValidar\">");
@@ -5319,7 +5329,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("</div>");
 		sb.append("<div class=\"input-field col s4\">");
 		sb.append("<input value=\"" + notNull(altaParteTO.getRfc()) 
-				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" required=\"true\" maxlength=\"30\" name=\"nitAF\" id=\"nitAF\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su número sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
+				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" required=\"true\" maxlength=\"30\" name=\"nitAF\" id=\"nitAF\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su nï¿½mero sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
 		sb.append("<label id=\"labelNitAF\" for=\"nitAF\">NIT</label>");
 		sb.append("</div>");		
 		sb.append("</div>");
@@ -5411,7 +5421,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("<div class=\"row\">");
 		sb.append("<div class=\"input-field col s6\">");
 		sb.append("<input value=\"" + notNull(altaParteTO.getRfc()) 
-				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" maxlength=\"30\" required=\"true\" name=\"nitA\" id=\"nitA\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su número sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
+				+ "\" type=\"text\" maxlength=\"40\" class=\"validate tooltipped\" maxlength=\"30\" required=\"true\" name=\"nitA\" id=\"nitA\" data-position=\"right\" data-delay=\"50\" data-tooltip=\"Ingrese su nï¿½mero sin espacios en blanco\" onkeypress=\"return aceptaalfa(event);\">");
 		sb.append("<label id=\"labelNitA\" for=\"nitA\">NIT</label>");
 		sb.append("</div>");		
 		sb.append("<div class=\"col s6\" id=\"buttonValidar\">");

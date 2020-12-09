@@ -85,6 +85,7 @@ export class GuaranteesReportComponent implements OnInit {
     this.httpSubscription = this.guaranteesService.fetchData(this.currentPage, this.pageSize, this.filtro, this.fechaInicio, this.fechaFin).subscribe(
       res => {
         this.guarantees = res.data;
+        console.log(res.data);
         this.total = res.total;
       },
       err => {
@@ -150,6 +151,7 @@ export class GuaranteesReportComponent implements OnInit {
     this.httpSubscription = this.guaranteesService.fetchData(1, this.pageSize, this.filtro, this.fechaInicio, this.fechaFin).subscribe(
       res => {
         this.guarantees = res.data;
+        
         this.total = res.total;
         this.currentPage = 1;
       },

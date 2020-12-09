@@ -8,7 +8,9 @@ public class BienEspecialTO {
 	public Integer tipoIdentificador;
 	public String identificador;
 	public String descripcion;
-	
+	public String serie;
+
+
 	private String changeTipoBien(Integer tipoBien) {
 		switch (tipoBien) {
 			case 1: return "Vehiculo";
@@ -71,6 +73,12 @@ public class BienEspecialTO {
 	public void setIdTramiteGarantia(Integer idTramiteGarantia) {
 		this.idTramiteGarantia = idTramiteGarantia;
 	}
-	
-	
+
+	public String getSerie() {
+		return serie;
+	}
+
+	public void setSerie(String serie) {
+		this.serie = serie;
+	}
 }

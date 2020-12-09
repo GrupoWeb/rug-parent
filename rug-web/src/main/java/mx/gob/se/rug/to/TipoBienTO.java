@@ -3,7 +3,7 @@ package mx.gob.se.rug.to;
 import java.io.Serializable;
 /**
  * 
- * @author Adat Gonzalez Dorantes,Carmen Aburto Castañeda
+ * @author Adat Gonzalez Dorantes,Carmen Aburto Castaneda
  * @version 1.0
  * @category DataTransferObject
  */

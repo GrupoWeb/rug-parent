@@ -1,13 +1,13 @@
 /*
  * BitacoraLoginDao.java        09/09/2009
  *
- * Copyright (c) 2009 Secretaría de Economía
- * Alfonso Reyes No. 30 Col. Hipódromo Condesa C.P. 06140,
- * Delegación Cuauhtémoc, México, D.F.
+ * Copyright (c) 2009 Secretaria de Economia
+ * Alfonso Reyes No. 30 Col. Hipodromo Condesa C.P. 06140,
+ * Delegacion Cuauhtimoc, Mexico, D.F.
  * Todos los Derechos Reservados.
  *
  * Este software es confidencial y de uso exclusivo de la
- * Secretaría de Economía.
+ * Secretaria de Economia.
  *
  */
 

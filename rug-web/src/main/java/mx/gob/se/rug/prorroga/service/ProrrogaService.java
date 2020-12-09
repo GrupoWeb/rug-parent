@@ -14,6 +14,7 @@ public class ProrrogaService {
 		MyLogger.Logger.log(Level.INFO, "entra al service de prorroga para traer vigencia");
 		GarantiaTO garantiaTO;
 		garantiaTO = new ProrrogaServiceImpl().getVigencia(idGarantia);
+		MyLogger.Logger.log(Level.INFO, "garantia TO " + garantiaTO);
 		return garantiaTO;
 	}
 	

@@ -178,7 +178,7 @@ public class ModificacionService {
 						deudoresFinal = altaParteDAO.getListaDeudores(tramite.getIdTramite());
 						
 						if(deudoresFinal.size()==0) {
-							throw new CargaMasivaException("Debe haber al menos un deudor en la garantía.");
+							throw new CargaMasivaException("Debe haber al menos un deudor en la garantÃ­a.");
 						}
 						
 					}
@@ -269,7 +269,7 @@ public class ModificacionService {
 						acreedoresFinal = altaParteDAO.getListaAcreedores(tramite.getIdTramite());
 						
 						if(acreedoresFinal.size()==0) {
-							throw new CargaMasivaException("Debe haber al menos un acreedor en la garantía.");
+							throw new CargaMasivaException("Debe haber al menos un acreedor en la garantÃ­a.");
 						}
 
 					}										
