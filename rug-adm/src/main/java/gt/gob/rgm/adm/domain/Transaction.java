@@ -20,6 +20,7 @@ public class Transaction implements Serializable {
     private List<ExternalUser> deudores;
     private List<ExternalUser> acreedores;
     private List<String> controlCambios;
+    private Bienes bienLista;
 
     public Transaction() {
     }
@@ -119,6 +120,8 @@ public class Transaction implements Serializable {
     public void setGuarantee(Guarantee guarantee) {
         this.guarantee = guarantee;
     }
+    
+    
 
     public List<ExternalUser> getDeudores() {
         return deudores;
@@ -142,5 +145,19 @@ public class Transaction implements Serializable {
 
     public void setControlCambios(List<String> controlCambios) {
         this.controlCambios = controlCambios;
+    }
+
+    /**
+     * @return the bienLista
+     */
+    public Bienes getBienLista() {
+        return bienLista;
+    }
+
+    /**
+     * @param bienLista the bienLista to set
+     */
+    public void setBienLista(Bienes bienLista) {
+        this.bienLista = bienLista;
     }
 }

@@ -118,6 +118,7 @@ public static final String ANOTACION_SIN_GARANTIA="Anotacionsgarantia";
 public static final String DATE_FORMAT_DDMMYY = "dd/MM/yyyy";
 //Boletas
 public static final String BOLETA_HTML="pdfHtmlBoleta";
+//public static final String BOLETA_HTML="pdfHtmlBoletaTest";
 public static final String MODIFICACION_HTML="pdfHtmlModificacion";
 public static final String CANCELACION_HTML="pdfHtmlCancelacion";
 public static final String CERTIFICACION_HTML="pdfHtmlCertificacion";

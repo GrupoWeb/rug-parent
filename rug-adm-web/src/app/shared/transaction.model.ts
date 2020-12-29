@@ -1,5 +1,6 @@
 import { ExternalUser } from "./external-user.model";
 import { Guarantee } from "./guarantee.model";
+import { bienLista } from "./bienLista.model";
 
 export class Transaction {
   public idTramite: number;
@@ -14,6 +15,7 @@ export class Transaction {
   public vigencia: number;
   public solicitante: ExternalUser;
   public guarantee: Guarantee;
+  public bienLista: bienLista;
   public deudores: ExternalUser[];
   public acreedores: ExternalUser[];
   public controlCambios: string[];

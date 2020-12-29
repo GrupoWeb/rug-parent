@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -132,6 +133,11 @@ public class RugGarantias implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_PERSONA", insertable=false, updatable=false)
 	private RugSecuUsuario usuario;
+        
+        @OneToMany(fetch = FetchType.LAZY)
+        @JoinColumn(name = "ID_TRAMITE", referencedColumnName = "ID_ULTIMO_TRAMITE", insertable = false, updatable = false)
+        private List<RugGarantiasBienes> ListBienes;
+        
 
 	public RugGarantias() {
 	}
@@ -415,4 +421,20 @@ public class RugGarantias implements Serializable {
 	public void setTramite(Tramites tramite) {
 		this.tramite = tramite;
 	}*/
+
+    /**
+     * @return the ListBienes
+     */
+    public List<RugGarantiasBienes> getListBienes() {
+        return ListBienes;
+    }
+
+    /**
+     * @param ListBienes the ListBienes to set
+     */
+    public void setListBienes(List<RugGarantiasBienes> ListBienes) {
+        this.ListBienes = ListBienes;
+    }
+        
+        
 }

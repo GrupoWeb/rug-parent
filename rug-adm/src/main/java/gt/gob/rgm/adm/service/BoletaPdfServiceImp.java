@@ -261,6 +261,7 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 			sb.append("<th>Tipo Bien Especial</th>");
 			sb.append("<th>Tipo Identificador</th>");
 			sb.append("<th>Identificador</th>");
+			sb.append("<th>Serie</th>");
 			sb.append("<th>Descripcion</th>");			
 			sb.append("</tr>");
 			sb.append("</thead>");
@@ -273,7 +274,8 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 				sb.append("<td>"	+ changeTipoBien(bienEspecialTO.getTipoBienEspecial().intValue()) + "</td>");
 				sb.append("<td>"	+ changeTipoId(bienEspecialTO.getTipoIdentificador().intValue()) + "</td>");
 				sb.append("<td>"	+ bienEspecialTO.getIdentificador() + "</td>");
-				sb.append("<td>"	+ bienEspecialTO.getDescripcionBien() + "</td>");				
+				sb.append("<td>"	+ bienEspecialTO.getSerie() + "</td>");
+				sb.append("<td>"	+ bienEspecialTO.getDescripcionBien() + "</td>");
 				sb.append("</tr>");
 			}
 			sb.append("</tbody>");

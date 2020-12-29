@@ -3400,7 +3400,8 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		StringBuffer sb = new StringBuffer();
 		
 		Iterator<BienEspecialTO> it = listaBienesTO.iterator();
-		
+
+
 		sb.append("<table id=\"bienes\" class=\"table responsive-table centered\" data-paging=\"true\" data-filtering=\"false\" data-sorting=\"true\">");
 		sb.append("<thead>");
 		sb.append("<tr>");
@@ -3450,6 +3451,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		}
 		sb.append("</tbody>");
 		sb.append("</table>");
+
 		
 		return sb;
 	}

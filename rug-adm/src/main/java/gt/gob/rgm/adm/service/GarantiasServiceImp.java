@@ -1,55 +1,21 @@
 package gt.gob.rgm.adm.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+import gt.gob.rgm.adm.dao.*;
+import gt.gob.rgm.adm.domain.ExternalUser;
+import gt.gob.rgm.adm.domain.Guarantee;
+import gt.gob.rgm.adm.domain.Transaction;
+import gt.gob.rgm.adm.model.*;
+import gt.gob.rgm.adm.util.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import gt.gob.rgm.adm.dao.RugBitacTramitesRepository;
-import gt.gob.rgm.adm.dao.RugCatTipoTramiteRepository;
-import gt.gob.rgm.adm.dao.RugContratoRepository;
-import gt.gob.rgm.adm.dao.RugFirmaDoctosRepository;
-import gt.gob.rgm.adm.dao.RugGarantiasHRepository;
-import gt.gob.rgm.adm.dao.RugGarantiasPendientesRepository;
-import gt.gob.rgm.adm.dao.RugGarantiasRepository;
-import gt.gob.rgm.adm.dao.RugRelTramGaranRepository;
-import gt.gob.rgm.adm.dao.RugRepository;
-import gt.gob.rgm.adm.dao.TramitesRepository;
-import gt.gob.rgm.adm.dao.TramitesRugIncompRepository;
-import gt.gob.rgm.adm.domain.ExternalUser;
-import gt.gob.rgm.adm.domain.Guarantee;
-import gt.gob.rgm.adm.domain.Transaction;
-import gt.gob.rgm.adm.model.RugBitacTramites;
-import gt.gob.rgm.adm.model.RugBitacTramitesPK;
-import gt.gob.rgm.adm.model.RugCatTipoTramite;
-import gt.gob.rgm.adm.model.RugContrato;
-import gt.gob.rgm.adm.model.RugFirmaDoctos;
-import gt.gob.rgm.adm.model.RugGarantias;
-import gt.gob.rgm.adm.model.RugGarantiasH;
-import gt.gob.rgm.adm.model.RugGarantiasPendientes;
-import gt.gob.rgm.adm.model.RugPersonas;
-import gt.gob.rgm.adm.model.RugRelTramGaran;
-import gt.gob.rgm.adm.model.RugRelTramGaranPK;
-import gt.gob.rgm.adm.model.Tramites;
-import gt.gob.rgm.adm.model.TramitesRugIncomp;
-import gt.gob.rgm.adm.util.Constants;
-import gt.gob.rgm.adm.dao.BaseRugDao;
-import gt.gob.rgm.adm.dao.conectiondB;
-import java.sql.CallableStatement;
-//import gt.gob.rgm.mail.dao.ConexionDB;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Types;
-import oracle.sql.CLOB;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Stateless
 public class GarantiasServiceImp  {

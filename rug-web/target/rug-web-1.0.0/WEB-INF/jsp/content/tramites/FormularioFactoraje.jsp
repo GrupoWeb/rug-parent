@@ -19,6 +19,8 @@ privilegiosTO=privilegiosDAO.getPrivilegios(privilegiosTO,(UsuarioTO)session.get
 Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 
 %>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/factoraje.css">
+	<script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
 <input type="hidden" name="tipoBienAll" value="false" id="idTipoBienAll" />
 <div class="container-fluid">	
 	<div id="modifica" class="row">
@@ -73,7 +75,7 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 									href="#frmFile" id="btnFile"><i
 									class="material-icons left">attach_file</i></a>
 						</div>
-						<div id="divParteDWRBienes"></div>
+						<div  id="divParteDWRBienes" ></div>
 					</div>
 				 	<div class="row note_tabs light-blue darken-4">
 						<span class="white-text"><s:property value="%{textosFormulario.get(6)}"/></span>
