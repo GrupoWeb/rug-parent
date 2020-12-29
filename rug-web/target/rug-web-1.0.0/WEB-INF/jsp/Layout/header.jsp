@@ -8,7 +8,7 @@
 		<a href="<%= request.getContextPath() %>" class="brand-logo">
 			<img class="responsive-img" src="<%=request.getContextPath()%>/resources/imgs/logo2v1.jpg">
 		</a>
-		<ul class="left menu">
+		<ul class="hide-on-med-and-down menu">
 			<%
 		if (session.getAttribute(Constants.USUARIO) != null) {
 		%>

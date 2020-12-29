@@ -714,17 +714,17 @@ public class DetalleDAO{
 		Connection connection = bd.getConnection();
 		String sql = "";
                 System.out.println("Tramite Query = " + idTramite + " " + pQuery);
-		
+		// cambio para factoraje
 		if(pQuery == 1) {
-			sql = "SELECT ID_GARAN_BIEN_PEND,ID_TRAMITE_TEMP,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN " +
+			sql = "SELECT ID_GARAN_BIEN_PEND,ID_TRAMITE_TEMP,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN,SERIE " +
 				  "FROM RUG_GARANTIAS_BIENES_PEND " + 
 				  "WHERE ID_TRAMITE_TEMP = ?";
 		} else if(pQuery == 2) {
-			sql = "SELECT ID_GARAN_BIEN,ID_TRAMITE,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN " +
+			sql = "SELECT ID_GARAN_BIEN,ID_TRAMITE,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN,SERIE " +
 					  "FROM RUG_GARANTIAS_BIENES " + 
 					  "WHERE ID_TRAMITE = ?";
 		} else {
-			sql = "SELECT ID_GARAN_BIEN,ID_TRAMITE,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN " +
+			sql = "SELECT ID_GARAN_BIEN,ID_TRAMITE,TIPO_BIEN_ESPECIAL, TIPO_IDENTIFICADOR,IDENTIFICADOR,DESCRIPCION_BIEN,SERIE " +
 					  "FROM RUG_GARANTIAS_BIENES_H " + 
 					  "WHERE ID_TRAMITE = ?";
 		}
@@ -747,6 +747,7 @@ public class DetalleDAO{
 				bienEspecialTO.setTipoIdentificador(rs.getInt("TIPO_IDENTIFICADOR"));
 				bienEspecialTO.setIdentificador(rs.getString("IDENTIFICADOR"));
 				bienEspecialTO.setDescripcion(rs.getString("DESCRIPCION_BIEN"));
+				bienEspecialTO.setSerie(rs.getString("SERIE"));
 				
 				listaBienes.add(bienEspecialTO);
 			}

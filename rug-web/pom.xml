@@ -267,7 +267,7 @@
 		    <groupId>mx.gob.rug</groupId>
 		    <artifactId>cert</artifactId>
 		    <version>1.0.0</version>
-		    <scope>provided</scope>	
+		    <scope>provided</scope>
 		</dependency>
 		<dependency>
 		    <groupId>mx.gob.rug</groupId>

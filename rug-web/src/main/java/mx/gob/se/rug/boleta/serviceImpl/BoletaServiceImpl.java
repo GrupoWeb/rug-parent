@@ -317,14 +317,16 @@ public class BoletaServiceImpl {
 			else sb.append("<span class=\"blue-text text-darken-2\">Lista de Bienes Especiales:</span>");
 			
 			Iterator<BienEspecialTO> it = listaBienes.iterator();
-			
-			sb.append("<table class=\"striped\">");
+			// clase para factoraje
+			sb.append("<div class=\"col s12\">");
+			sb.append("<table class=\"responsive-table striped\">");
 			sb.append("<thead>");
 			sb.append("<tr>");
 			sb.append("<th>Tipo Bien Especial</th>");
 			sb.append("<th>Tipo Identificador</th>");
 			sb.append("<th>Identificador</th>");
-			sb.append("<th>Descripcion</th>");			
+			sb.append("<th>Serie</th>");
+			sb.append("<th>Descripcion</th>");
 			sb.append("</tr>");
 			sb.append("</thead>");
 			sb.append("<tbody>");
@@ -336,11 +338,13 @@ public class BoletaServiceImpl {
 				sb.append("<td>"	+ bienEspecialTO.getTipoBien() + "</td>");
 				sb.append("<td>"	+ bienEspecialTO.getTipoIdentificador() + "</td>");
 				sb.append("<td>"	+ bienEspecialTO.getIdentificador() + "</td>");
-				sb.append("<td>"	+ bienEspecialTO.getDescripcion() + "</td>");				
+				sb.append("<td>"	+ bienEspecialTO.getSerie() + "</td>");
+				sb.append("<td>"	+ bienEspecialTO.getDescripcion() + "</td>");
 				sb.append("</tr>");
 			}
 			sb.append("</tbody>");
 			sb.append("</table>");
+			sb.append("</div>");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

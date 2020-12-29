@@ -361,6 +361,7 @@ public class SecuUsuariosRs {
     @SecuredResource
     public ResponseRs searchUser(@QueryParam(value="q") String query, @QueryParam(value="rows") Integer rows, @QueryParam(value="start") Integer start) {
     	ResponseRs response = new ResponseRs();
+        System.out.println("Query" + query);
     	SolrResult result = personasCollection.searchUser(query);
     	if(result != null) {
     		response.setTotal(result.getResponse().getNumFound());

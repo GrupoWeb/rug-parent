@@ -33,6 +33,9 @@ public class RugGarantiasBienesH implements Serializable {
 	@Column(name="TIPO_IDENTIFICADOR")
 	private BigDecimal tipoIdentificador;
 
+	@Column(name="SERIE")
+	private String serie;
+
 	public RugGarantiasBienesH() {
 	}
 
@@ -84,4 +87,11 @@ public class RugGarantiasBienesH implements Serializable {
 		this.tipoIdentificador = tipoIdentificador;
 	}
 
+	public String getSerie() {
+		return serie;
+	}
+
+	public void setSerie(String serie) {
+		this.serie = serie;
+	}
 }

@@ -234,6 +234,7 @@ export class GuaranteesReportComponent implements OnInit {
     this.httpSubscription = this.guaranteesService.fetchData(null, null, this.filtro, this.fechaInicio, this.fechaFin).subscribe(
       res => {
         this.exportGuarantees = res.data;
+        console.log(res.data);
         const temp = this.exportGuarantees.map(el => ({
           "Número garantía": el.guarantee ? el.guarantee.idGarantia : '',
           "Trámite": el.descripcion,
@@ -242,6 +243,8 @@ export class GuaranteesReportComponent implements OnInit {
           "Acreedor": el.acreedores ? el.acreedores.map(e => e.name).join(";") : '',
           "Deudor": el.deudores ? el.deudores.map(e => e.name).join(";") : '',
           "Descripción": el.guarantee ? el.guarantee.descGarantia : '',
+          "Identificador": el.bienLista ? el.bienLista.identificador : '',
+          "Bien": el.bienLista ? el.bienLista.descripcion : '',
         }));
         this.excelService.export(temp, 'operaciones');
       },

@@ -21,6 +21,10 @@ public class Tramites implements Serializable {
     @Column(name = "ID_TRAMITE")
     private long idTramite;
 
+//    @OneToOne
+//    @JoinColumn(name = "ID_TRAMITE", insertable = false, updatable = false)
+//    private RugGarantiasBienes idGaranBien;
+    
     @Column(name = "B_CARGA_MASIVA")
     private Integer bCargaMasiva;
 
@@ -77,6 +81,15 @@ public class Tramites implements Serializable {
     @OneToMany
     @JoinColumn(name = "ID_TRAMITE")
     private List<RugRelTramPartes> partes;
+    
+//    @ManyToOne
+//    @JoinColumn(name = "ID_TRAMITE", insertable = false, updatable = false)
+//    private RugGarantiasBienes Listabienes;
+
+    
+//    @OneToOne
+//    @JoinColumn(name = "ID_TRAMITE", insertable = false, updatable = false)
+//    private RugGarantiasBienes idGaranBien;
 
     @ManyToOne
     @JoinColumn(name = "ID_PERSONA", insertable = false, updatable = false)
@@ -89,6 +102,10 @@ public class Tramites implements Serializable {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_TRAMITE_TEMP", referencedColumnName = "ID_TRAMITE_TEMP", insertable = false, updatable = false)
     private List<RugContrato> contrato;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_TRAMITE", referencedColumnName = "ID_TRAMITE", insertable = false, updatable = false)
+    private List<RugGarantiasBienes> ListBienes;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_TRAMITE_CERT", referencedColumnName = "ID_TRAMITE", insertable = false, updatable = false)
@@ -105,6 +122,8 @@ public class Tramites implements Serializable {
 
     public Tramites() {
     }
+    
+    
 
     public long getIdTramite() {
         return this.idTramite;
@@ -261,4 +280,36 @@ public class Tramites implements Serializable {
     public void setCertificacion(List<RugCertificaciones> certificacion) {
         this.certificacion = certificacion;
     }
+
+//    /**
+//     * @return the Listabienes
+//     */
+//    public RugGarantiasBienes getListabienes() {
+//        return Listabienes;
+//    }
+//
+//    /**
+//     * @param Listabienes the Listabienes to set
+//     */
+//    public void setListabienes(RugGarantiasBienes Listabienes) {
+//        this.Listabienes = Listabienes;
+//    }
+
+    /**
+     * @return the ListBienes
+     */
+    public List<RugGarantiasBienes> getListBienes() {
+        return ListBienes;
+    }
+
+    /**
+     * @param ListBienes the ListBienes to set
+     */
+    public void setListBienes(List<RugGarantiasBienes> ListBienes) {
+        this.ListBienes = ListBienes;
+    }
+
+   
+
+    
 }

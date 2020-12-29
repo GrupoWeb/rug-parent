@@ -29,6 +29,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import gt.gob.rgm.adm.annotation.SecuredResource;
 import gt.gob.rgm.adm.dao.RugCatTextoFormRepository;
+import gt.gob.rgm.adm.domain.Bienes;
 import gt.gob.rgm.adm.domain.ExternalUser;
 import gt.gob.rgm.adm.domain.GarantiaStats;
 import gt.gob.rgm.adm.domain.Guarantee;
@@ -65,6 +66,7 @@ import gt.gob.rgm.adm.service.VDetalleGarantiaService;
 import gt.gob.rgm.adm.service.VGarantiaParteService;
 import gt.gob.rgm.adm.service.VGarantiaUtramService;
 import gt.gob.rgm.adm.util.Constants;
+
 
 @Path("/garantias")
 @RequestScoped
@@ -196,6 +198,17 @@ public class GarantiasRs {
 
         		transaction.setGuarantee(guarantee);
     		}
+                
+//                System.out.println("formatter = " + tramite.getListBienes().get(0).getDescripcionBien());
+                  List<RugGarantiasBienesH> bienes = garantiasBienesService.findByTramite(tramite.getIdTramite());
+                  for(RugGarantiasBienesH bien : bienes) {
+                      Bienes listaB = new Bienes();
+                      listaB.setIdentificador(bien.getIdentificador());
+                      listaB.setDescripcion(bien.getDescripcionBien());
+                      
+                      transaction.setBienLista(listaB);
+			
+		}
     		// persona
     		if(tramite.getUsuario() != null) {
         		ExternalUser externalUser = new ExternalUser();
@@ -247,6 +260,7 @@ public class GarantiasRs {
 		
     	response.setTotal(transactionsCount);
     	response.setData(transactions);
+            
         return response;
 	}
 	

@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
 	// TODO: obtener el url de solr de BD
 	private static final String BASE_URL = "http://localhost:8983/solr/rgm/";
+    //private static final String BASE_URLS = "https://www.google.com";
 	private static final OkHttpClient okHttpClient = new OkHttpClient.Builder()
 		    .connectTimeout(20, TimeUnit.SECONDS)
 		    .writeTimeout(60, TimeUnit.SECONDS)

@@ -167,6 +167,7 @@ gt\gob\rgm\adm\service\VDetalleGarantiaServiceImp.class
 gt\gob\rgm\adm\domain\Principal.class
 gt\gob\rgm\adm\model\RugGarantiasBienes.class
 gt\gob\rgm\adm\dao\VDetalleBoletaPartesRepository.class
+gt\gob\rgm\adm\domain\Bienes.class
 gt\gob\rgm\adm\rs\TerminosRs.class
 gt\gob\rgm\adm\solr\SolrResponseHeader.class
 gt\gob\rgm\adm\dao\RugRelTramIncParteRepository.class
