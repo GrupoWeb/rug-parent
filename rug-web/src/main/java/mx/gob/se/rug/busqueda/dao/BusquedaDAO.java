@@ -99,6 +99,25 @@ public class BusquedaDAO {
 	public List<BusquedaTO> searchIvoice(BusquedaTO busquedaTO, Integer start, Integer finish){
         List<BusquedaTO> busquedaTOs= new ArrayList<BusquedaTO>();
         ConexionBD bd = new ConexionBD();
+
+		System.out.println("busquedaTOs = " + busquedaTO.getInvoice());
+		System.out.println("busquedaTOs = " + busquedaTO.getSet());
+
+		// datos que se envian al SP
+		System.out.println("1" + busquedaTO.getDescGarantia());
+		System.out.println("2" + busquedaTO.getNombre());
+		System.out.println("3" + busquedaTO.getIdGarantia());
+		System.out.println("4" + busquedaTO.getFolioMercantil());
+		System.out.println("5" + busquedaTO.getCurpOtorgante());
+		System.out.println("6" + busquedaTO.getRfcOtorgante());
+		System.out.println("7" + start);
+		System.out.println("8" + finish);
+		System.out.println("9" + busquedaTO.getNoSerial());
+		System.out.println("10" + busquedaTO.getIdPersona());
+		System.out.println("11" + busquedaTO.getIdTipoTramite());
+		System.out.println("12" + Types.INTEGER);
+		System.out.println("13" + oracle.jdbc.OracleTypes.CURSOR);
+
         String sql = "{ call RUG.SP_CONSULTA_GARANTIAS_REG("+"?,?,?,?,?,"+"?,?,?,?,?,?,"+"?,?)}";
         Connection connection = bd.getConnection();
         ResultSet rs = null;
@@ -161,7 +180,7 @@ public class BusquedaDAO {
 
 	public List<BusquedaTO> busqueda(BusquedaTO busquedaInTO, Integer inicio, Integer fin){
 		List<BusquedaTO> busquedaTOs= new ArrayList<BusquedaTO>();
-                System.out.println("busquedaTOs = " + busquedaInTO.getNoSerial());
+
 		ConexionBD bd = new ConexionBD();
 		String sql = "{ call RUG.SP_CONSULTA_GARANTIAS_REG("+"?,?,?,?,?,"+"?,?,?,?,?,?,"+"?,?)}";
 		Connection connection = bd.getConnection();

@@ -84,7 +84,7 @@
 									<label for="set">Serie:</label>
 								</div>
 								<div class="row center-align">
-									<a class="btn btn-large waves-effect indigo" onclick="checkText(<s:property value="idPersona"/>,2);">Consultar</a>
+									<a class="btn btn-large waves-effect indigo" onclick="checkText(<s:property value="idPersona"/>,3);">Consultar</a>
 								</div>
 							</div>
 						</s:form>

@@ -2427,6 +2427,7 @@ function modificaParteDeudor(elementID, idTramite, idPersona,
 		return false;
 	}
 	elementIDDeudor = elementID;
+	console.log('typeOf Person', tipoPersona);
 	if (tipoPersona == 'PM') {
 		//validaciones
 		if (!noVacio(nit)) {

@@ -23,6 +23,7 @@ import mx.gob.se.rug.masiva.exception.CargaMasivaException;
 import mx.gob.se.rug.to.PlSql;
 import mx.gob.se.rug.util.CharSetUtil;
 import mx.gob.se.rug.util.MyLogger;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 
 public class AltaParteDAO extends BaseRugDao{
 	
@@ -1438,6 +1439,7 @@ public class AltaParteDAO extends BaseRugDao{
 	
 	public List<DeudorTO> getListaDeudores(Integer idInscripcion){
 		List<DeudorTO> listaDeudores = new ArrayList<DeudorTO>();
+		System.out.println("idInscripcion = " + idInscripcion);
 		ConexionBD bd = new ConexionBD();
 		Connection connection = bd.getConnection();
 		String sql = "SELECT ID_TRAMITE, ID_PERSONA, ID_PARTE, DESC_PARTE, PER_JURIDICA, UBICADA, " +
@@ -1607,6 +1609,12 @@ public class AltaParteDAO extends BaseRugDao{
 	}
 	
 	public boolean actualizaParte(AltaParteTO altaParteTO){
+		System.out.println("entro a SP_MODIFICA_PARTE ");
+		System.out.println(
+				" 1:  = " + altaParteTO.getRazonSocial() +
+				" 2:  = " + altaParteTO.getTipoPersona() +
+				" 3:  = " + altaParteTO.getIdPersona() +
+				" 4:  = " + altaParteTO.getInscrita());
 		boolean regresa = false;
 		String sql = "{ call RUG.SP_MODIFICA_PARTE " +
 		" ( " +

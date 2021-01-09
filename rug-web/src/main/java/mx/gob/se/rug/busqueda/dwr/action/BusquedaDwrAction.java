@@ -40,8 +40,8 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 
 			MyLogger.Logger.log(Level.INFO, "Usuario " + (Integer.parseInt(idPersona) == 17381));
 			if(Integer.parseInt(idPersona) == 17381){
-				if(inscripcionService.getSaldoByUsuario(idPersona, Integer.valueOf(idTipoTramite), 0)){
-					List<BusquedaTO> busquedaGeneral = busquedaDAO.busqueda(searchTO, start, finish);
+//				if(inscripcionService.getSaldoByUsuario(idPersona, Integer.valueOf(idTipoTramite), 0)){
+					List<BusquedaTO> busquedaGeneral = busquedaDAO.searchIvoice(searchTO,start,finish);
 					int pagActiva = Integer.valueOf(1);
 					int regPagina = Integer.valueOf(20);
 					int registroTotales = searchTO.getNumReg();
@@ -63,11 +63,11 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 					sb.append("<p><span>Para descargar la boleta dar click en el siguiente bot&oacute;n :</span></p>");
 					sb.append("<input type=\"button\"class=\"btn btn-large waves-effect indigo\" value=\"Descargar PDF \" onclick=\"showBoleta();\"  />");
 					sb.append("</div>");
-				}else {
-					sb.append("<div class=\"row\">");
-					sb.append("<p><span class=\"red-text text-darken-4\">No tiene saldo para realizar la operaci&oacute;n</span></p>");
-					sb.append("</div>");
-				}
+//				}else {
+//					sb.append("<div class=\"row\">");
+//					sb.append("<p><span class=\"red-text text-darken-4\">No tiene saldo para realizar la operaci&oacute;n</span></p>");
+//					sb.append("</div>");
+//				}
 			}else{
 				System.out.println("NUMERO DE REGISTROS :::: " );
 				sb.append("<div class=\"row\">");

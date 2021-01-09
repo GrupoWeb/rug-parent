@@ -2137,6 +2137,30 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 			String estadoCivil, String profesion, String telefono, String correo, 
 			String residencia, String domicilio, String tipoPersona) {
 		MessageDwr dwr = new MessageDwr();
+		System.out.println("Elemento" +  elementId +
+				"Tramite " + idTramite +
+				"Persona " + idPersona + "" +
+				"Persona Modificar " + idPersonaModificar +
+				"Es Inscripcion " + isInscripcion +
+				"Nombre " +	nombre +
+				"Apellido Paterno" + apellidoP +
+				"Apellido Materno " + apellidoM +
+				"DPI " + dpi +
+				"Razon Social " + razonSocial +
+				"Nacionalidad " + nacionalidad +
+				"Inscrita " +	inscrita +
+				"Folio " + folio +
+				"Libro " + libro +
+				"Direccion " + direccion +
+				"Nit " + nit +
+				"Edad " + edad +
+				"Estado Civil " + estadoCivil +
+				"Profesion" + profesion +
+				"Telefono " + telefono +
+				"Correo " + correo +
+				"Residencia " + residencia +
+				"Domicilio " + domicilio +
+				"Tipo Persona " + tipoPersona);
 		try {
 
 			AltaParteTO altaParteTO = new AltaParteTO();
@@ -3466,7 +3490,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("<table id=\"tableDeudores\" class=\"striped\" >");
 		sb.append("<thead>");
 		sb.append("<tr>");
-		sb.append("<th>Nombre, Denominaci&oacute;n o Raz&oacute;n Social</th>");
+		sb.append("<th>Nombre, Denominaci&oacute;n o Raz&oacute;n Social1</th>");
 		sb.append("<th>No. Identificaci&oacute;n \\ No. Identificaci&oacute;n Tributaria</th>");
 		sb.append("<th>Opciones</th>");
 		sb.append("</tr>");
@@ -3476,12 +3500,13 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		while (it.hasNext()) {
 			deudorTO = it.next();
 			sb.append("<tr>");
+			System.out.println("nombre  = " + deudorTO.getNombreCompleto() + " razon " + deudorTO.getTipoPersona());
 			sb.append("<td>"	+ notNull(deudorTO.getNombreCompleto()) + "</td>");
-			if(deudorTO.getTipoPersona().equalsIgnoreCase("PM")) 
+			if(deudorTO.getTipoPersona().equalsIgnoreCase("PM"))
 				sb.append("<td>" + notNull(deudorTO.getRfc()) + "</td>");
-			else 
+			else
 				sb.append("<td>" + notNull(deudorTO.getCurp()) + "</td>");
-			MyLogger.Logger.log(Level.INFO,	"ID del deudor : " + deudorTO.getIdPersona());			
+			MyLogger.Logger.log(Level.INFO,	"ID del deudor : " + deudorTO.getIdPersona());
 			sb.append("<td> <table><tr><td><a class=\"btn waves-effect red darken-4\" data-toggle=\"tooltip\" title=\"Eliminar\" onclick=\"eliminaParteDeudor('"
 					+ elementID
 					+ "','"
