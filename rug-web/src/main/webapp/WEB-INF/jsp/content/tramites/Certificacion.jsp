@@ -81,7 +81,11 @@
 	src="<%=request.getContextPath()%>/resources/js/material-dialog.min.js"></script>
 <script type="text/javascript">
 function certificacion(garantia, tramite) {	
-	var ruta = '/Rug/home/certificaTramite.do?idGarantia=' + garantia + '&idTramite='+tramite;
+	//var ruta = '/Rug/home/certificaTramite.do?idGarantia=' + garantia + '&idTramite='+tramite;
+	var ruta = '<%= request.getContextPath() %>/home/certificaTramite.do?idGarantia=' + garantia + '&idTramite='+tramite;
+
+
+	console.log("dentro de certificacion");
 	
 	// obtener el costo de una certificacion: tipo_tramite=5
 	$.ajax({
@@ -102,7 +106,8 @@ function certificacion(garantia, tramite) {
 							text:"aceptar",
 							modalClose:true,
 							callback:function(){																
-								window.open(ruta, "_blank");
+								// window.open(ruta, "_blank");
+								window.open(ruta);
 							}
 						}
 					}

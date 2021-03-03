@@ -325,7 +325,7 @@ public class BoletaServiceImpl {
 			sb.append("<th>Tipo Bien Especial</th>");
 			sb.append("<th>Tipo Identificador</th>");
 			sb.append("<th>Identificador</th>");
-			sb.append("<th>Serie</th>");
+//			sb.append("<th>Serie</th>");
 			sb.append("<th>Descripcion</th>");
 			sb.append("</tr>");
 			sb.append("</thead>");
@@ -338,7 +338,7 @@ public class BoletaServiceImpl {
 				sb.append("<td>"	+ bienEspecialTO.getTipoBien() + "</td>");
 				sb.append("<td>"	+ bienEspecialTO.getTipoIdentificador() + "</td>");
 				sb.append("<td>"	+ bienEspecialTO.getIdentificador() + "</td>");
-				sb.append("<td>"	+ bienEspecialTO.getSerie() + "</td>");
+//				sb.append("<td>"	+ bienEspecialTO.getSerie() + "</td>");
 				sb.append("<td>"	+ bienEspecialTO.getDescripcion() + "</td>");
 				sb.append("</tr>");
 			}

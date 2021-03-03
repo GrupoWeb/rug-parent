@@ -81,6 +81,7 @@ public class CertificacionAction extends RugBaseAction {
 				MyLogger.Logger.log(Level.INFO, "--idTramiteCertificacion::"+idTramiteCert);
 				Integer idTipoTramite= boletaDAO.getTipoTramitebyIdTramiteTerminado(idTramiteVar);
 				MyLogger.Logger.log(Level.INFO, "--idTipoTramite::"+idTipoTramite);
+				// en este procedimiento inserta lo cobrado a una tabla de registro de las consultas y su valor
 				certificacionDAO.setCertificacion(idTramiteCert, idTramiteVar, idTipoTramite, idGarantiaVar, new Integer(usuarioTO.getPersona().getIdPersona()));
 				//Param para boleta
 				setIdTramite(idTramiteNuevo);

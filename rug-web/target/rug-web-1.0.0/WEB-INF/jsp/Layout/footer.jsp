@@ -5,7 +5,7 @@
         <h5 class="white-text">Ministerio de Econom&iacute;a</h5>
         <p class="grey-text text-lighten-4">Registro de Garant&iacute;as Mobiliarias</p>
         <p>11 Avenida 03-14 Zona 01 Guatemala, Guatemala</p>
-        <p>garantiasmobiliarias@mineco.gob.gt</p>
+        <p>rgm@mineco.gob.gt</p>
          <p>Tel&eacute;fonos: 2238-3671 / 2238-3079 / 2232-5805</p>
       </div>
       <div class="col l4 offset-l2 s12">
@@ -21,7 +21,7 @@
   </div>
   <div class="footer-copyright">
     <div class="container">
-    © 2018
+    ï¿½ 2018
     </div>
   </div>
 </footer>

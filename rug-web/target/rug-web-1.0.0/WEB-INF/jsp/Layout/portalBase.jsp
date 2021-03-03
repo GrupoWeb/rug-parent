@@ -9,6 +9,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/materialize.min.css">
+<%--	  <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/materialize.css">--%>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/custom.css?v=1.4" />
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/footable.standalone.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css">

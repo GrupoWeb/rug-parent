@@ -39,7 +39,8 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 			Integer finish = 20;
 
 			MyLogger.Logger.log(Level.INFO, "Usuario " + (Integer.parseInt(idPersona) == 17381));
-			if(Integer.parseInt(idPersona) == 17381){
+			if(Integer.parseInt(idPersona) == 51071){
+//				if(Integer.parseInt(idPersona) == 17381){
 //				if(inscripcionService.getSaldoByUsuario(idPersona, Integer.valueOf(idTipoTramite), 0)){
 					List<BusquedaTO> busquedaGeneral = busquedaDAO.searchIvoice(searchTO,start,finish);
 					int pagActiva = Integer.valueOf(1);
@@ -68,7 +69,31 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 //					sb.append("<p><span class=\"red-text text-darken-4\">No tiene saldo para realizar la operaci&oacute;n</span></p>");
 //					sb.append("</div>");
 //				}
-			}else{
+			}else if(inscripcionService.getSaldoByUsuario(idPersona, Integer.valueOf(idTipoTramite), 0)){
+				List<BusquedaTO> busquedaGeneral = busquedaDAO.searchIvoice(searchTO,start,finish);
+				int pagActiva = Integer.valueOf(1);
+				int regPagina = Integer.valueOf(20);
+				int registroTotales = searchTO.getNumReg();
+				System.out.println("NUMERO DE REGISTROS :::: " + registroTotales);
+				int numeroPaginas = registroTotales/regPagina;
+				if ( registroTotales %regPagina > 0){
+					numeroPaginas++;
+				}
+				if (numeroPaginas < pagActiva){
+					pagActiva = 1;
+				}
+				if (pagActiva != 1){
+					start = ((pagActiva-1)*regPagina) + 1;
+				}
+
+				sb.append(tableSearch(searchTO,busquedaGeneral,registroTotales,ruta));
+				sb.append(writeSeccionPaginado(numeroPaginas, 1, 20, registroTotales,"pagBusquedaDwr",""));
+				sb.append("<div class=\"row\">");
+				sb.append("<p><span>Para descargar la boleta dar click en el siguiente bot&oacute;n :</span></p>");
+				sb.append("<input type=\"button\"class=\"btn btn-large waves-effect indigo\" value=\"Descargar PDF \" onclick=\"showBoleta();\"  />");
+				sb.append("</div>");
+			}
+			else{
 				System.out.println("NUMERO DE REGISTROS :::: " );
 				sb.append("<div class=\"row\">");
 				sb.append("<p><span class=\"red-text text-darken-4\">No tiene saldo para realizar la operaci&oacute;n</span></p>");
@@ -98,7 +123,7 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 		busquedaInTO.setIdTipoTramite(idTipoTramite);
 		          
 		MyLogger.Logger.log(Level.INFO,"Id Tramite "+ busquedaInTO.getIdTramite());
-		MyLogger.Logger.log(Level.INFO,"Entro al resBusqueda saldo");
+		MyLogger.Logger.log(Level.INFO,"Entro al resBusqueda saldo " + idGarantia);
 		StringBuffer sb = new StringBuffer();
 		BusquedaDAO busquedaDAO =new BusquedaDAO();
 		InscripcionService inscripcionService = new InscripcionServiceImpl(); 
@@ -108,8 +133,32 @@ public class BusquedaDwrAction extends AbstractBaseDwrAction {
 			Integer	inicio = 1;
 			Integer	fin = 20;
                         // donde se mide el saldo del usuario
-                        MyLogger.Logger.log(Level.INFO,"saldo");
-			if(inscripcionService.getSaldoByUsuario(idPersona,Integer.valueOf(idTipoTramite),0)) {
+                        MyLogger.Logger.log(Level.INFO,"saldo" + idPersona + " garantia " + idGarantia);
+			if(Integer.parseInt(idPersona) == 51071){
+				MyLogger.Logger.log(Level.INFO,"busqueda Into:" + busquedaInTO + " inicio: "+ inicio + " fin:" + fin);
+				List<BusquedaTO> busquedaGeneral = busquedaDAO.busqueda(busquedaInTO, inicio, fin);
+				int pagActiva = Integer.valueOf(1);
+				int regPagina = Integer.valueOf(20);
+				int registroTotales = busquedaInTO.getNumReg();
+				System.out.println("NUMERO DE REGISTROS :::: " + registroTotales);
+				int numeroPaginas = registroTotales/regPagina;
+				if ( registroTotales %regPagina > 0){
+					numeroPaginas++;
+				}
+				if (numeroPaginas < pagActiva){
+					pagActiva = 1;
+				}
+				if (pagActiva != 1){
+					inicio = ((pagActiva-1)*regPagina) + 1;
+				}
+
+				sb.append(tableSearch(busquedaInTO,busquedaGeneral,registroTotales,ruta));
+				sb.append(writeSeccionPaginado(numeroPaginas, 1, 20, registroTotales,"pagBusquedaDwr",""));
+				sb.append("<div class=\"row\">");
+				sb.append("<p><span>Para descargar la boleta dar click en el siguiente bot&oacute;n :</span></p>");
+				sb.append("<input type=\"button\"class=\"btn btn-large waves-effect indigo\" value=\"Descargar PDF \" onclick=\"showBoleta();\"  />");
+				sb.append("</div>");
+			}else if(inscripcionService.getSaldoByUsuario(idPersona,Integer.valueOf(idTipoTramite),0)) {
 			
 				List<BusquedaTO> busquedaGeneral = busquedaDAO.busqueda(busquedaInTO, inicio, fin);
 				int pagActiva = Integer.valueOf(1);

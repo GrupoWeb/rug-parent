@@ -110,7 +110,7 @@
 
 	<wsdl:service name="pagoService">
 		<wsdl:port name="PagoEndpointPort" binding="tns:PagoEndpointPortBinding">
-			<soap:address location="http://128.5.9.10:8282/rgm-rug-ws/Pago" />
+			<soap:address location="http://128.5.9.32:8282/rgm-rug-ws/Pago" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

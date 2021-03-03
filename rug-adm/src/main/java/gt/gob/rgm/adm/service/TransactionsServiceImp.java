@@ -30,7 +30,9 @@ public class TransactionsServiceImp {
     public Transaction fromTramite(Tramites tramite) {
         
         Transaction transaction = new Transaction();
+        System.out.println("dentro garantia: "+ tramite.getRelGarantia().get(0).getGarantia());
         RugGarantias garantia = tramite.getRelGarantia().get(0).getGarantia();
+        System.out.println("data garantia: " + garantia.getIdUltimoTramite());
 
         
         
@@ -116,6 +118,7 @@ public class TransactionsServiceImp {
             List<RugRelTramPartes> partes = partesService.getPartes(partesFilter, null, null);
             List<ExternalUser> deudores = new ArrayList<>();
             List<ExternalUser> acreedores = new ArrayList<>();
+            System.out.println("partes: " + partes);
             for (RugRelTramPartes parte : partes) {
                 ExternalUser userPart = new ExternalUser();
                 userPart.setDocId(parte.getPersonaH().getCurpDoc());

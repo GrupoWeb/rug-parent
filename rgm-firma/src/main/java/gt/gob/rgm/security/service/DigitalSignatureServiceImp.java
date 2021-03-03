@@ -97,6 +97,8 @@ public class DigitalSignatureServiceImp {
             ExternalDigest digest = new BouncyCastleDigest();
             ExternalSignature signature = new PrivateKeySignature(pk, DigestAlgorithms.RIPEMD160, provider.getName());
             MakeSignature.signDetached(appearance, digest, signature, chain, null, null, null, 0, CryptoStandard.CADES);
+            
+            System.out.println("prueba de firma");
 
         return os;
     }

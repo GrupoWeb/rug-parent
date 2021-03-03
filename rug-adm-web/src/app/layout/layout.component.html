@@ -36,9 +36,9 @@
   <li>
 		<div class="user-view">
 			<div class="background">
-				<div style="width: 100%; height: 100%; background-color: #1c3144c7;"></div>
+				<div class="imgSider"></div>
 			</div>
-			<a href="#"><img class="circle" src="/rug-adm/assets/img/msn-user-profile.png" style="background-color: #e2e5ef;"></a>
+			<a href="#"><img class="circle" src="/rug-adm/assets/img/user1.png" style="background-color: #e2e5ef;"></a>
 			<a href="#">
 				<span class="white-text name">{{ user.nombre }}</span>
 			</a>
@@ -103,6 +103,15 @@
 	      <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/asset-search']">Buscar por bien</a></li>
         <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/correcciones']">Corregir garantía</a></li>
         <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/inscripcion']">Ingresar garantía</a></li>
+        <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/inscripcion']">Firma de Garantía</a></li>
+      </ul>
+    </div>
+  </li>
+  <li class="bold">
+    <a class="collapsible-header waves-effect waves-indigo">Firmas <i class="material-icons right">arrow_drop_down</i></a>
+    <div class="collapsible-body">
+      <ul>
+        <li *ngIf="user.rol === 'R' || user.rol === 'V'"><a routerLinkActive="submenu-active" [routerLink]="['/inscripcion']">Firma de Garantía</a></li>
       </ul>
     </div>
   </li>

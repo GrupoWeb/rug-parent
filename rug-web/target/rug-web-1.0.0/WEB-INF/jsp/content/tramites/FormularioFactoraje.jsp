@@ -173,11 +173,11 @@ Map<Integer,PrivilegioTO> priv= privilegiosTO.getMapPrivilegio();
 								</div>
 							</div>
 							<div id="secId3" class="row" style="display: none;">
-								<div class="input-field col s6">
-									<s:textfield name="mdIdentificador3" id="mdIdentificador3"
-												 cssClass="validate" maxlength="150" onkeypress="return characterNotAllowed(event);"/>
-									<label id="lblMdIdentificador3" for="mdIdentificador3">VIN</label>
-								</div>
+<%--								<div class="input-field col s6">--%>
+<%--									<s:textfield name="mdIdentificador3" id="mdIdentificador3"--%>
+<%--												 cssClass="validate" maxlength="150" onkeypress="return characterNotAllowed(event);"/>--%>
+<%--									<label id="lblMdIdentificador3" for="mdIdentificador3">VIN</label>--%>
+<%--								</div>--%>
 								<div class="input-field col s6">
 									<s:textfield name="mdIdentificador2" id="mdIdentificador2"
 										cssClass="validate" maxlength="150" />
@@ -349,7 +349,7 @@ function cambiaBienesEspeciales() {
 		  document.getElementById("secId4").style.display = 'block';
 		  
 		  document.getElementById("lblMdIdentificador2").innerHTML = 'No. Factura';
-		  document.getElementById("lblMdIdentificador3").innerHTML = 'Serie'
+		  // document.getElementById("lblMdIdentificador3").innerHTML = 'Serie'
 		  document.getElementById("lblMdDescripcion").innerHTML = 'Observaciones Generales';
 	  } else if (x=='3'){
 		  document.getElementById("mdDescripcion").disabled = false;	  

@@ -67,8 +67,9 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 	private InscripcionService inscripcionService = new InscripcionServiceImpl();
 	
 	public MessageDwr registrarBien(String elementId, String idTramite, String mdDescripcion, String idTipo, String mdIdentificador,
-			String mdIdentificador1, String mdIdentificador2, String mdIdentificador3) {
-		MessageDwr dwr = new MessageDwr();		
+//			String mdIdentificador1, String mdIdentificador2, String mdIdentificador3) {
+			String mdIdentificador1, String mdIdentificador2) {
+		MessageDwr dwr = new MessageDwr();
 		
 		MyLogger.Logger.log(Level.INFO, "Entre a registar bien");
 		
@@ -92,8 +93,8 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 				bienEspecialTO.setIdentificador(mdIdentificador2);
 				bienEspecialTO.setTipoIdentificador(4); // no serie
 			}
-			bienEspecialTO.setSerie(mdIdentificador3);
-                        System.out.println("Identificador: " + mdIdentificador3);
+//			bienEspecialTO.setSerie(mdIdentificador3);
+//                        System.out.println("Identificador: " + mdIdentificador3);
 			inscripcionService.registrarBien(bienEspecialTO);
 			
 			dwr = getParteBienes(elementId, idTramite);
@@ -2448,7 +2449,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 	}
 	
 	public MessageDwr modificaParteBien(String elementId, String idTramite, String mdDescripcion, String idTipo, String mdIdentificador,
-			String mdIdentificador1, String mdIdentificador2, String mdIdentificador3, String idTramiteGar) {
+			String mdIdentificador1, String mdIdentificador2, String idTramiteGar) {
 		MessageDwr dwr = new MessageDwr();
 		try {
 			BienEspecialTO bienEspecialTO = new BienEspecialTO();
@@ -2472,7 +2473,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 				bienEspecialTO.setTipoIdentificador(4); // no serie
 			}
 
-			bienEspecialTO.setSerie(mdIdentificador3);
+//			bienEspecialTO.setSerie(mdIdentificador3);
 						
 			inscripcionService.modificarBien(bienEspecialTO);
 			dwr = getParteBienes(elementId, idTramite);
@@ -3432,7 +3433,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 		sb.append("<th>Tipo Bien Especial</th>");
 		sb.append("<th>Tipo Identificador</th>");
 		sb.append("<th>Identificador</th>");
-		sb.append("<th>Serie</th>");
+//		sb.append("<th>Serie</th>");
 		sb.append("<th>Descripcion</th>");
 		sb.append("<th>Opciones</th>");
 		sb.append("</tr>");
@@ -3446,7 +3447,7 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 			sb.append("<td>"	+ bienEspecialTO.getTipoBien() + "</td>");
 			sb.append("<td>"	+ bienEspecialTO.getTipoIdentificador() + "</td>");
 			sb.append("<td>"	+ notNull(bienEspecialTO.getIdentificador()) + "</td>");
-			sb.append("<td>"	+ notNull(bienEspecialTO.getSerie()) + "</td>");
+//			sb.append("<td>"	+ notNull(bienEspecialTO.getSerie()) + "</td>");
 			sb.append("<td>"	+ notNull(bienEspecialTO.getDescripcion()) + "</td>");
 			sb.append("<td> <a class=\"btn waves-effect red darken-4\" onclick=\"eliminaParteBien('"
 					+ elementID
@@ -3468,10 +3469,11 @@ public class ParteDwrAction extends AbstractBaseDwrAction {
 					+ notNull(bienEspecialTO.getDescripcion())
 					+ "','"
 					+ bienEspecialTO.getIdTramiteGarantia()
-					+ "','"
-					+ notNull(bienEspecialTO.getSerie())
 					+ "')\"><i class=\"material-icons\">edit</i></a></td>");
 			sb.append("</tr>");
+
+			//					+ "','"
+//					+ notNull(bienEspecialTO.getSerie())
 		}
 		sb.append("</tbody>");
 		sb.append("</table>");

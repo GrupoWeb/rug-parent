@@ -183,10 +183,12 @@
 
 
 		function checkUser(user) {
-			if (user == 17381) {
+			if (user == 51071) {
 				return  true;
 			}
 		}
+
+
 
 
 		function busquedaJudJSP(idPersona, tipoBusqueda) {

@@ -121,6 +121,7 @@ C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\RugRespuest
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\RugRelTramIncParte.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\RugBoletaPdfServiceImp.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\RugRelTramGaranRepository.java
+C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\util\signatureInfo.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\Cambio.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\RugCatTextoFormRepository.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\RugGarantiasBienes.java
@@ -179,6 +180,7 @@ C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\util\Random.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\RechazoCuentaRepository.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\rs\BoletaRs.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\RugSecuPerfilesUsuarioRepository.java
+C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\constants\InfraestructureException.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\util\PdfTO.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\GenericCount.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\IncidenteService.java
@@ -190,6 +192,7 @@ C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\VGarantiaPart
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\RugSecuUsuarioService.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\RugCertificacionesService.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\CambioServiceImp.java
+C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\constants\dao\ConstantsDAO.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\BaseRugDao.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\RugBoletaPdfRepository.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\RugBitacTramitesRepository.java
@@ -211,11 +214,13 @@ C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\Usuario.jav
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\rs\MailRs.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\RugPersonasService.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\RugParametroConf.java
+C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\util\signaturePDF.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\util\PageXofY.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\rs\UsuariosRs.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\RugBoletaServlet.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\MailCronServiceImp.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\service\PersonasServiceImp.java
+C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\constants\ConstantsCv.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\dao\RugPreguntaRepository.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\RugGarantiasBienesH.java
 C:\angular\src\rug-parent\rug-adm\src\main\java\gt\gob\rgm\adm\model\RugGarantiasPendientes.java

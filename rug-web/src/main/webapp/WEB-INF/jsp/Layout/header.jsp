@@ -8,19 +8,19 @@
 		<a href="<%= request.getContextPath() %>" class="brand-logo">
 			<img class="responsive-img" src="<%=request.getContextPath()%>/resources/imgs/logo2v1.jpg">
 		</a>
-		<ul class="hide-on-med-and-down menu">
+		<ul class=" menu">
 			<%
-		if (session.getAttribute(Constants.USUARIO) != null) {
-		%>
-			<li>
-				<!-- 			<a href="#" data-activates="slide-out" class="sidenav-trigger btn-floating btn-flat waves-effect waves-light transparent"><i class="material-icons">menu</i></a> -->
-				<a href="#" data-activates="slide-out"
-					class="btn-menu btn-floating btn-flat waves-effect waves-light transparent"><i
-						class="material-icons">menu</i></a>
-			</li>
-			<%
-		}
-		%>
+			if (session.getAttribute(Constants.USUARIO) != null) {
+			%>
+				<li>
+					<!-- 			<a href="#" data-activates="slide-out" class="sidenav-trigger btn-floating btn-flat waves-effect waves-light transparent"><i class="material-icons">menu</i></a> -->
+					<a href="#" data-activates="slide-out"
+						class="btn-menu btn-floating btn-flat waves-effect waves-light transparent"><i
+							class="material-icons">menu</i></a>
+				</li>
+				<%
+			}
+			%>
 			<li class="hide-on-med-and-down" style="padding-left: 20px; font-size: 1.6em;">
 				Registro de Garant&iacute;as Mobiliarias 
 			</li>

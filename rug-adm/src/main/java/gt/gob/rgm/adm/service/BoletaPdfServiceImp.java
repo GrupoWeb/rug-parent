@@ -2,7 +2,9 @@ package gt.gob.rgm.adm.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.security.GeneralSecurityException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
@@ -18,6 +21,10 @@ import com.itextpdf.kernel.events.PdfDocumentEvent;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+
+//import com.itextpdf.kernel.events.PdfDocumentEvent;
+
+
 
 import gt.gob.rgm.adm.dao.RugBoletaPdfRepository;
 import gt.gob.rgm.adm.dao.RugCatTextoFormRepository;
@@ -36,6 +43,13 @@ import gt.gob.rgm.adm.util.Constants;
 import gt.gob.rgm.adm.util.PageXofY;
 import gt.gob.rgm.adm.util.PdfTO;
 import gt.gob.rgm.adm.util.Random;
+//import gt.gob.rgm.adm.util.signatureInfo;
+//import gt.gob.rgm.adm.util.signaturePDF;
+//import gt.gob.rgm.security.domain.SignatureInfo;
+//import gt.gob.rgm.security.service.DigitalSignatureServiceImp;
+//import gt.gob.rgm.security.domain.SignatureInfo;
+
+import gt.gob.rgm.adm.constants.ConstantsCv;
 
 @Stateless
 public class BoletaPdfServiceImp implements BoletaPdfService {
@@ -63,8 +77,28 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 	
 	@Override
 	public byte[] getBoletaPdf(Long pIdTramite, Long pIdGarantia) {
+
+            System.out.println("Generar PDF");
+
+//		DigitalSignatureServiceImp digitalSignatureSvc = new DigitalSignatureServiceImp();
+//		SignatureInfo info = new SignatureInfo();
+//                signaturePDF digitalSignatureSvc = new signaturePDF();
+//		signatureInfo info = new signatureInfo();
+		// Variables Firma
                 
-            
+                String signText = "";
+		String signImage = "";
+		String signFile = "";
+		String signPassword = "";
+		String signLocation = "";
+		String signLlx = "";
+		String signLly = "";
+		String signUrx = "";
+		String signUry = "";
+		String signPage = "";
+		String signFieldname = "";
+		
+
 		PdfTO pdfTO = new PdfTO();
 		
 		Tramites tram = new Tramites();
@@ -72,6 +106,7 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 		
 		if(tram==null) return null;
 		
+                System.out.println("Generar PDF 2");
 		VDetalleBoletaNuevo detalleTO = new VDetalleBoletaNuevo();
 		detalleTO = detalleBoletaDao.findByTramite(tram.getIdTramite(), pIdGarantia);
 		List<String> textos = rugCatTextoFormDao.findByIdTipoGarantia(detalleTO.getIdTipoGarantia().longValue());
@@ -124,7 +159,7 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 			default:
 				break;
 		}
-		
+		System.out.println("Generar PDF 3");
 		pdfTO.setHtml("[*fechaCert*]", "");		
 		/*StringBuffer sbCert = new StringBuffer();
 		sbCert.append("<div class=\"input-field col s6\">");
@@ -171,22 +206,86 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
                 
 		//Se arma el pdf
 		pdfTO.setKey(""+tram.getTramiteIncomp().getIdTramiteTemp()+Random.generateRandom(100000));
+
+
 		
 		try {
+                
+			
+
 			byte file[] = null;
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
+
 			PdfWriter writer = new PdfWriter(os);
 			ConverterProperties converterProperties = new ConverterProperties();
 			PdfDocument pdf = new PdfDocument(writer);
                         PageXofY footerHandler = new PageXofY(pdfTO.getKey(), server);
+                        //PageXofY footerHandler = new PageXofY(pdfTO.getKey());
                         pdf.addEventHandler(PdfDocumentEvent.START_PAGE, footerHandler);
 			Document doc = HtmlConverter.convertToDocument(pdfTO.getHtml(), pdf, converterProperties);
 			//doc.setMargins(100, 50, 50, 100);
 			doc.close();
 			file = os.toByteArray();
-	
-			pdfTO.setFile(file);
+
 			
+
+                System.out.println("Generar PDF 4");
+                    
+                    
+                signText = ConstantsCv.getParamValue(ConstantsCv.SIGN_TEXT);
+		//signImage = ConstantsCv.getParamValue(ConstantsCv.SIGN_IMAGE);
+                signImage = "C:/certificado_RGM/firma.png";
+                
+		//signFile = ConstantsCv.getParamValue(ConstantsCv.SIGN_FILE);
+                signFile = "C:/certificado_RGM/rgm.p12";
+		signPassword = ConstantsCv.getParamValue(ConstantsCv.SIGN_PASSWORD);
+		signLocation = ConstantsCv.getParamValue(ConstantsCv.SIGN_LOCATION);
+		signLlx = ConstantsCv.getParamValue(ConstantsCv.SIGN_LLX);
+		signLly = ConstantsCv.getParamValue(ConstantsCv.SIGN_LLY);
+		signUrx = ConstantsCv.getParamValue(ConstantsCv.SIGN_URX);
+		signUry = ConstantsCv.getParamValue(ConstantsCv.SIGN_URY);
+		signPage = ConstantsCv.getParamValue(ConstantsCv.SIGN_PAGE);
+		signFieldname = ConstantsCv.getParamValue(ConstantsCv.SIGN_FIELDNAME);
+                
+//                info.setSignText(signText);
+//                info.setGraphicSignature(signImage);
+//                info.setKeyFile(signFile);
+//                info.setKeyPassword(signPassword);
+//                info.setLocation(signLocation);
+//                info.setLlx(Integer.valueOf(signLlx));
+//                info.setLly(Integer.valueOf(signLly));
+//                info.setUrx(Integer.valueOf(signUrx));
+//                info.setUry(Integer.valueOf(signUry));
+//                info.setSignPage(Integer.valueOf(signPage));
+//                info.setFieldName(signFieldname);
+//                info.setTypeDocument("Consulta");
+//                info.setReason("Tramite #");
+//
+//                // firma digital
+//                info.setDocument(file);
+//                
+//                try{
+//                    
+////                    System.out.println("Nombre" + info.getFieldName() + " texto " + info.getSignText());
+////                    System.out.println("Imagen" + info.getGraphicSignature() + " Key " + info.getKeyFile());
+////                    System.out.println("Location " + info.getLocation() + " page " + info.getSignPage());
+////                    System.out.println("Documento " + info.getDocument());
+//                    ByteArrayOutputStream  signedOs = digitalSignatureSvc.signDocument(info);
+//                    System.out.println("Generar PDF 5"); 
+//
+//                    file = signedOs.toByteArray();
+//
+//                }catch(GeneralSecurityException | com.itextpdf.text.DocumentException e){
+//                   	System.out.println("Errir de firma" + e);
+//                }
+                        
+                        
+                        
+                        
+			pdfTO.setFile(file);
+			//showPdf(pdfTO);
+			
+                        
 			// guardar boleta
 			RugBoletaPdf boleta = new RugBoletaPdf();
 			boleta.setIdTramite(new BigDecimal(tram.getTramiteIncomp().getIdTramiteTemp()));
@@ -199,11 +298,27 @@ public class BoletaPdfServiceImp implements BoletaPdfService {
 		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+                        System.out.println("error de firma");
+			//e.printStackTrace();
 			pdfTO.setFile(null);
 		}
+                
 		          
 		return pdfTO.getFile();
+	}
+
+	private void showPdf(PdfTO pdfTO, HttpServletResponse resp) {
+		try {
+			resp.setContentType("application/pdf");
+			resp.setCharacterEncoding("UTF-8");
+			resp.setHeader("Content-Disposition", "attachment; filename=\"Boleta.pdf\"");
+			OutputStream os = resp.getOutputStream();
+			os.write(pdfTO.getFile());
+			os.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private String getPersonaParte(Long idTramite, Long idGarantia, Long idParte) {

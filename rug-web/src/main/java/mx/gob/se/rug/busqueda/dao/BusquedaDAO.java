@@ -181,6 +181,20 @@ public class BusquedaDAO {
 	public List<BusquedaTO> busqueda(BusquedaTO busquedaInTO, Integer inicio, Integer fin){
 		List<BusquedaTO> busquedaTOs= new ArrayList<BusquedaTO>();
 
+		System.out.println("1" + busquedaInTO.getDescGarantia());
+		System.out.println("2" + busquedaInTO.getNombre());
+		System.out.println("3" + busquedaInTO.getIdGarantia());
+		System.out.println("4" + busquedaInTO.getFolioMercantil());
+		System.out.println("5" + busquedaInTO.getCurpOtorgante());
+		System.out.println("6" + busquedaInTO.getRfcOtorgante());
+		System.out.println("7" + inicio);
+		System.out.println("8" + fin);
+		System.out.println("9" + busquedaInTO.getNoSerial());
+		System.out.println("10" + busquedaInTO.getIdPersona());
+		System.out.println("11" + busquedaInTO.getIdTipoTramite());
+		System.out.println("12" + Types.INTEGER);
+		System.out.println("13" + oracle.jdbc.OracleTypes.CURSOR);
+
 		ConexionBD bd = new ConexionBD();
 		String sql = "{ call RUG.SP_CONSULTA_GARANTIAS_REG("+"?,?,?,?,?,"+"?,?,?,?,?,?,"+"?,?)}";
 		Connection connection = bd.getConnection();

@@ -104,7 +104,7 @@ public class DigitalMassiveSignatureImp {
         MakeSignature.signDetached(appearance, digest, signature, chain, null, null, null, 0, MakeSignature.CryptoStandard.CADES);
         
         
-        
+        System.out.println("Prueba de firma jar");
         return os;
     }
 }

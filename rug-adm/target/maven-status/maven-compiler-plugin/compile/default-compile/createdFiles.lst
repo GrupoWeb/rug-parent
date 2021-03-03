@@ -17,6 +17,7 @@ gt\gob\rgm\adm\model\RugRelTramPartesPK.class
 gt\gob\rgm\adm\dao\RugCatTipoTramiteRepository.class
 gt\gob\rgm\adm\service\RugBoletaServlet.class
 gt\gob\rgm\adm\service\RugGarantiasBienesHServiceImp.class
+gt\gob\rgm\adm\constants\InfraestructureException.class
 gt\gob\rgm\adm\dao\RugGarantiasBienesRepository.class
 gt\gob\rgm\adm\service\BoletaServiceImp$1.class
 gt\gob\rgm\adm\service\RugCertificacionesServiceImp.class
@@ -33,10 +34,12 @@ gt\gob\rgm\adm\model\RugRespuesta.class
 gt\gob\rgm\adm\dao\HomologadoRepository.class
 gt\gob\rgm\adm\model\Archivo.class
 gt\gob\rgm\adm\model\RugBitacTramites.class
+gt\gob\rgm\adm\constants\ConstantsCv.class
 gt\gob\rgm\adm\dao\RugPersonasMoralesRepository.class
 gt\gob\rgm\adm\rs\UsuariosRs.class
 gt\gob\rgm\adm\service\RugSecuUsuarioServiceImp.class
 gt\gob\rgm\adm\service\AdjuntoServlet.class
+gt\gob\rgm\adm\util\signatureInfo.class
 gt\gob\rgm\adm\solr\PersonasCollection$1.class
 gt\gob\rgm\adm\domain\SecuUsuarioStats.class
 gt\gob\rgm\adm\dao\RugCatNacionalidadesRepository.class
@@ -62,6 +65,7 @@ gt\gob\rgm\adm\dao\VDetalleGarantiaRepository.class
 gt\gob\rgm\adm\service\RugPersonasServiceImp.class
 gt\gob\rgm\adm\dao\BaseRugDao.class
 gt\gob\rgm\adm\rs\AdjuntoRs.class
+gt\gob\rgm\adm\constants\dao\ConstantsDAO.class
 gt\gob\rgm\adm\service\RugPreguntaServiceImp.class
 gt\gob\rgm\adm\service\CambioServiceImp.class
 gt\gob\rgm\adm\service\RugEncuestaTokenService.class
@@ -118,6 +122,7 @@ gt\gob\rgm\adm\domain\Incident.class
 gt\gob\rgm\adm\service\HomologadoServiceImpl.class
 gt\gob\rgm\adm\dao\BitacoraOperacionesRepository.class
 gt\gob\rgm\adm\rs\CorsFilter.class
+gt\gob\rgm\adm\util\signaturePDF.class
 gt\gob\rgm\adm\dao\RugFirmaDoctosRepository.class
 gt\gob\rgm\adm\service\RugRelTramGaranService.class
 gt\gob\rgm\adm\dao\RugGarantiasRepository.class

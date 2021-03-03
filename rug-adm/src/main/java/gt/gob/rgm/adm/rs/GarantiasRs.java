@@ -270,7 +270,9 @@ public class GarantiasRs {
 	@SecuredResource
 	public Transaction getTransaction(@PathParam(value="id") Long idGarantia) {
 		//Transaction transaction = new Transaction();
+		System.out.println("Dato ingresado: " + idGarantia);
 		RugGarantias garantia = rugGarantiasService.getGarantia(idGarantia);
+		System.out.println("Return garantia: " + garantia.getIdUltimoTramite());
 		Tramites tramite = garantiasService.findTramiteById(garantia.getIdUltimoTramite());
 		return transactionsService.fromTramite(tramite);
 		/*if(garantia != null) {
